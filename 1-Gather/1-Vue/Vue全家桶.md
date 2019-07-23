@@ -1880,7 +1880,7 @@ render: h => h(App)
 vuex遵循“单向数据流”理念，易于问题追踪以及提高代码可维护性
 
 vue中多个视图依赖于同一状态时，视图间传参和状态同步比较困难，vuex能够很好的解决该问题
-![vuex](./pic/vuex.png)
+![vuex](/pic/vuex.png)
 
 
 #### 2)安装
@@ -2177,7 +2177,7 @@ server {
 在new Vue()之后。Vue会调用进行初始化，会初始化生命周期、事件、props、methods、data、computed与watch等。其中最重要的是通过object.defineProperty设置setter与getter，用来实现【响应式】以及【依赖收集】。
 
 初始化之后，$mount挂载，做了一件编译compile（parse、optimize、generate）
-![vue工作机制](./pic/vue.png)
+![vue工作机制](/pic/vue.png)
 
 <font color="red">new Vue（）之后——>$mount挂载——>compile编译——>generate生成render function——>做两件事
 </font> 
@@ -2203,7 +2203,7 @@ server {
 
 Virtual DOM是react首创，vue2开始支持，就是用JavaScript对象来描述dom结构，数据修改的时候，我们先修改虚拟dom中的数据，然后数组做diff，最后再汇总所有的diff，力求做最少的dom操作，毕竟js里对比很快，而真实dom操作太慢
 - **更新视图**
-![vue工作机制](./pic/vue_simple.png)
+![vue工作机制](/pic/vue_simple.png)
 
 ### 2.响应式原理object.defineProperty
 在做observe这件事
@@ -2245,7 +2245,7 @@ getter什么时候会被执行：obj中的name被访问时就会执行
 
 object.defineProperty
 **2. Dep**
-![依赖收集](./pic/dep_collect.png)
+![依赖收集](/pic/dep_collect.png)
 如何实现呢，需要扫描视图收集依赖，知道视图中到底哪些地方对数据有依赖，这样当数据变化时就能有的放矢了。
 
 有多个地方都对某个数据进行了依赖，这时候就需要一个管理者，叫dependency，这里面有一个数组，记住，有一个key就有一个dependency，每个dependency中会有多个watcher
@@ -2256,7 +2256,7 @@ object.defineProperty
 **4. 编译compile**
 - 解析指令
 - 初始化视图
-![编译的过程](./pic/compile.png)
+![编译的过程](/pic/compile.png)
 
 **6. 监听器watcher**
 
@@ -2576,7 +2576,7 @@ vue中组件是怎么实现的：全局声明方式（组件参数：名字、�
 - vant
 
 选择一个合适的UI库:
-![合适的UI库](./pic/ui.png)
+![合适的UI库](/pic/ui.png)
 ```
 //选择cube-ui
 vue add cube-ui
@@ -3348,7 +3348,7 @@ export default store;
 
 6. v-leave-to: 2.1.8版及以上 定义离开过渡的结束状态。在离开过渡被触发之后下一帧生效 (与此同时 v-leave 被删除)，在过渡/动画完成之后移除。
 
-![transition](./pic/transition.png)
+![transition](/pic/transition.png)
 
 #### 2.JavaScript 钩子动画
 - before-enter
@@ -3749,7 +3749,7 @@ router.afterEach((to,from)=>{
 
 传统的web开发：纯服务端渲染
 
-![纯服务端渲染](./pic/client.png)
+![纯服务端渲染](/pic/client.png)
 ```
 const express = require('express')
 const app = express()
@@ -3785,11 +3785,11 @@ SEO友好
 ### 2. spa时代
 到了vue、react时代，单页应用优秀的用户体验，逐渐成为了主流，页面整体是JS渲染出来的，称之为客户端渲染
 
-![单页面渲染](./pic/spa.png)
+![单页面渲染](/pic/spa.png)
 
 单页渲染返回的html只有一个空的div，剩下的都是js生成的：
 
-![单页渲染返回的代码](./pic/spa_code.png)
+![单页渲染返回的代码](/pic/spa_code.png)
 
 这里可看到单页应用的两个缺点：
 
@@ -3812,7 +3812,7 @@ SEO不友好
 
 为了解决这两个问题，出现了SSR解决方案，后端渲染出完成的首屏的dom结构返回，前端拿到的内容带上首屏，后续的页面操作，再用单页的路由跳转和渲染，称之为服务端渲染（server side render）
 
-![ssr渲染](./pic/ssr.png)
+![ssr渲染](/pic/ssr.png)
 
 同构开发，打包代码后，一份客户端，一份服务端，首次请求后，会返回首屏的url，之后就跟单页开发一样了，直接ajax请求即可。
 
@@ -3855,7 +3855,7 @@ nuxt.js是一个基于Vue.js的通用应用框架
 ```
 #### 2) nuxt渲染流程
 
-![nuxt流程渲染图](./pic/nuxt_process.png)
+![nuxt流程渲染图](/pic/nuxt_process.png)
 
 每个路由变化都会触发中间件
 
@@ -3972,7 +3972,7 @@ export default {
 
 页面组件是上是Vue组件，只不过Nuxt.js为这些组件添加了一些特殊的配置项：
 
-![页面配置项](./pic/page.png)
+![页面配置项](/pic/page.png)
 
 <font color='red'>head配置：</font>
 ```
