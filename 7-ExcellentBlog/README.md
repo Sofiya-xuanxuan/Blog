@@ -1,13 +1,12 @@
-# sofiya前端进阶之路
+# 优秀者Blog
 
-记录前端的点点滴滴，持续学习，在进阶的路上，共勉！
+  - [言川的博客](https://github.com/lihongxun945/myblog)
+  - [冴羽的博客](https://github.com/mqyqingfeng/Blog)
+  - [木易杨的博客](https://github.com/yygmind/blog)
+  - [梁少峰的个人博客](https://github.com/youngwind/blog)
+  - [前端小密圈](https://github.com/jawil/blog)
+  - [ZhiQiangHou的博客](https://github.com/zhiqiang21/blog)
+  - [LJianshu Blog](https://github.com/ljianshu/Blog)
+  - [MuYunyun](https://github.com/MuYunyun/blog)
+  - [优秀者集合](https://github.com/FrankFang/best-chinese-front-end-blogs)
 
-> 乾坤未定，诸事可为
-
-- 前端知识分类整理
-- 每周阅读——各类技术相关的博客
-- 面试题分类汇总
-- 读书笔记——大致总结整本书的要点
-- 前端学习资料分类整理
-- 大神的鸡汤
-- 优秀者Blog
