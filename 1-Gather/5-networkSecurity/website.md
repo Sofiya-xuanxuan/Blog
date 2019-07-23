@@ -99,7 +99,7 @@
     > <%- code %> //将不会进行转义
     > ```
   
-    ![ejs](/Users/qiaoxu/Desktop/pic/ejs.png)
+    ![ejs](/pic/ejs.png)
   
   - 黑名单
   
@@ -485,7 +485,7 @@ DDOS 不是一种攻击，而是一大类攻击的总称。它有几十种类型
 >
 > http://www.lisa33xiaoq.net/1232.html
 
-![图形验证码](/Users/qiaoxu/Desktop/pic/secret.png)
+![图形验证码](/pic/secret.png)
 
 - 滑动验证码实现原理
 
@@ -503,7 +503,7 @@ DDOS 不是一种攻击，而是一大类攻击的总称。它有几十种类型
 
   对称加密
 
-  ![对称加密](/Users/qiaoxu/Desktop/pic/des.png)
+  ![对称加密](/pic/des.png)
 
   > 对称加密的一大缺点是秘钥的管理与分配，换句话说，如何把秘钥发送到需要解密你的消息的人的手里一个问题。在发送秘钥的过程中，秘钥有很大的风险会被黑客们拦截。现实中通常的做法是将对称加密的秘钥进行非对称加密，然后传送给需要它的人。
 
@@ -511,7 +511,7 @@ DDOS 不是一种攻击，而是一大类攻击的总称。它有几十种类型
 
   非对称加密
 
-  ![非对称加密](/Users/qiaoxu/Desktop/pic/rsa.png)
+  ![非对称加密](/pic/rsa.png)
 
   - 产生一对秘钥
 
@@ -531,7 +531,7 @@ DDOS 不是一种攻击，而是一大类攻击的总称。它有几十种类型
 
   - **SSH公钥登录原理**
 
-    ![ssh](/Users/qiaoxu/Desktop/pic/ssh.png)
+    ![ssh](/pic/ssh.png)
 
     - 密码口令登录
       通过密码进行登录，主要流程为:
@@ -588,7 +588,7 @@ DDOS 不是一种攻击，而是一大类攻击的总称。它有几十种类型
 
   - MD5
 
-    ![md5](/Users/qiaoxu/Desktop/pic/md5.png)
+    ![md5](/pic/md5.png)
 
 ### 4.传输安全
 
@@ -600,7 +600,7 @@ DDOS 不是一种攻击，而是一大类攻击的总称。它有几十种类型
 
 - **HTTP弱点**——明文传输
 
-  ![http传输窃听](/Users/qiaoxu/Desktop/pic/http.png)
+  ![http传输窃听](/pic/http.png)
 
   ```bash
    #查看需要经过的节点 
@@ -633,13 +633,13 @@ DDOS 不是一种攻击，而是一大类攻击的总称。它有几十种类型
 
   1. 网站是如何通过加密和用户安全通讯
 
-  ![http](/Users/qiaoxu/Desktop/pic/https.png)
+  ![http](/pic/https.png)
 
-![HTTPS](/Users/qiaoxu/Desktop/pic/https2.png)
+![HTTPS](/pic/https2.png)
 
 
 
-![ca](/Users/qiaoxu/Desktop/pic/ca.png)
+![ca](/pic/ca.png)
 
 ​	2. 根证书在哪里
 

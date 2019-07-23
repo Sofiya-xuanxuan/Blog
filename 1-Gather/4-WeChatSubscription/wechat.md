@@ -26,7 +26,7 @@
 
 - 开发者工具——公众平台测试账号
 
-  ![wechat](/Users/qiaoxu/Desktop/pic/wechat.png)
+  ![wechat](/pic/wechat.png)
 
 - 安装sunny-ngrok实现外网映射
 
@@ -34,7 +34,7 @@
 
   - 开通隧道
 
-    ![wechat](/Users/qiaoxu/Desktop/pic/ngrok.png)
+    ![wechat](/pic/ngrok.png)
 
   - 下载ngrok
 
@@ -46,7 +46,7 @@
 
   - 映射成功后
 
-    ![ngrok-success](/Users/qiaoxu/Desktop/pic/ngrok-success.png)
+    ![ngrok-success](/pic/ngrok-success.png)
 
 ### 3.客服消息-你问我答
 
@@ -175,7 +175,7 @@
   >
   > 验证过程：
   >
-  > ![signature](/Users/qiaoxu/Desktop/pic/signature.png)
+  > ![signature](/pic/signature.png)
   >
   > SHA1算法——类似MD5 SHA256
   >
@@ -300,15 +300,15 @@ const api = new wechatAPI(
 
 - **网页授权2个地方需要配置**
 
-![oauth1](/Users/qiaoxu/Desktop/pic/oauth1.png)
+![oauth1](/pic/oauth1.png)
 
-![oauth2](/Users/qiaoxu/Desktop/pic/oauth2.jpeg)
+![oauth2](/pic/oauth2.jpeg)
 
 > 注意：只填写域名，不要加http或者https
 
 - **网页授权过程**
 
-![wechat-oauth-process](/Users/qiaoxu/Desktop/pic/wechat-oauth.png)
+![wechat-oauth-process](/pic/wechat-oauth.png)
 
 - **认证请求——生成用户URL**
 

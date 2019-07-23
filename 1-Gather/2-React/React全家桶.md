@@ -300,10 +300,10 @@ npm run eject
     export default CartSample;
     ```
 ### 3.生命周期
-![react生命周期](/Users/qiaoxu/Desktop/pic/react.jpg)
+![react生命周期](/pic/react.jpg)
 
 > React v16.0前的生命周期
-> ![react生命周期v16.0之前](/Users/qiaoxu/Desktop/pic/react_v16.0.png)
+> ![react生命周期v16.0之前](/pic/react_v16.0.png)
 - **1.第一个是组件初始化(initialization)阶段**
 
 也就是以下代码中类的构造⽅方法( constructor() ),Test类继承了了react Component这个基类，也就继承这个react的基类，才能有render(),生命周期等方法可以使用，这也说明为什么函数组件不不能使⽤用这些方法的原因。
@@ -437,7 +437,7 @@ componentWillUpdate，render，componentDidUpdate**
 
 > React v16.4 的生命周期
 
-![react生命周期v16.4](/Users/qiaoxu/Desktop/pic/react_v16.4.png)
+![react生命周期v16.4](/pic/react_v16.4.png)
 
 - **1.变更原因**
 
@@ -464,7 +464,7 @@ componentWillUpdate，render，componentDidUpdate**
     getDerivedStateFromProps本来（Reactv16.3中）是只在创建和更新（由父组件引发部分），也就是不是不由父组件引发，那么getDerivedStateFromProps也不会被调用，如自身setState引发或者forceUpdate引发。
     >> React v16.3 的生命周期图
 
-    ![react生命周期v16.3](/Users/qiaoxu/Desktop/pic/react_v16.3.png)
+    ![react生命周期v16.3](/pic/react_v16.3.png)
    
     这样的话理解起来有点乱，在React v16.4中改正了这一点，让getDerivedStateFromProps无论是Mounting还是Updating，也无论是因为什么引起的Updating，全部都会被调用，具体可看React v16.4 的生命周期图。
    
@@ -655,7 +655,7 @@ class Comment extends Component {
 
 > 由于比较方式是浅比较，注意传值方式，值类型或者地址不变的且仅根属性变化的引用类型才能享受该特性  
 
-![PureComponent源码](/Users/qiaoxu/Desktop/pic/pureComponent.png)
+![PureComponent源码](/pic/pureComponent.png)
 ```
 //解决方式二：使用纯组件PureComponent
 import React, {Component, PureComponent} from 'react';
@@ -1628,7 +1628,7 @@ npm install redux react-redux --save
 >   4.在redux中，提交和变更只有dispatch，在vuex中有dispatch和commit，在redux中，dispatch是同步的    
 >   5.redux是一个非常包容的库，是通用的，可以用在vue、angular中
 
-![redux流程图](/Users/qiaoxu/Desktop/pic/redux.jpg)
+![redux流程图](/pic/redux.jpg)
 
 - **创建store实例**
 ```
@@ -1819,8 +1819,8 @@ export default connect(mapStateToProps,mapDispatchToProps)(function HookTest({fr
 
 react默认只支持同步，实现异步任务比如：延迟、网络请求，需要中间件的支持，比如我们试用最简单的redux-thunk和redux-logger
 
-![redux-thunk](/Users/qiaoxu/Desktop/pic/redux-thunk.jpg)
-![redux-thunk](/Users/qiaoxu/Desktop/pic/react-middleware.png)
+![redux-thunk](/pic/redux-thunk.jpg)
+![redux-thunk](/pic/react-middleware.png)
 
    - 安装redux-thunk
 
@@ -2531,7 +2531,7 @@ export default Link;
 
 ### 7.redux-saga使用
 
-![redux-saga](/Users/qiaoxu/Desktop/pic/redux-saga.png)
+![redux-saga](/pic/redux-saga.png)
 - **安装**
     ```
     npm install --save redux-saga
@@ -2753,9 +2753,9 @@ next();
 
    - 与[dva数](https://dvajs.com/)据流的深入融合，支持duck directory、model的自动加载、code splitting等等
 
-![dva](/Users/qiaoxu/Desktop/pic/dva.png)
+![dva](/pic/dva.png)
 
-![umi](/Users/qiaoxu/Desktop/pic/umi.png)
+![umi](/pic/umi.png)
 
 - **安装**
 ```
@@ -2907,7 +2907,7 @@ export default props=>{
 引入dva，软件分层，回顾react，为了让数据流更易于维护，我们分成了store、reducer、action等模块，各司其职，软件开发也是一样
 
 前端代码分层：
-![dva](/Users/qiaoxu/Desktop/pic/dva-data.png)
+![dva](/pic/dva-data.png)
 
 1. page负责与用户直接打交道：渲染页面、接受用户的操作输入，侧重于展示型交互性逻辑。
 2. Model负责处理业务逻辑，为page做数据、状态的读写、变换、暂存等。
@@ -4132,9 +4132,9 @@ console.log(foo)//'foo'
 ```
 setState并没有直接操作去渲染，而是执行了一个异步的updater队列，我们使用一个类来专门管理
 
-![setState工作原理1](/Users/qiaoxu/Desktop/pic/setState1.png)
+![setState工作原理1](/pic/setState1.png)
 
-![setState工作原理2](/Users/qiaoxu/Desktop/pic/setState2.png)
+![setState工作原理2](/pic/setState2.png)
 
 关键代码：
 
@@ -4226,7 +4226,7 @@ react virtual dom是什么？说一下diff算法？
 **where**：react中用JSX语法描述视图，通过babel-loader转译后它们变为React.createElement(...)形式，该函数将生成vdom来描述真实dom。将来如果状态变化，vdom将作出相应的变化，再通过diff算法对比新老vdom区别从而做出最终dom操作。
 
 传统dom渲染过程：
-![传统dom渲染](/Users/qiaoxu/Desktop/pic/dom.png)
+![传统dom渲染](/pic/dom.png)
 
 **how**：
 
@@ -4283,7 +4283,7 @@ state2 === hook2.memoizedState
 hook2.next => hook3
 state3 === hook2.memoizedState
 ```
-![Hooks](/Users/qiaoxu/Desktop/pic/Hooks.png)
+![Hooks](/pic/Hooks.png)
 ### 4.Fibter
 
 1. 为什么需要fiber
@@ -4300,4 +4300,4 @@ state3 === hook2.memoizedState
 
 7. 更流畅
 
-![Fibter](/Users/qiaoxu/Desktop/pic/fibter.png)
+![Fibter](/pic/fibter.png)

@@ -2235,7 +2235,7 @@ rl.on("close", function() {
 
   - 原理
 
-  ![session](/Users/qiaoxu/Desktop/pic/session.jpeg)
+  ![session](/pic/session.jpeg)
 
   > 实现原理：
   >
@@ -2551,7 +2551,7 @@ app.listen(3000);
 
 - **token原理**
 
-  ![token](/Users/qiaoxu/Desktop/pic/token.jpeg)
+  ![token](/pic/token.jpeg)
 
   - 客户端使用用户名跟密码请求登录
   - 服务端收到请求，去验证用户名与密码
@@ -2756,7 +2756,7 @@ app.listen(3000);
 
     - OAuth登录流程：
 
-      ![oauth](/Users/qiaoxu/Desktop/pic/oauth.png)
+      ![oauth](/pic/oauth.png)
 
     - 案例：oauth登录
 
@@ -2922,9 +2922,9 @@ https://github.com/hezhii/nodejs-sso-example
 
   有一个独立的认证中心，只有认证中心才能接受用户的用户名和密码等信息进行认证，其他系统不提供登录入口，只接受认证中心的间接授权。间接授权通过令牌实现，当用户提供的用户名和密码通过认证中心认证后，认证中心会创建授权令牌，在接下来的跳转过程中，授权令牌作为参数发送给各个子系统，子系统拿到令牌即得到了授权，然后创建局部会话。
 
-  ![sso](/Users/qiaoxu/Desktop/pic/sso.png)
+  ![sso](/pic/sso.png)
 
-  ![sso](/Users/qiaoxu/Desktop/pic/sso2.png)
+  ![sso](/pic/sso2.png)
 
 下面对上图进行解释：
 
@@ -4985,7 +4985,7 @@ https://yeasy.gitbooks.io/docker_practice/container/run.html
 
 #### 3）对比传统虚拟机总结
 
-![docker](/Users/qiaoxu/Desktop/pic/docker.png)
+![docker](/pic/docker.png)
 
 #### 4）三个核心概念
 

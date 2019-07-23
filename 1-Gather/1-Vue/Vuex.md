@@ -10,13 +10,13 @@
 - **主要应用于vue.js中管理数据状态的一个库**
 - **通过创建一个集中的数据存储，供程序中所有组件访问**
     下图的store可以理解为‘单一的数据源’
-![vuex-store](/Users/qiaoxu/Desktop/pic/store.jpg)
+![vuex-store](/pic/store.jpg)
 - **单一使用vue.js的场景**
 
 这种组件之间相互传参非常麻烦，子组件需要通过prop来接收父组件传来的参数，而子组件给父组件传参的时候，需要$emit事件通知父组件，而父组件需要$on监听参数的传递
-![vuex-store](/Users/qiaoxu/Desktop/pic/component.jpg)
+![vuex-store](/pic/component.jpg)
 - **使用vuex.js的场景**
-![vuex-store](/Users/qiaoxu/Desktop/pic/vuex.jpg)
+![vuex-store](/pic/vuex.jpg)
 
 ## 3.搭建vuex中央状态管理
 - **安装vuex**

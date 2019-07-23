@@ -36,7 +36,7 @@ angular2的开发语言
 
 - **ts和ES6**
 
-![ts与ES6的关系](/Users/qiaoxu/Desktop/pic/ts.png)
+![ts与ES6的关系](/pic/ts.png)
 
     1. TS是angular的more开发语言
     

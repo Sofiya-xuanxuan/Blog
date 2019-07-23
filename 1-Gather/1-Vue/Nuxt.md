@@ -151,7 +151,7 @@ package.json 文件用于描述应用的依赖关系和对外暴露的脚本接�
 
 该文件名为Nuxt.js保留的，不可更改。
 - 别名
-![别名](/Users/qiaoxu/Desktop/pic/alias.png)
+![别名](/pic/alias.png)
 
 默认情况下，src目录和根目录相同
 
@@ -423,7 +423,7 @@ export default {
 </style>
 ```
 Nuxt.js 为页面提供的特殊配置项：
-![nuxt页面配置项](/Users/qiaoxu/Desktop/pic/nuxt_config.png)
+![nuxt页面配置项](/pic/nuxt_config.png)
 - **HTML头部**
 
 ## 10.nuxt异步数据
@@ -1061,7 +1061,7 @@ actions: {
 ```
 ## 15.nuxt命令和部署
 - **命令列表**
-![执行命令](/Users/qiaoxu/Desktop/pic/build.png)
+![执行命令](/pic/build.png)
 - **开发模式**
 ```
 nuxt

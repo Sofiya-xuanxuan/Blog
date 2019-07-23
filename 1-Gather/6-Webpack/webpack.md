@@ -4,7 +4,7 @@
 
 ### 1. 什么是webpack
 
-![webpack](/Users/qiaoxu/Desktop/pic/webpack.png)
+![webpack](/pic/webpack.png)
 
 Webpack is module bundler（模块打包工具）
 
@@ -1171,13 +1171,13 @@ github地址：https://github.com/webpack/analyse
 
 3.将生成的stats.json文件上传到打包分析工具上
 
-![打包分析](/Users/qiaoxu/Desktop/pic/analyse.png)
+![打包分析](/pic/analyse.png)
 
 4.官方推荐其余打包分析工具 
 
 https://webpack.js.org/guides/code-splitting/#bundle-analysis 
 
-![官方推荐](/Users/qiaoxu/Desktop/pic/official_analyse.png)
+![官方推荐](/pic/official_analyse.png)
 
 #### 15）webpack官方推荐的编码方式
 
@@ -1208,7 +1208,7 @@ document.addEventListener('click', () => {
 
 ​	c）查看代码利用率
 
-![代码利用率](/Users/qiaoxu/Desktop/pic/use-rate.png)
+![代码利用率](/pic/use-rate.png)
 
 - **将异步代码抽离出来**
 
@@ -1241,7 +1241,7 @@ document.addEventListener('click', () => {
 > - preload chunk 会在父 chunk 中立即请求，用于当下时刻。prefetch chunk 会用于未来的某个时刻。
 > - 浏览器支持程度不同。
 
-![代码利用率](/Users/qiaoxu/Desktop/pic/code-useRate.png)
+![代码利用率](/pic/code-useRate.png)
 
 ## 二、webpack互动扩展
 
@@ -1649,7 +1649,7 @@ sourceURL=webpack:///./index.js?'
   const info = entry('./src/index.js')
   ```
 
-  ![bundle](/Users/qiaoxu/Desktop/pic/bundle.png)
+  ![bundle](/pic/bundle.png)
 
   >  分析上图，我们要分析出信息：
   >
@@ -1729,7 +1729,7 @@ sourceURL=webpack:///./index.js?'
 
   打印结果：
 
-  ![info](/Users/qiaoxu/Desktop/pic/info.png)
+  ![info](/pic/info.png)
 
   - 分析依赖——完成项目中所有模块的分析
 
