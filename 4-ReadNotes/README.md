@@ -24,6 +24,7 @@
   - [ ] Node与Express开发
   - [ ] js正则表达式迷你书
   - [ ] css揭秘
+  - [ ] 前端进击的巨人（一）：执行上下文与执行栈，变量对象
 
 
 ## Blog
@@ -50,6 +51,10 @@
  * [读书笔记](https://github.com/LuoShengMen/StudyNotes/issues/226)
  * [javascript继承方式](https://github.com/LuoShengMen/StudyNotes/issues/227)
  * [javascript创建对象方式](https://github.com/LuoShengMen/StudyNotes/issues/228)
+
+## 前端进击的巨人（一）：执行上下文与执行栈，变量对象
+
+- [《前端进击的巨人（一）：执行上下文与执行栈，变量对象》](https://segmentfault.com/a/1190000017890535)
 
 ## 你不知道的javascript
 

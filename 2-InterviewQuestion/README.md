@@ -2,135 +2,280 @@
 
  ### javascript面试题
  - [JavaScript有几种类型的值？](https://github.com/LuoShengMen/StudyNotes/issues/137)
+
+   <details>
+   <summary><mark><font color='darkred'><a href='JS面试题/1.md'>点击查看详细内容</font></mark></summary>
+   <pre></pre>
+   </details>
+
  - [堆，栈，队列的区别](https://github.com/LuoShengMen/StudyNotes/issues/306)
+
+   <details>
+     <summary><mark><font color='darkred'><a href='JS面试题/2.md'>点击查看详细内容</a></font></mark></summary>
+   <pre></pre>
+   </details>
+
  - [请指出 JavaScript 宿主对象 (host objects) 和原生对象 (native objects) 的区别](https://github.com/LuoShengMen/StudyNotes/issues/264)
+
+   <details>
+     <summary><mark><font color='darkred'><a href='JS面试题/3.md'>点击查看详细内容</a></font></mark></summary>
+   <pre></pre>
+   </details>
+
  - [为什么扩展 JavaScript 内置对象不是好的做法](https://github.com/LuoShengMen/StudyNotes/issues/262)
+
  - [js的类型判断](https://github.com/LuoShengMen/StudyNotes/issues/138)
+
  - [请解释可变 (mutable) 和不变 (immutable) 对象的区别](https://github.com/LuoShengMen/StudyNotes/issues/263)
+
  - [有以下 3 个判断数组的方法，请分别介绍它们之间的区别和优劣](https://github.com/LuoShengMen/StudyNotes/issues/41)
+
  - [Array(...)和Array.of(...)的区别](https://github.com/LuoShengMen/StudyNotes/issues/140)
+
  - [类数组对象转换为数组](https://github.com/LuoShengMen/StudyNotes/issues/141)
+
  - [你熟悉 Typed Arrays 吗？ 如果熟悉，请解释他们与 JavaScript 中的传统数组相比的异同？](https://github.com/LuoShengMen/StudyNotes/issues/546)
+
  - [symbol应用](https://github.com/LuoShengMen/StudyNotes/issues/265)
+
  - [深浅拷贝](https://github.com/LuoShengMen/StudyNotes/issues/432)
+
  - [== 和 === 有什么区别？](https://github.com/LuoShengMen/StudyNotes/issues/144)
+
  - [Object.is() 与比较操作符 ===、== 有什么区别](https://github.com/LuoShengMen/StudyNotes/issues/374)
+
  - [什么是三元表达式 (Ternary expression)？“三元 (Ternary)” 表示什么意思](https://github.com/LuoShengMen/StudyNotes/issues/271)
+
  - [从内存来看 null 和 undefined 本质的区别是什么？](https://github.com/LuoShengMen/StudyNotes/issues/66)
+
  - [为什么普通 for 循环的性能远远高于 forEach 的性能，请解释其中的原因](https://github.com/LuoShengMen/StudyNotes/issues/441)
+
  - [箭头函数与普通函数（function）的区别是什么？构造函数（function）可以使用 new 生成实例，那么箭头函数可以吗？为什么](https://github.com/LuoShengMen/StudyNotes/issues/247)
+
  - [箭头函数与普通函数的区别？](https://github.com/LuoShengMen/StudyNotes/issues/133)
+
  - [JavaScript 中有哪些不同的函数调用模式](https://github.com/LuoShengMen/StudyNotes/issues/539)
+
  - [解释 function foo() {} 与 var foo = function() {} 用法的区别](https://github.com/LuoShengMen/StudyNotes/issues/268)
+
  - [纯函数的概念？](https://github.com/LuoShengMen/StudyNotes/issues/253)
+
  - [Javascript中，有一个函数，执行时对象查找时，永远不会去查找原型，这个函数是？](https://github.com/LuoShengMen/StudyNotes/issues/201)
+
  - [请解释为什么接下来这段代码不是 IIFE (立即调用的函数表达式)：function foo(){ }();要做哪些改动使它变成 IIFE](https://github.com/LuoShengMen/StudyNotes/issues/269)
+
  - [请举出一个匿名函数的典型用例](https://github.com/LuoShengMen/StudyNotes/issues/270)
+
  - [请指出以下代码的区别：function Person(){}、var person = Person()、var person = new Person()？](https://github.com/LuoShengMen/StudyNotes/issues/266)
+
  - [caller, callee和arguments分别是什么?](https://github.com/LuoShengMen/StudyNotes/issues/207)
+
  - [for of , for in 和 forEach,map 的区别](https://github.com/LuoShengMen/StudyNotes/issues/143)
+
  - [介绍下深度优先遍历和广度优先遍历，如何实现？](https://github.com/LuoShengMen/StudyNotes/issues/19)
+
  - [Object.assion()和...解构的区别](https://github.com/LuoShengMen/StudyNotes/issues/283)
+
  - [何为作用域链](https://github.com/LuoShengMen/StudyNotes/issues/59)
+
  - [执行上下文(EC)](https://github.com/LuoShengMen/StudyNotes/issues/150)
+
  - [为什么 var 可以重复声明](https://github.com/LuoShengMen/StudyNotes/issues/402)
+
  - [全局作用域中，用const 和let声明的变量不在 window 上,那到底在哪里？如何去获取](https://github.com/LuoShengMen/StudyNotes/issues/46)
+
  - [var、let 和 const 区别的理是什么](https://github.com/LuoShengMen/StudyNotes/issues/473)
+
  - [什么是闭包，作用是什么，会带来哪些影响](https://github.com/LuoShengMen/StudyNotes/issues/56)
+
  - [4类常见内存泄漏及如何避免](https://github.com/LuoShengMen/StudyNotes/issues/65)
+
  - [eval是做什么的？](https://github.com/LuoShengMen/StudyNotes/issues/126)
+
  - [javascript 代码中的”use strict”;是什么意思 ? 使用它区别是什么？](https://github.com/LuoShengMen/StudyNotes/issues/127)
+
  - [XML和JSON的区别？](https://github.com/LuoShengMen/StudyNotes/issues/117)
+
  - [如何在 JSON 中序列化以下对象？](https://github.com/LuoShengMen/StudyNotes/issues/540)
+
  - [javascript的运行机制](https://github.com/LuoShengMen/StudyNotes/issues/23)
+
  - [说一说对原型链对理解](https://github.com/LuoShengMen/StudyNotes/issues/57)
+
  - [Function.__proto__(getPrototypeOf)是什么？](https://github.com/LuoShengMen/StudyNotes/issues/423)
+
  - [this的用法以及优先级](https://github.com/LuoShengMen/StudyNotes/issues/58)
+
  - [call 和 apply 的区别是什么，哪个性能更好一些](https://github.com/LuoShengMen/StudyNotes/issues/85)
+
  - [请解释 Function.prototype.bind](https://github.com/LuoShengMen/StudyNotes/issues/267)
+
  - [new的原理是什么](https://github.com/LuoShengMen/StudyNotes/issues/145)
+
  - [什么是防抖和节流？有什么区别？如何实现?](https://github.com/LuoShengMen/StudyNotes/issues/17)
+
  - [介绍下 Set、Map、WeakSet 和 WeakMap 的区别？](https://github.com/LuoShengMen/StudyNotes/issues/18)
+
  - [javascript继承方式](https://github.com/LuoShengMen/StudyNotes/issues/227)
+
  - [ES5/ES6 的继承除了写法以外还有什么区别？](https://github.com/LuoShengMen/StudyNotes/issues/21)
+
  - [javascript创建对象方式](https://github.com/LuoShengMen/StudyNotes/issues/228)
+
  - [可迭代对象有什么特点](https://github.com/LuoShengMen/StudyNotes/issues/497)
+
  - [JavaScript 中的迭代器（iterators）和迭代（iterables）是什么？ 你知道什么是内置迭代器吗？](https://github.com/LuoShengMen/StudyNotes/issues/547)
+
  - [defineProperty, hasOwnProperty, propertyIsEnumerable都是做什么用的？](https://github.com/LuoShengMen/StudyNotes/issues/208)
+
  - [介绍下观察者模式和订阅-发布模式的区别，各自适用于什么场景](https://github.com/LuoShengMen/StudyNotes/issues/43)
+
  - [XMLHttpRequest通用属性和方法](https://github.com/LuoShengMen/StudyNotes/issues/239)
+
  - [介绍Ajax](https://github.com/LuoShengMen/StudyNotes/issues/116)
+
  - [防止重复发送Ajax请求](https://github.com/LuoShengMen/StudyNotes/issues/176)
+
  - [Fetch API 相对于传统的 Ajax 有哪些改进？](https://github.com/LuoShengMen/StudyNotes/issues/485)
+
  - [请解释 JSONP 的工作原理，以及它为什么不是真正的 Ajax](https://github.com/LuoShengMen/StudyNotes/issues/273)
+
  - [requestAnimationFrame 原理？是同步还是异步](https://github.com/LuoShengMen/StudyNotes/issues/231)
+
  - [JS 异步解决方案的发展历程以及优缺点](https://github.com/LuoShengMen/StudyNotes/issues/32)
+
  - [异步编程的实现方式？](https://github.com/LuoShengMen/StudyNotes/issues/134)
+
  - [解释同步 (synchronous) 和异步 (asynchronous) 函数的区别](https://github.com/LuoShengMen/StudyNotes/issues/277)
+
  - [默认参数如何工作？](https://github.com/LuoShengMen/StudyNotes/issues/548)
+
  - [解释 TCO - 尾调用优化（Tail Call Optimization）。 有没有支持尾调用优化的 JavaScript 引擎？](https://github.com/LuoShengMen/StudyNotes/issues/549)
+
  - [promise的用法](https://github.com/LuoShengMen/StudyNotes/issues/3)
+
  - [手写一个promise及其 polyfills 实现,如何实现多个请求并行？](https://github.com/LuoShengMen/StudyNotes/issues/280)
+
  - [如何实现 Promise.all](https://github.com/LuoShengMen/StudyNotes/issues/147)
+
  - [如何实现 Promise.finally ](https://github.com/LuoShengMen/StudyNotes/issues/148)
+
  - [如何实现 Promise.race](https://github.com/LuoShengMen/StudyNotes/issues/369)
+
  - [Promise 构造函数是同步执行还是异步执行，那么 then 方法呢？](https://github.com/LuoShengMen/StudyNotes/issues/33)
+
  - [setTimeout、Promise、Async/Await 的区别](https://github.com/LuoShengMen/StudyNotes/issues/22)
+
  - [简单实现async/await中的async函数](https://github.com/LuoShengMen/StudyNotes/issues/364)
+
  - [使用 async/await 需要注意什么？](https://github.com/LuoShengMen/StudyNotes/issues/368)
+
  - [装饰器的原理](https://github.com/LuoShengMen/StudyNotes/issues/229)
+
  - [如何解决跨域问题?](https://github.com/LuoShengMen/StudyNotes/issues/122)
+
  - [javascript跨域通信](https://github.com/LuoShengMen/StudyNotes/issues/179)
+
  - [Proxy / Object.defineProperty相比优劣如何](https://github.com/LuoShengMen/StudyNotes/issues/455)
+
  - [用Proxy 与 Object.defineProperty实现双向绑定](https://github.com/LuoShengMen/StudyNotes/issues/474)
+
  - [Web Worker 通常应用于哪些方面](https://github.com/LuoShengMen/StudyNotes/issues/375)
+
  - [简述下对 webWorker 的理解？](https://github.com/LuoShengMen/StudyNotes/issues/370)
+
  - [从IIFE、AMD、CMD、CommonJS、UMD、webpack(require.ensure)、ES Module等模块化介绍发展历程](https://github.com/LuoShengMen/StudyNotes/issues/79)
+
  - [AMD、CMD的分别](https://github.com/LuoShengMen/StudyNotes/issues/120)
+
  - [ES6模块和CommonJS模块的差异？](https://github.com/LuoShengMen/StudyNotes/issues/371)
+
  - [介绍下 npm 模块安装机制，为什么输入 npm install 就可以自动安装对应的模块](https://github.com/LuoShengMen/StudyNotes/issues/40)
+
  - [线性顺序存储结构和链式存储结构有什么区别？以及优缺点](https://github.com/LuoShengMen/StudyNotes/issues/171)
+
  - [解释一下何为面向对象编程](https://github.com/LuoShengMen/StudyNotes/issues/63)
+
  - [什么是面向对象编程及面向过程编程，它们的异同和优缺点](https://github.com/LuoShengMen/StudyNotes/issues/131)
+
  - [什么是事件代理](https://github.com/LuoShengMen/StudyNotes/issues/114)
+
  - [事件流](https://github.com/LuoShengMen/StudyNotes/issues/390)
+
  - [什么是事件循环 (event loop)？](https://github.com/LuoShengMen/StudyNotes/issues/278)
+
  - [解释 JavaScript 并发模型](https://github.com/LuoShengMen/StudyNotes/issues/484)
+
  - [js如何自定义事件？](https://github.com/LuoShengMen/StudyNotes/issues/373)
+
  - [请问调用栈 (call stack) 和任务队列 (task queue) 的区别是什么？](https://github.com/LuoShengMen/StudyNotes/issues/278)
+
  - [事件模型](https://github.com/LuoShengMen/StudyNotes/issues/115)
+
  - [事件模型](https://github.com/LuoShengMen/StudyNotes/issues/78)
+
  - [代码的复用](https://github.com/LuoShengMen/StudyNotes/issues/151)
+
  - [为什么通常在发送数据埋点请求的时候使用的是 1x1 像素的透明 gif 图片](https://github.com/LuoShengMen/StudyNotes/issues/113)
+
  - [图片懒加载与预加载](https://github.com/LuoShengMen/StudyNotes/issues/178)
+
  - [webSocket如何兼容低浏览器？](https://github.com/LuoShengMen/StudyNotes/issues/186)
+
  - [页面可见性（Page Visibility API） 可以有哪些用途？](https://github.com/LuoShengMen/StudyNotes/issues/187)
+
  - [如何在页面上实现一个圆形的可点击区域？](https://github.com/LuoShengMen/StudyNotes/issues/188)
+
  - [实现不使用 border 画出1px高的线，在不同浏览器的标准模式与怪异模式下都能保持一致的效果](https://github.com/LuoShengMen/StudyNotes/issues/189)
+
  - [页面重构怎么操作？](https://github.com/LuoShengMen/StudyNotes/issues/205)
+
  - [请解释什么是单页应用 (single page app), 以及如何使其对搜索引擎友好 (SEO-friendly)](https://github.com/LuoShengMen/StudyNotes/issues/284)
+
  - [使用一种可以编译成 JavaScript 的语言来写 JavaScript 代码有哪些优缺点](https://github.com/LuoShengMen/StudyNotes/issues/285)
+
  - [前端日志](https://github.com/LuoShengMen/StudyNotes/issues/287)
+
  - [前端跟踪](https://github.com/LuoShengMen/StudyNotes/issues/288)
+
  - [JWT优缺点](https://github.com/LuoShengMen/StudyNotes/issues/286)
+
  - [介绍下如何实现 token 加密](https://github.com/LuoShengMen/StudyNotes/issues/281)
+
  - [100 * 100 的 Canvas 占内存多大？](https://github.com/LuoShengMen/StudyNotes/issues/385)
+
  - [说说svg和canvas各自的优缺点？](https://github.com/LuoShengMen/StudyNotes/issues/395)
+
  - [描述二叉树的几种遍历方式？](https://github.com/LuoShengMen/StudyNotes/issues/396)
+
  - [CDN的原理](https://github.com/LuoShengMen/StudyNotes/issues/397)
+
  - [用过哪些设计模式](https://github.com/LuoShengMen/StudyNotes/issues/407)
+
  - [重载和重写有什么区别](https://github.com/LuoShengMen/StudyNotes/issues/408)
+
  - [怎么计算在一个页面上的停留时间](https://github.com/LuoShengMen/StudyNotes/issues/413)
+
  - [二维码怎么工作的，扫描pc端的二维码，怎么让pc端登录](https://github.com/LuoShengMen/StudyNotes/issues/414)
+
  - [Object.freeze和Object.seal的区别](https://github.com/LuoShengMen/StudyNotes/issues/417)
+
  - [mouseover和mouseenter的区别](https://github.com/LuoShengMen/StudyNotes/issues/420)
+
  - [一个图片url访问后直接下载怎样实现？](https://github.com/LuoShengMen/StudyNotes/issues/440)
+
  - [input 搜索如何防抖，如何处理中文输入](https://github.com/LuoShengMen/StudyNotes/issues/463)
+
  - [异步加载 js 脚本的方法有哪些？](https://github.com/LuoShengMen/StudyNotes/issues/496)
+
  - [JSONP原理及简单实现](https://github.com/LuoShengMen/StudyNotes/issues/498)
+
  - [在 JavaScript 和前端的上下文中，函数式编程与响应式编程有什么关系？](https://github.com/LuoShengMen/StudyNotes/issues/542)
+
  - [使函数式编程与面向对象或命令式编程不同的关键因素是什么？](https://github.com/LuoShengMen/StudyNotes/issues/543)
+
  - [解释即将发布的任一新 ECMAScript 提案](https://github.com/LuoShengMen/StudyNotes/issues/544)
+
  - [如何在 JavaScript 中检测触摸事件？](https://github.com/LuoShengMen/StudyNotes/issues/550)
 
   ### js笔试题
