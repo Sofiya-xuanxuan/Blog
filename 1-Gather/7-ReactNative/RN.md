@@ -106,10 +106,12 @@ React Naitve的简介:Facebook在React.js Conf2015大会上推出的一个用于
 
     Android Studio 默认会安装最新版本的 Android SDK。
 
+    需要去安装目录bin下面执行`sdkmanager --licenses`，一路y，接受所有licenses
+
   - 配置ANDROID_HOME环境变量
 
     React Native 需要通过环境变量来了解你的 Android SDK 装在什么路径，从而正常进行编译。具体的做法是把下面的命令入到 `~/.bash_profile` ⽂文件中:
-
+  
     ```bash
     open ~/.bash_profile
     
@@ -120,11 +122,11 @@ React Naitve的简介:Facebook在React.js Conf2015大会上推出的一个用于
     export PATH=$PATH:$ANDROID_HOME/tools/bin
     export PATH=$PATH:$ANDROID_HOME/platform-tools
     export PATH=$PATH:$ANDROID_HOME/emulator
-     
+   
     ```
 
     使用 source $HOME/.bash_profile 命令来使环境变量设置立即生效(否则重启后才生效)。可以 
-
+  
     使用 echo $ANDROID_HOME 检查此变量是否已正确设置。 
 
 ### 3.真机调试
@@ -201,11 +203,188 @@ react-native run-ios
 
 ### 5.React Native调试技巧
 
-- **1**
+- **Developer Menu**
+
+  Developer Menu是React Native给开发者定制的一个开发者菜单，来帮助开发者调试React Native应用。
+
+- **在模拟器上开启Developer Menu**
+
+  - 安卓模拟器
+
+    可以通过`Command⌘ + M`快捷键来快速打开Developer Menu。也可以通过模拟器上的菜单键来打开。
+
+    > 心得：高版本的模拟器通常没有菜单键的，不过Nexus S上是有菜单键的，如果想使用菜单键，可以创建一个Nexus S的模拟器
+
+  - ios模拟器
+
+    可以通过 `Command⌘ + D` 快捷键来快速打开Developer Menu。
+
+- **Reload**
+
+  Reload 选项，单击 Reload 让React Native重新加载js。对于iOS模拟器你也可以通过 Command⌘ + R
+  快捷键来加载js，对于Android模拟器可以通过双击 r 键来加载js。
+
+  > 提示:如果 Command⌘ + R 无法使你的iOS模拟器加载js，则可以通过选中Hardware menu中
+  > Keyboard选项下的 “Connect Hardware Keyboard” 。
+
+- **Enable Live Reload**
+
+  该选项提供了了React Native动态加载的功能。当你的js代码发生变化后，React Native会自动生成
+  bundle然后传输到模拟器或手机上
+
+- **Errors and Warnings**
+
+  在development模式下，js部分的Errors 和 Warnings会直接打印在手机或模拟器屏幕上，以红屏和黄
+  屏展示。
+
+- **Errors**
+
+  React Native程序运行时出现的Errors会被直接显示在屏幕上，以红色的背景显示，并会打印出错误信
+  息。 你也可以通过 console.error() 来手动触发Errors。
+
+- **Warnings**
+
+  React Native程序运行时出现的Warnings也会被直接显示在屏幕上，以⻩色的背景显示，并会打印出警 告信息。 你也可以通过 console.warn() 来手动触发Warnings。 你也可以通过 
+
+  `console.disableYellowBox = true` 来手动禁用Warnings的显示，或者通过 `console.ignoredYellowBox = ['Warning: ...'];` 来忽略相应的Warning 
+
+- **Debug JS Remotely**
+
+  - 点击后自动打开浏览器
+
+  ![浏览器debugger](/Users/qiaoxu/Desktop/myBlog/pic/debugger.png)
+
+  - 打开浏览器检查
+
+  用浏览器来做调试：Source——debuggerWorker.js——找对应的项目，对应的源文件
+
+  - 断点调试
 
 ### 6.React Native布局与样式
 
+一款好的App离不开漂亮的布局，RN中的布局方式采用的是FlexBox(弹性布局) 
+
+FlexBox提供了在不通尺寸设备上都能保持一致的布局⽅式 
+
+- **宽和高**
+
+  在学习FlexBox之前首先要清楚一个概念"宽和高"。一个组件的高度和宽度决定了他在屏幕上的尺寸，也就是⼤小
+
+- **像素无关**
+
+  在RN中尺寸是没有单位的，它代表的是设备独立像素
+
+  ```bash
+  <View style={{width:100,height:100,margin:10,backgroundColor:'gray'}}> <Text style={{fontSize:16,margin:20}}>尺⼨寸</Text>
+  </View>
+  ```
+
+  上述代码，运行在Android上时，View的长宽被解释成：100dp 100dp，字体被解释成16sp，运行在ios上时的尺寸单位被解释成pt，这些单位确保了布局在不同的DPI的手机屏幕上，显示效果一致
+
+- **和而不同**
+
+  RN中FlexBox和Web Css上FlexBox⼯作方式是一样的，但有些地方还是有出入的
+  flexDirection:
+
+  ​	RN中默认是flexDirection:'column',Web Css中默认是 flex-direction:'row'
+
+  alignItems:
+
+  ​	RN中默认alignItems: 'stretch',在Web Css中默认 align-items:'flex-start'
+
+  flex:
+
+  ​	RN中只接受一个属性，Web css 可以接受多个属性:flex: 2 2 10%
+
+  不支持的属性: align-content flex-basis order flex-flow flex-grow flex-shrink
+
+- **Flex in RN**
+
+  以下属性是RN所支持的Flex属性
+
+  - 容器属性
+    flexDirection: row | column| row-reverse | column-reverse
+    flexWrap: wrap | noWrap //换行
+    justifyContent: flex-start | flex-end | center | space-between | space-around
+    alignItems: flex-start | flex-end | center | stretch
+  - 项目属性
+    alignSelf
+    auto(default) 元素继承了父容器的align-item属性，如果没有则为'stretch'
+    stretch
+    center
+    flex-start
+    flex-end
+    flex:定义了一个元素可伸缩的能⼒，默认是0
+
+- 样式
+
+  - 写法1：
+
+    ```bash
+    <View style={styles.container}></View>
+    const styles = StyleSheet.create({
+      container: {
+        flex: 1,
+        backgroundColor: 'red',
+        justifyContent: 'center',
+        alignItems: 'center'
+      }
+    })
+    ```
+
+    
+
+  - 写法2：组件内写法
+
+    ```bash
+    <Text style={{ color: '#000000' }}>Welcome1 </Text>
+    <View
+       style={[
+        styles.div1,
+        { justifyContent: 'center', fontSize: 20, color: 'red' }
+       ]}
+    >
+    </View>        
+    ```
+
 ### 7.React Native核心组件与API
+
+在RN中使⽤原生组件，是依赖React的，所以在使用过程中需要导入react
+
+```bash
+import React, { Component } from "react";
+import { Button, Platform, StyleSheet, Text, View } from "react-native";
+```
+
+#### 常用组件介绍
+
+- **Button：**一个简单的跨平台的按钮组件。可以进行一些简单的定制。
+
+- **ActivityIndicator：**显示⼀一个圆形的 loading 提示符号。
+
+- **Image：**用于显示多种不同类型图片的 React 组件，包括网络图片、静态资源、临时的本地图片、以及本地磁盘上的图片(如相册)等。 
+
+  下面的例子分别演示了如何显示从本地缓存、网络甚至是以 'data:' 的 base64 uri 形式提供的图片。 
+
+  
+
+#### 常用API介绍
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 ## 二、React Navigation3.x
 
