@@ -805,7 +805,7 @@ import { Button, Platform, StyleSheet, Text, View } from "react-native";
     可以看出跟之前的`ListView`很像，但是其中少了dataSource，这里，我们只需要传递数据，其它的
     都交给FlatList处理好了。
 
-    > 属性说明：
+    > >  属性说明：
     >
     > **ItemSeparatorComponent **行与行之间的分隔线组件。不会出现在第一行之前和最后一行之后。 在这里可以根据需要插入一个view 
     >
@@ -850,6 +850,14 @@ import { Button, Platform, StyleSheet, Text, View } from "react-native";
     >
     > 置 viewabilityconfig 属性
     >  **renderItem** 根据行数据data，渲染每一行的组件。这个参照下面的demo 
+    >
+    > > 注意点：
+    >
+    > **scrollToEnd** 滚动到底部。如果不设置getItemLayout 属性的话，可能会比较卡。
+    > **scrollToIndex** 滚动到指定index的item 如果不设置getItemLayout 属性的话，无法跳转到当前可
+    > 视区域以外的位置。
+    > **scrollToItem** 滚动到指定item，如果不设置getItemLayout 属性的话，可能会比较卡。
+    > **scrollToOffset** 滚动指定距离
 
   
 
