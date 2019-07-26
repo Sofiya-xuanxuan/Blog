@@ -24,6 +24,11 @@
 
  - [为什么扩展 JavaScript 内置对象不是好的做法](https://github.com/LuoShengMen/StudyNotes/issues/262)
 
+   <details>
+     <summary><mark><font color='darkred'><a href='JS面试题/4.md'>点击查看详细内容</a></font></mark></summary>
+   <pre></pre>
+   </details>
+
  - [js的类型判断](https://github.com/LuoShengMen/StudyNotes/issues/138)
 
  - [请解释可变 (mutable) 和不变 (immutable) 对象的区别](https://github.com/LuoShengMen/StudyNotes/issues/263)

@@ -221,16 +221,57 @@ react-native run-ios
 
 - **Reload**
 
-  Reload 选项，单击 Reload 让React Native重新加载js。对于iOS模拟器你也可以通过 Command⌘ + R
+  Reload 选项，刷新页面，单击 Reload 让React Native重新加载js。对于iOS模拟器你也可以通过 Command⌘ + R
   快捷键来加载js，对于Android模拟器可以通过双击 r 键来加载js。
 
   > 提示:如果 Command⌘ + R 无法使你的iOS模拟器加载js，则可以通过选中Hardware menu中
   > Keyboard选项下的 “Connect Hardware Keyboard” 。
 
+- **Debug JS Remotely**
+
+  该功能允许开发人员在`Chrome`中调试应用，其调试方式和调试`web`应用一样
+
+  - 点击后自动打开浏览器
+
+  ![浏览器debugger](/Users/qiaoxu/Desktop/myBlog/pic/debugger.png)
+
+  - 打开浏览器检查
+
+  用浏览器来做调试：Source——debuggerWorker.js——找对应的项目，对应的源文件
+
+  - 断点调试
+
 - **Enable Live Reload**
 
-  该选项提供了了React Native动态加载的功能。当你的js代码发生变化后，React Native会自动生成
-  bundle然后传输到模拟器或手机上
+  该功能主要用来实现自动刷新。当我们将实时加载启动后，如果应用中的JavaScript代码有任何修改，它会自动帮我们更新，不需要人为去操作刷新功能。
+
+- **Start Systrace**
+
+  该功能主要用来监控应用在一段时间内的指标信息。
+
+  1）我们点击**Start Systrace**开始监控
+
+  2）然后在操作后选择**Stop Systrace**结束监控。这时会弹出一个提示框，告诉我们数据已经生成。打开生成的**JSON**文件，就可以看到应用在这段时间内的详细指标信息了
+
+- **Enable Hot Reloading**
+
+  启动热加载，同样是实现页面的自动刷新
+
+  热加载的思想是运行时动态注入修改后的文件内容，同时不中断`App`的正常运行。这样，我们就不会丢失`App`的任何状态信息，尤其是`UI`页面栈相关的。
+
+  > 热加载(Hot Reloading)与上面提到的实时加载(Live Reload)最关键的区别:
+  > (1)实时加载应用更新时需要刷新当前⻚面，可以看到明显的全局刷新效果。
+  > (2)而热加载基本上看不出刷新的效果，类似于局部刷新。
+
+- **Show Inspector**
+
+  1）我们可以很方便的查看到当前选中元素的位置、样式、层级关系、盒子模型信息等等。方便我们快递定位问题。
+
+  2）同时还提供了监控应用性能的功能。
+
+- **Show Perf Monitor**
+
+  该功能启用后会显示一个监控窗口，显示出实时的内存占用、`UI`和`JavaScript`的`FPS`等信息。帮助我们调试性能问题。
 
 - **Errors and Warnings**
 
@@ -248,19 +289,22 @@ react-native run-ios
 
   `console.disableYellowBox = true` 来手动禁用Warnings的显示，或者通过 `console.ignoredYellowBox = ['Warning: ...'];` 来忽略相应的Warning 
 
-- **Debug JS Remotely**
+### 6.当发生一些“莫名其妙”的问题时，常用解决方案
 
-  - 点击后自动打开浏览器
+1）刷新刷新
 
-  ![浏览器debugger](/Users/qiaoxu/Desktop/myBlog/pic/debugger.png)
+2）重新使用react-native run-xxx命令启动App
 
-  - 打开浏览器检查
+3）删掉App程序，关掉本地服务器，清楚本地缓存
 
-  用浏览器来做调试：Source——debuggerWorker.js——找对应的项目，对应的源文件
+```bash
+#yarn:清空缓存
+yarn cache clean 
+#npm:清空缓存
+npm cache clean -f
+```
 
-  - 断点调试
-
-### 6.React Native布局与样式
+### 7.React Native布局与样式
 
 一款好的App离不开漂亮的布局，RN中的布局方式采用的是FlexBox(弹性布局) 
 
@@ -316,7 +360,7 @@ FlexBox提供了在不通尺寸设备上都能保持一致的布局⽅式
     flex-end
     flex:定义了一个元素可伸缩的能⼒，默认是0
 
-- 样式
+- **样式**
 
   - 写法1：
 
@@ -332,12 +376,10 @@ FlexBox提供了在不通尺寸设备上都能保持一致的布局⽅式
     })
     ```
 
-    
-
   - 写法2：组件内写法
 
     ```bash
-    <Text style={{ color: '#000000' }}>Welcome1 </Text>
+  <Text style={{ color: '#000000' }}>Welcome1 </Text>
     <View
        style={[
         styles.div1,
@@ -347,7 +389,99 @@ FlexBox提供了在不通尺寸设备上都能保持一致的布局⽅式
     </View>        
     ```
 
-### 7.React Native核心组件与API
+### 8.属性与状态
+
+RN中使用两种数据来控制一个组件：`props`和`state`。`props`是在父组件中指定，而且一经指定，在被指定的组件的生命周期中则不再改变。对于需要改变的数据，我们需要使用`state`
+
+```bash
+import React, { Component } from "react";
+import { View, Text, StyleSheet } from "react-native";
+
+export default class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      showText: "kkb"
+    };
+  }
+  componentDidMount() {
+    const timer = setTimeout(() => {
+      this.setState({
+      	showText: "开课吧" });
+      }, 3000); 
+  }
+  render() {
+    return (
+          <View style={styles.container}>
+            <Text style={styles.text}>{this.state.showText}</Text>
+            <Test nameTest={"dio"} />
+          </View>
+    ); 
+  }
+}
+  
+class Test extends Component {
+  constructor(props) {
+    super(props);
+	}
+  render() {
+      return (
+        <View>
+          <Text style={styles.text}>{this.props.nameTest}</Text>
+        </View>
+      ); 
+  }
+}
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: "blue"
+	}, 
+	text: {
+    color: "#fff"
+  }
+});
+```
+
+
+
+### 9.组件的生命周期
+
+组件的生命周期一般分为4个阶段：创建阶段、实例化阶段、运行（更新）阶段、销毁阶段。下面对各个阶段分别进行介绍。
+
+- **创建阶段**
+
+  该阶段主要发生在创建组件类的时候，在这个阶段中会初始化组件的属性类型和默认属性。
+
+- **实例化阶段**
+
+  该阶段主要发生在实例化组件类的时候，也就是该组件类被调用的时候触发。这个阶段会触发一系列的流程，按执行顺序如下:
+
+  - **constructor**:构造函数，这⾥主要对组件的一些状态进行初始化。
+  - **componentWillMount**:准备加载组件，可以在这里做一些业务初始化操作，或者设置组件状态。
+  - **render**:生成⻚面需要的 **DOM** 结构，并返回该结构。
+  - **componentDidMount**:组件加载成功并被成功渲染出来后执行。一般会将网络请求等加载数据的操作放在这里进行，保证不会出现 **UI** 上的错误。
+
+- **更新阶段**
+
+  该阶段主要发生在用户操作之后或者父组件有更新的时候，此时会根据用户的操作行为进行相应的⻚面结构的调整。这个阶段也会触发一系列列的流程，按执⾏顺序如下:
+
+  - **componentWillReceiveProps**:当组件接收到新的 **props** 时，会触发该函数。在该函数 中，通常可以调用 **this.setState** 方法来完成对 **state** 的修改。 
+  - **shouldComponentUpdate**:该方法用来拦截新的 **props** 或 **state**，然后根据事先设定好的判断逻辑，做出最后要不要更新组件的决定。
+  -  **componentWillUpdate**:当上面的方法拦截返回 **true** 的时候，就可以在该方法中做一些更新之前的操作。 
+  - **render**:根据一系列的 **diff** 算法，生成需要更新的虚拟 **DOM** 数据。(注意:在 **render** 中 最好只做数据和模板的组合，不应进行 **state** 等逻辑的修改，这样组件结构会更加清晰) 
+  - **componentDidUpdate**:该方法在组件的更新已经同步到 **DOM** 中去后触发，我们常在该方法中做 **DOM** 操作。 
+
+- **销毁阶段**
+
+  该阶段主要在组件消亡的时候触发
+
+  - **componentWillUnmount**:当组件要被从界面上移除时就会调用。可以在这个函数中做一些相关的清理理工作，例如取消计时器、网络请求等。
+
+### 10.React Native核心组件与API
 
 在RN中使⽤原生组件，是依赖React的，所以在使用过程中需要导入react
 
@@ -358,13 +492,364 @@ import { Button, Platform, StyleSheet, Text, View } from "react-native";
 
 #### 常用组件介绍
 
+- **View：**根容器，只有一个，不然会报错，如果要多个并列使用，则使用数组形式，逗号分隔；类似于html中的div，容器器组件，可以使⽤用[,]的形式返回多个兄弟组件
+
 - **Button：**一个简单的跨平台的按钮组件。可以进行一些简单的定制。
+
+  ```bash
+  <Button
+    onPress={onPressLearnMore} //用户点击此按钮时所调用的处理函数
+    title="Learn More" //按钮内显示的文本
+    color="#841584" //⽂本的颜色(iOS)，或是按钮的背景色(Android)
+    disabled={false} //按钮是否可以点击
+    accessibilityLabel="Learn more about this purple button" //用于给残障⼈士显示的
+    文本(比如读屏应用可能会读取这一内容
+  />
+  ```
 
 - **ActivityIndicator：**显示⼀一个圆形的 loading 提示符号。
 
+  ```bash
+  <View style={[styles.container, styles.horizontal]}>
+    <ActivityIndicator
+      size="large" //指示器的⼤小，默认为'small'[enum('small', 'large'), number]。⽬前只能在 Android 上设定具体的数值
+      animating={true} //是否要显示指示器动画，默认为 true 表示显示，false 则隐藏。
+      hidesWhenStopped={false} //在animating为 false 的时候，是否要隐藏指示器(默认为 true)。如果animating和hidesWhenStopped都为 false，则显示一个静止的指示器。
+      color="#0000ff" //滚轮的前景颜色(默认为灰色)。/>
+  </View>
+  ```
+
 - **Image：**用于显示多种不同类型图片的 React 组件，包括网络图片、静态资源、临时的本地图片、以及本地磁盘上的图片(如相册)等。 
 
-  下面的例子分别演示了如何显示从本地缓存、网络甚至是以 'data:' 的 base64 uri 形式提供的图片。 
+  下面的例子分别演示了如何显示从本地缓存、网络甚至是以 'data:' 的 base64 uri 形式提供的图片。
+
+  ```bash
+  <Image
+    source={require('/react-native/img/favicon.png')}
+  />
+  
+  <Image
+    style={{width: 50, height: 50}}//网络和 base64 数据的图片需要手动指定尺寸 
+    source={{uri: 'https://facebook.github.io/react-native/docs/assets/favicon.png'}}
+  />
+  
+  <Image
+  style={{width: 66, height: 58}} //网络和 base64 数据的图片需要⼿动指定尺寸 
+  source={{uri:
+  'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADMAAAAzCAYAAAA6oTAqAAAAEXRFWHR
+  Tb2Z0d2FyZQBwbmdjcnVzaEB1SfMAAABQSURBVGje7dSxCQBACARB+2/ab8BEeQNhFi6WSYzYLYudD
+  QYGBgYGBgYGBgYGBgYGBgZmcvDqYGBgmhivGQYGBgYGBgYGBgYGBgYGBgbmQw+P/eMrC5UTVAAAAAB
+  JRU5ErkJggg=='}}
+  />
+  ```
+  
+  > 在Android上支持GIF和WebP格式图片，需要额外配置
+  >
+  > 默认情况下Android不支持GIF和WebP格式的（经过测试默认是支持WebP的）。需要在android——app——build.gradle文件中需要手动添加以下模块：
+  >
+  > ```bash
+  > dependencies {
+  >   // 如果你需要⽀支持Android4.0(API level 14)之前的版本
+  >   compile 'com.facebook.fresco:animated-base-support:1.10.0'
+  >   // 如果你需要⽀支持GIF动图
+  >   compile 'com.facebook.fresco:animated-gif:1.10.0'
+  >   // 如果你需要⽀支持WebP格式，包括WebP动图
+  >   compile 'com.facebook.fresco:animated-webp:1.10.0' 
+  >   compile 'com.facebook.fresco:webpsupport:1.10.0'
+  >   // 如果只需要⽀支持WebP格式⽽而不不需要动图
+  >   compile 'com.facebook.fresco:webpsupport:1.10.0'
+  > }
+  > ```
+
+- **ImageBackground**
+
+  背景图
+
+  ```bash
+  <ImageBackground
+     source={{
+       uri:           'https://ss0.bdstatic.com/5aV1bjqh_Q23odCf/static/superman/img/logo/bd_logo1_31bdc765.png'
+     }}
+     style={{
+       width: '100%',
+       height: '50%',
+       justifyContent: 'center',
+       alignContent: 'center'
+     }}
+  >
+      <Text>inside</Text>
+  </ImageBackground>
+  ```
+
+- **Switch**
+
+  ```bash
+  constructor(props) {
+      super(props)
+      //去掉黄色警告
+      console.disableYellowBox = true
+      this.state = {
+        one: '',
+        two: true,
+        three: '',
+        modalVisible: false,
+        text: ''
+  		}
+  }
+  <Switch
+    value={this.state.one}
+    trackColor={{ true: 'red', false: '#000' }}
+    disabled={true}
+    onValueChange={value => {
+      this.setState({
+      	one: value
+      })
+    }}
+  />
+  <Switch
+    value={this.state.two}
+    trackColor={{ true: 'green', false: '#000' }}
+    onValueChange={value => {
+      this.setState({
+      	two: value
+      })
+    }}
+  />
+  <Switch
+    value={this.state.three}
+    trackColor={{ true: 'yellow', false: '#000' }}
+    onValueChange={value => {
+      this.setState({
+      	three: value
+      })
+    }}
+  />
+  ```
+
+- **Modal**
+
+  组件是一种简单的覆盖在其他视图之上显示内容的方式
+
+  ```bash
+  constructor(props) {
+      super(props)
+      //去掉黄色警告
+      console.disableYellowBox = true
+      this.state = {
+        modalVisible: false
+      }
+  }
+  setModalVisible(visible) {
+    this.setState({ modalVisible: visible })
+  }
+  <Modal
+    animationType="slide"
+    transparent={false}
+    visible={this.state.modalVisible}
+    onRequestClose={() => {
+    	alert('Modal has been closed')
+    }}
+  >
+  <View>
+    <View>
+      <Text>Hello World!</Text>
+      <TouchableHighlight
+        onPress={() => {
+          this.setModalVisible(false)
+        }}
+      >
+        <Text>Hide Modal</Text>
+      </TouchableHighlight>
+    </View>
+  </View>
+  </Modal>
+  <TouchableHighlight
+    onPress={() => {
+    	this.setModalVisible(true)
+    }}
+  >
+  	<Text>show Modal</Text>
+  </TouchableHighlight>
+  ```
+
+- **TouchableHighlight**
+
+  本组件用于封装视图，使其可以正确响应触摸操作。当按下的时候，封装的视图的不透明度会降低，同时会有一个底层的颜色透过而被用户看到，使得视图变暗或变亮。
+
+  在底层实现上，实际会创建一个新的视图到视图层级中，如果使用的方法不正确，有时候会导致一些不希望出现的视觉效果。譬如没有给视图的backgroundColor显式声明一个不透明的颜色。
+
+  注意`TouchableHighlight`只支持一个子节点（不能没有子节点也不能多于一个）。如果你希望包含多个子组件，可以用一个View来包装它们。
+
+- **SafeAreaView**
+
+  表示安全区域，`SafeAreaView`的目的是在一个**安全**的可视区域内渲染内容。具体来说就是因为目前有iPhone X这样带有刘海的全面屏设备，所以需要避免内容渲染到不可见的刘海范围内。本组件目前仅支持IOS设备以及IOS11或更高版本
+
+  
+
+  `SafeAreaView`会自动根据系统的各种导航栏、工具栏等预留出空间来渲染内部内容。更重要的是，它还会考虑到设备屏幕的局限，比如屏幕四周的圆角或者顶部中间不可显示的刘海区域。
+
+  
+
+  只需简单地把你原有的视图用`SafeAreaView`包起来，同时设置一个`flex: 1`的样式。当然可能还需要一些和你的设计相匹配的背景色。
+
+  ```basic
+  <SafeAreaView style={{flex: 1, backgroundColor: '#fff'}}>
+    <View style={{ flex: 1 }}>
+      <Text>Hello World!</Text>
+    </View>
+  </SafeAreaView>
+  ```
+
+- **Text**
+
+  一个用于显示文本的React组件，并且它也支持嵌套、样式、以及触摸处理，在Text内部的元素不再使用flexbox布局，而是采用文本布局。这意味的`<Text>`内部的元素不再是一个个矩形，而可能会在行末进行折叠
+
+  ```bash
+  <Text
+  ellipsizeMode={"tail"} 
+  //这个属性通常和下面的 numberOfLines 属性配合使用,文本超出 numberOfLines设定的行数时，
+  截取⽅方式:head- 从⽂本内容头部截取显示省略号。例如: "...efg"，
+  middle - 在文本内容中间截取显示省略号。例如: "ab...yz"，
+  tail - 从⽂本内容尾部截取显示省略号。例如: "abcd..."，
+  clip - 不显示省略略号，直接从尾部截断。 
+  numberOfLines={1} //配合ellipsizeMode设置行数
+  onPress={} //点击事件 
+  selectable={true}//决定用户是否可以长按选择文本，以便复制和粘贴。 >
+  </Text>
+  ```
+
+- **TextInput**
+
+  TextInput是一个允许用户在应用中通过键盘输入文本的基本组件。本组件的属性提供了多种特性的配置，譬如自动完成、自动大小写、占位文字，以及多种不同的键盘类型（如纯数字键盘）等等。
+
+  
+
+  最简单的用法就是丢一个`TextInput`到应用里，然后订阅它的`onChangeText`事件来读取用户的输入。注意，从TextInput里取值这就是目前唯一的做法！也就是使用在`onChangeText`中用`setState`把用户的输入写入到state中，然后在需要取值的地方从this.state中取出值。它还有一些其它的事件，譬如`onSubmitEditing`和`onFocus`。一个简单的例子如下：
+
+  
+
+  TextInput 在安卓上默认有一个底边框，同时会有一些padding。如果要想使其看起来和iOS上尽量一致，则需要设置 `padding: 0`
+
+  ```bash
+  <TextInput
+    style={{
+      width: 100,
+      height: 40,
+      borderWidth: 3,
+      borderColor: "blue"
+  }}
+  keyboardType={"default"} //决定弹出何种软键盘类型，譬如numeric(纯数字键 盘),default,number-pad,decimal-pad,numeric,email-address,phone-pad
+  maxLength={20} //限制文本框中最多的字符数。使用这个属性而不用JS逻辑去实现，可以避免闪烁的现象。
+  editable={true} //如果为false，文本框是不可编辑的。默认值为true。 
+  defaultValue={"xxxx"} //提供一个文本框中的初始值
+  caretHidden={true} //如果为true，则隐藏光标。默认值为false。 
+  autoCapitalize={"none"} //控制TextInput是否要自动将特定字符切换为大写:characters:
+  所有的字符,words: 每个单词的第一个字符,sentences: 每句话的第一个字符(默认),none: 不切换。
+   
+  //当文本框内容变化时调用此回调函数。改变后的文字内容会作为参数传递。从TextInput里取值这就是目前唯一的做法!
+    onChangeText={text => {
+      this.setState({
+        text: text
+      });
+  }}
+  //唯一的⽅方法，拿到textinput里的值 />
+  ```
+
+- **WebView**
+
+  创建一个原生的 WebView，可以用于访问一个网页。
+
+  ```bash
+  #安装
+  yarn add react-native-webview 
+  #link
+  react-native link react-native-webview
+  
+  import { WebView } from 'react-native-webview'
+  export default class WebViewPage extends Component {
+    render() {
+      return <WebView source={{ uri: 'https://www.baidu.com' }} />
+    }
+  }
+  ```
+
+  
+
+- **ListView：**已经被移除了
+
+  列表组件。经常使用ListView的同学都知道，这个组件的性能比较差，尤其是当有大量
+  的数据需要展示的时候，ListView对内存的占用较多，常出现丢帧卡顿现象
+
+  ListView底层实现，渲染组件Item是全量渲染，而且没有复用机制，这就不可避免的当渲染较⼤数据量时，会发现以下情况: 
+
+  - 第一次打开与切换Tab时会出现卡顿或白屏的情况，比如ListView中有100个Item，只能等这 100条Item都渲染完成，ListView中的内容才会展示 
+  - 滑动列表时会出现卡顿不跟手，listVIew渲染⼤量数据，需要占用较多的内存用于计算 
+
+- **VirtualzedList**
+
+   `FlatList` 和 `SectionList` 的底层实现，`VirtualizedLis`t通过维护一个有限的渲染窗⼝口(其中包含可⻅见的元素)，并将渲染窗口之外的元素全部用合适的定长空白空间代替的方式，极大的改善了内存使用，提⾼高了大量数据情况下的渲染性能。这个渲染窗口能响应滚动⾏为，元素离可视区越远优先级越低，越近优先级越高，当用户滑动速度过快时，会出现短暂空白的情况。
+
+  - **FlatList**
+
+    在RN0.43版本中引入了`FlatList`，`SectionList`与`VirtualizedList`，其中`VirtualizedList`是 `FlatList`和`SectionList`的底层实现。 
+
+    缺点:(1)为了优化内存占用同时保持滑动的流畅，列表内容会在屏幕外异步绘制。这意味着如果用户滑动的速度超过渲染的速度，则会先看到空白的内容。(2)不支持分组列表 
+
+    ```bash
+    <FlatList
+      data={[{key: 'a'}, {key: 'b'}]}
+      renderItem={({item}) => <Text>{item.key}</Text>}
+    />
+    ```
+
+    可以看出跟之前的`ListView`很像，但是其中少了dataSource，这里，我们只需要传递数据，其它的
+    都交给FlatList处理好了。
+
+    > 属性说明：
+    >
+    > **ItemSeparatorComponent **行与行之间的分隔线组件。不会出现在第一行之前和最后一行之后。 在这里可以根据需要插入一个view 
+    >
+    > **ListEmptyComponent** 列表为空时渲染该组件。可以是React Component, 也可以是一个render 函数， 或者渲染好的element。 
+    >
+    > **ListFooterComponent** 尾部组件 
+    >
+    > **ListHeaderComponent** 头部组件 
+    >
+    > **columnWrapperStyle** 如果设置了多列布局(即将numColumns 值设为大于1的整数)，则可以 额外指定此样式作用在每行容器上。 
+    >
+    > **data** 为了简化起见，data属性目前只支持普通数组。如果需要使用其他特殊数据结构，例如 immutable数组，请直接使用更底层的`VirtualizedList` 组件。 
+    >
+    > **extraData** 如果有除data以外的数据用在列表中(不论是用在renderItem 还是Header或者Footer 中)，请在此属性中指定。同时此数据在修改时也需要先修改其引用地址(比如先复制到一个新的 Object或者数组中)，然后再修改其值，否则界面很可能不会刷新。 
+    >
+    > **getItem** 获取每个Item getItemCount 获取Item属相 
+    >
+    > **getItemLayout** 是一个可选的优化，用于避免动态测量内容尺寸的开销，不过前提是你可以提前知 道内容的高度。如果你的行高是固定的getItemLayout 用起来就既高效又简单，类似下⾯面这样: 
+    >
+    > getItemLayout={(data, index) => ( {length: 行高, offset: ⾏高 * index, index} )} 注意如果你指定了了SeparatorComponent，请把分隔线的尺寸也考虑到offset的计算之中。 
+    >
+    > **horizontal** 设置为true则变为水平布局模式。 
+    >
+    > **initialNumToRender** 指定一开始渲染的元素数量，最好刚刚够填满一个屏幕，这样保证了用最短 的时间给用户呈现可见的内容。注意这第一批次渲染的元素不会在滑动过程中被卸载，这样是为了 保证用户执行返回顶部的操作时，不需要重新渲染首批元素。 
+    >
+    > **initialScrollIndex** 指定渲染开始的item index 
+    >
+    > **keyExtractor** 此函数用于为给定的item生成一个不重复的key。Key的作用是使React能够区分同类 元素的不同个体，以便在刷新时能够确定其变化的位置，减少重新渲染的开销。若不指定此函数， 则默认抽取item.key作为key值。若item.key也不存在，则使用数组下标。 
+    >
+    > **legacyImplementation** 设置为true则使用旧的`ListView`的实现。 
+    >
+    > **numColumns**多列布局只能在非水平模式下使用，即必须是horizontal={false} 。此时组件内元素 会从左到右从上到下按Z字形排列，类似启用了了flexWrap的布局。组件内元素必须是等高的—暂 时还无法⽀持瀑布流布局。 
+    >
+    > **onEndReached** 当列表被滚动到距离内容最底部不足onEndReachedThreshold 的距离时调用。 https://github.com/facebook/react-native/issues/14015
+    >  两次触发 
+    >
+    > **onEndReachedThreshold** 决定当距离内容最底部还有多远时触发onEndReached 回调。注意此 参数是一个比值⽽非像素单位。比如，0.5表示距离内容最底部的距离为当前列表可见长度的一半时触发。 
+    >
+    > **onRefresh** 如果设置了此选项，则会在列表头部添加一个标准的RefreshControl 控件，以便实 现“下拉刷新”的功能。同时你需要正确设置refreshing 属性。 
+    >
+    > **refreshing** 在等待加载新数据时将此属性设为true，列表就会显示出一个正在加载的符号。 **onViewableItemsChanged** 在可⻅行元素变化时调用。可见范围和变化频率等参数的配置请设 
+    >
+    > 置 viewabilityconfig 属性
+    >  **renderItem** 根据行数据data，渲染每一行的组件。这个参照下面的demo 
 
   
 
@@ -374,19 +859,60 @@ import { Button, Platform, StyleSheet, Text, View } from "react-native";
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
 ## 二、React Navigation3.x
+
+- **安装**
+
+```bash
+#安装react-navigation这个包
+yarn add react-navigation
+#安装 react-native-gesture-handler
+yarn add react-native-gesture-handler
+```
+
+- **关联**
+
+```bash
+react-native link react-native-gesture-handler
+```
+
+- **安卓需要做额外的配置**
+
+```bash
+#android——app——src——main——Java——MainActivity.java
+
+#将带+的部分放入自己的MainActivity.java文件中
+package com.reactnavigation.example;
+
+import com.facebook.react.ReactActivity;
++ import com.facebook.react.ReactActivityDelegate;
++ import com.facebook.react.ReactRootView;
++ import com.swmansion.gesturehandler.react.RNGestureHandlerEnabledRootView;
+
+public class MainActivity extends ReactActivity {
+
+  @Override
+  protected String getMainComponentName() {
+    return "Example";
+  }
+
++  @Override
++  protected ReactActivityDelegate createReactActivityDelegate() {
++    return new ReactActivityDelegate(this, getMainComponentName()) {
++      @Override
++      protected ReactRootView createRootView() {
++       return new RNGestureHandlerEnabledRootView(MainActivity.this);
++      }
++    };
++  }
+}
+```
+
+- **导航器**
+
+
+
+
 
 ## 三、React Native项目实战
 
