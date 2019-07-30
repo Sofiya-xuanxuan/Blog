@@ -31,7 +31,17 @@
 
  - [js的类型判断](https://github.com/LuoShengMen/StudyNotes/issues/138)
 
+   <details>
+     <summary><mark><font color='darkred'><a href='JS面试题/5.md'>点击查看详细内容</a></font></mark></summary>
+   <pre></pre>
+   </details>
+
  - [请解释可变 (mutable) 和不变 (immutable) 对象的区别](https://github.com/LuoShengMen/StudyNotes/issues/263)
+
+   <details>
+     <summary><mark><font color='darkred'><a href='JS面试题/6.md'>点击查看详细内容</a></font></mark></summary>
+   <pre></pre>
+   </details>
 
  - [有以下 3 个判断数组的方法，请分别介绍它们之间的区别和优劣](https://github.com/LuoShengMen/StudyNotes/issues/41)
 
@@ -45,9 +55,24 @@
 
  - [深浅拷贝](https://github.com/LuoShengMen/StudyNotes/issues/432)
 
+   <details>
+     <summary><mark><font color='darkred'><a href='JS面试题/12.md'>点击查看详细内容</a></font></mark></summary>
+   <pre></pre>
+   </details>
+
  - [== 和 === 有什么区别？](https://github.com/LuoShengMen/StudyNotes/issues/144)
 
+   <details>
+     <summary><mark><font color='darkred'><a href='JS面试题/13.md'>点击查看详细内容</a></font></mark></summary>
+   <pre></pre>
+   </details>
+
  - [Object.is() 与比较操作符 ===、== 有什么区别](https://github.com/LuoShengMen/StudyNotes/issues/374)
+
+   <details>
+     <summary><mark><font color='darkred'><a href='JS面试题/14.md'>点击查看详细内容</a></font></mark></summary>
+   <pre></pre>
+   </details>
 
  - [什么是三元表达式 (Ternary expression)？“三元 (Ternary)” 表示什么意思](https://github.com/LuoShengMen/StudyNotes/issues/271)
 
