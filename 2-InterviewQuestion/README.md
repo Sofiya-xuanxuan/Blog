@@ -45,7 +45,17 @@
 
  - [有以下 3 个判断数组的方法，请分别介绍它们之间的区别和优劣](https://github.com/LuoShengMen/StudyNotes/issues/41)
 
+   <details>
+     <summary><mark><font color='darkred'><a href='JS面试题/7.md'>点击查看详细内容</a></font></mark></summary>
+   <pre></pre>
+   </details>
+
  - [Array(...)和Array.of(...)的区别](https://github.com/LuoShengMen/StudyNotes/issues/140)
+
+   <details>
+     <summary><mark><font color='darkred'><a href='JS面试题/8.md'>点击查看详细内容</a></font></mark></summary>
+   <pre></pre>
+   </details>
 
  - [类数组对象转换为数组](https://github.com/LuoShengMen/StudyNotes/issues/141)
 
