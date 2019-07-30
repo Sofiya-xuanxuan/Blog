@@ -773,6 +773,8 @@ import { Button, Platform, StyleSheet, Text, View } from "react-native";
   }
   ```
 
+  WebView与H5的数据交互方式：
+
   
 
 - **ListView：**已经被移除了
@@ -859,7 +861,325 @@ import { Button, Platform, StyleSheet, Text, View } from "react-native";
     > **scrollToItem** 滚动到指定item，如果不设置getItemLayout 属性的话，可能会比较卡。
     > **scrollToOffset** 滚动指定距离
 
+  - **SwipeableFlatList**
   
+    侧滑列表
+  
+    ```basic
+    import React, { Component, PureComponent } from 'react'
+    import {
+      View,
+      Text,
+      StyleSheet,
+      Button,
+      FlatList,
+      TouchableHighlight,
+      SwipeableFlatList,
+      RefreshControl,
+      ActivityIndicator
+    } from 'react-native'
+    
+    const CITY_NAMES = [
+      '北京',
+      '上海',
+      '广州',
+      '深圳',
+      '杭州',
+      '苏州',
+      '成都',
+      '武汉',
+      '郑州',
+      '洛阳',
+      '厦门',
+      '青岛',
+      '拉萨'
+    ]
+    export default class SwipeableFlatListPage extends PureComponent {
+      constructor(options) {
+        super(options)
+        this.state = {
+          dataArray: CITY_NAMES,
+          isLoading: false
+        }
+      }
+      _renderItem(data) {
+        return (
+          <View style={styles.item}>
+            <Text style={styles.text}> {data.item} </Text>
+          </View>
+        )
+      }
+      loadData(refresh) {
+        if (refresh) {
+          this.setState({
+            isLoading: true
+          })
+        }
+        setTimeout(() => {
+          let dataArray = []
+          if (refresh) {
+            for (let i = this.state.dataArray.length - 1; i >= 0; i--) {
+              dataArray.push(this.state.dataArray[i])
+            }
+          } else {
+            dataArray = this.state.dataArray.concat(CITY_NAMES)
+          }
+          this.setState({
+            dataArray: dataArray,
+            isLoading: false
+          })
+        }, 2000)
+      }
+      genIndicator() {
+        return (
+          <View style={styles.indicatorContainer}>
+            <ActivityIndicator
+              style={styles.indicator}
+              size="large"
+              animating={true}
+            />
+            <Text> 正在加载更多 </Text>
+          </View>
+        )
+      }
+      genQuickActions(rowData, sectionID, rowID) {
+        return (
+          <View style={styles.quickContainer}>
+            <TouchableHighlight
+              onPress={() => {
+                alert('确认删除')
+              }}
+            >
+              <View style={styles.quick}>
+                <Text style={styles.text}>删除</Text>
+              </View>
+            </TouchableHighlight>
+          </View>
+        )
+      }
+      render() {
+        return (
+          <View style={styles.container}>
+            <SwipeableFlatList
+              data={this.state.dataArray}
+              renderItem={data => this._renderItem(data)}
+              ItemSeparatorComponent={() => {
+                return (
+                  <View
+                    style={{
+                      height: 2,
+                      backgroundColor: 'gold'
+                    }}
+                  />
+                )
+              }}
+              refreshControl={
+                <RefreshControl
+                  title="Loading..."
+                  colors={['red']}
+                  refreshing={this.state.isLoading}
+                  onRefresh={() => this.loadData(true)}
+                  tintColor={'orange'}
+                />
+              }
+              ListEmptyComponent={() => {}}
+              ListFooterComponent={() => this.genIndicator()}
+              onEndReachedThreshold={0.4}
+              onEndReached={() => {
+                this.loadData()
+              }}
+              bounceFirstRowOnMount={true}
+              maxSwipeDistance={60}
+              renderQuickAction={() => this.genQuickActions()}
+            />
+          </View>
+        )
+      }
+    }
+    
+    const styles = StyleSheet.create({
+      container: {
+        flex: 1,
+        backgroundColor: '#f5f5f5'
+      },
+      item: {
+        height: 100,
+        backgroundColor: '#169',
+        marginLeft: 15,
+        marginRight: 15,
+        marginBottom: 15,
+        alignItems: 'center',
+        justifyContent: 'center'
+      },
+      text: {
+        fontSize: 26
+      },
+      indicator: {
+        color: 'red',
+        margin: 10
+      },
+      quickContainer: {
+        flex: 1,
+        flexDirection: 'row',
+        justifyContent: 'flex-end',
+        marginRight: 15,
+        marginBottom: 15
+      },
+      quick: {
+        backgroundColor: 'red',
+        flex: 1,
+        alignItems: 'flex-end',
+        justifyContent: 'center',
+        padding: 10,
+        paddingHorizontal: 10,
+        width: 200
+      }
+    })
+    ```
+  
+  - **SectionList**
+  
+    分组列表
+  
+    ```basic
+    import React, { Component, PureComponent } from 'react'
+    import {
+      View,
+      Text,
+      StyleSheet,
+      Button,
+      FlatList,
+      SectionList,
+      RefreshControl,
+      ActivityIndicator
+    } from 'react-native'
+    
+    const CITY_NAMES = [
+      { data: ['北京', '上海', '广州', '深圳'], title: '一线' },
+      {
+        data: ['杭州', '苏州', '成都', '武汉'],
+        title: '二三线1'
+      },
+      { data: ['郑州', '洛阳', '厦门', '青岛', '拉萨'], title: '二三线2' }
+    ]
+    export default class SectionListPage extends PureComponent {
+      constructor(options) {
+        super(options)
+        this.state = {
+          dataArray: CITY_NAMES,
+          isLoading: false
+        }
+      }
+      _renderItem(data) {
+        return (
+          <View style={styles.item}>
+            <Text style={styles.text}> {data.item} </Text>
+          </View>
+        )
+      }
+      loadData(refresh) {
+        if (refresh) {
+          this.setState({
+            isLoading: true
+          })
+        }
+        setTimeout(() => {
+          let dataArray = []
+          if (refresh) {
+            for (let i = this.state.dataArray.length - 1; i >= 0; i--) {
+              dataArray.push(this.state.dataArray[i])
+            }
+          } else {
+            dataArray = this.state.dataArray.concat(CITY_NAMES)
+          }
+          this.setState({
+            dataArray: dataArray,
+            isLoading: false
+          })
+        }, 2000)
+      }
+      genIndicator() {
+        return (
+          <View style={styles.indicatorContainer}>
+            <ActivityIndicator
+              style={styles.indicator}
+              size="large"
+              animating={true}
+            />
+            <Text> 正在加载更多 </Text>
+          </View>
+        )
+      }
+      _renderSectionHeader({ section }) {
+        return (
+          <View style={styles.sectionHeader}>
+            <Text style={styles.text}>{section.title}</Text>
+          </View>
+        )
+      }
+      render() {
+        return (
+          <View style={styles.container}>
+            <SectionList
+              sections={this.state.dataArray}
+              renderItem={data => this._renderItem(data)}
+              renderSectionHeader={data => this._renderSectionHeader(data)}
+              ItemSeparatorComponent={() => {
+                return (
+                  <View
+                    style={{
+                      height: 2,
+                      backgroundColor: 'gold'
+                    }}
+                  />
+                )
+              }}
+              refreshControl={
+                <RefreshControl
+                  title="Loading..."
+                  colors={['red']}
+                  refreshing={this.state.isLoading}
+                  onRefresh={() => this.loadData(true)}
+                  tintColor={'orange'}
+                />
+              }
+              ListEmptyComponent={() => {}}
+              ListFooterComponent={() => this.genIndicator()}
+              onEndReachedThreshold={0.4}
+              onEndReached={() => {
+                this.loadData()
+              }}
+            />
+          </View>
+        )
+      }
+    }
+    
+    const styles = StyleSheet.create({
+      container: {
+        flex: 1,
+        backgroundColor: '#f5f5f5'
+      },
+      item: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+        height: 60,
+        marginLeft: 10,
+        marginRight: 10,
+        backgroundColor: 'red'
+      },
+      text: {
+        fontSize: 26
+      },
+      sectionHeader: {
+        height: 50,
+        backgroundColor: '#93ebbe',
+        alignItems: 'center',
+        justifyContent: 'center'
+      }
+    })
+    ```
 
 #### 常用API介绍
 
@@ -868,6 +1188,8 @@ import { Button, Platform, StyleSheet, Text, View } from "react-native";
 
 
 ## 二、React Navigation3.x
+
+#### 1.普通导航
 
 - **安装**
 
@@ -918,12 +1240,323 @@ public class MainActivity extends ReactActivity {
 
 - **导航器**
 
+#### 2.底部导航
+
+- **配置项**
+- **图标库**
+
+```bash
+yarn add react-native-vector-icons
+react-native link react-native-vector-icons
+```
+
+图标库地址:https://oblador.github.io/react-native-vector-icons/
+
+- **createBottomTabNavigator**
+
+> ```
+> createBottomTabNavigator(RouteConfigs, BottomTabNavigatorConfig)
+> ```
+
+> **RouteConfigs：**RouteConfigs⽀持三个参数 screen 、 path 以及 navigationOptions ; 
+>
+> `screen` (必选):指定一个 React 组件作为屏幕的主要显示内容，当这个组件被TabNavigator加载时，它会被分配一个navigation prop。 
+>
+> `path` (可选):用来设置支持schema跳转时使用，具体使用会在下文的有关 Schema 章节中讲到; 
+>
+> `navigationOptions` (可选):用以配置全局的屏幕导航选项如:title、headerRight、headerLeft 等; 
+>
+>  - 具体配置
+>
+>    #### `标题`
+>
+>    可用作 `headerTitle` 的回退的字符串。 此外, 将用作 `tabBarLabel` 的回退 (如果嵌套在 TabNavigator 中) 或 `drawerLabel` (如果嵌套在DrawerNavigator)。
+>
+>    #### `header`
+>
+>    React 元素或一个给定 `HeaderProps` 然后返回一个 React 元素的函数，将作为一个标题来显示。 设为 `null` ，则隐藏标题。
+>
+>    #### `headerTitle`
+>
+>    Header 使用的字符串，React 元素或React组件。 默认是页面的 `title` 当一个组件被使用时，它会接受 `allowFontScaling`、 `style` 和 `children` 这几个 props。 标题字符串在`children`中传递。
+>
+>    #### `headerTitleAllowFontScaling`
+>
+>    AllowFontScaling -无论标签字体是否应缩放以尊重文字大小可访问性设置， 默认值都是 true。
+>
+>    #### `headerBackAllowFontScaling`
+>
+>    Whether back button title font should scale to respect Text Size accessibility settings. Defaults to false.
+>
+>    #### `headerBackImage`
+>
+>    React 元素或组件在标题的后退按钮中显示自定义图片。 当组件被调用时，它会在渲染时收到许多 props 如：（`tintColor`，`title`）。 默认为带有 `react-navigation/views/assets/back-icon.png` 这张图片的组件，后者是平台的默认后图标图像（iOS上为向左的符号，Android上为箭头）。
+>
+>    #### `headerBackTitle`
+>
+>    Ios 上的后退按钮使用的标题字符串, 或 `null` 禁用标签。 默认为上一个场景的 `headerTitle`。 `headerBackTitle` 必须在源屏幕 (而不是目标屏幕) 中定义。 例如, 当您将 A 转换为 B, 并且要禁用 `B` 上的 `headerBackTitle`:
+>
+> **BottomTabNavigatorConfig**
+>
+> - `initialRouteName` -第一次加载时初始选项卡路由的 routeName。
+>
+> - `navigationOptions` - Navigation options for the navigator itself, to configure a parent navigator
+>
+> - `defaultNavigationOptions` - 用于屏幕的默认导航选项
+>
+> - `resetOnBlur` - 切换离开屏幕时，重置所有嵌套导航器的状态， 默认值： `false`。
+>
+> - `order` -定义选项卡顺序的 routeNames 数组。
+>
+> - `paths` - 提供 routeName 到 path 配置的映射, 它重写 routeConfigs 中设置的路径。
+>
+> - `backBehavior` - `initialRoute` to return to initial tab, `order` to return to previous tab, `history` to return to last visited tab, or `none`.
+>
+> - `lazy` - Defaults to `true`. If `false`, all tabs are rendered immediately. When `true`, tabs are rendered only when they are made active for the first time. Note: tabs are **not** re-rendered upon subsequent visits.
+>
+> - `tabBarComponent` -可选，覆盖用作标签栏的组件.
+>
+> - ```
+>   tabBarOptions
+>   ```
+>
+>   \- 具有以下属性的对象:
+>
+>   - `activeTintColor` -活动选项卡的标签和图标颜色。
+>   - `activeBackgroundColor` -活动选项卡的背景色。
+>   - `inactiveTintColor` -"非活动" 选项卡的标签和图标颜色。
+>   - `inactiveBackgroundColor` -非活动选项卡的背景色。
+>   - `showLabel` -是否显示选项卡的标签, 默认值为 true。
+>   - `showIcon` - 是否显示 Tab 的图标，默认为false。
+>   - `style` -选项卡栏的样式对象。
+>   - `labelStyle` -选项卡标签的样式对象。
+>   - `tabStyle` -选项卡的样式对象。
+>   - `allowFontScaling` -无论标签字体是否应缩放以尊重文字大小可访问性设置，默认值都是 true。
+>   - `adaptive` - Should the tab icons and labels alignment change based on screen size? Defaults to `true` for iOS 11. If `false`, tab icons and labels align vertically all the time. When `true`, tab icons and labels align horizontally on tablet.
+>   - `safeAreaInset` - 为 `<SafeAreaView>` 组件重写 `forceInset` prop， 默认值：`{ bottom: 'always', top: 'never' }`； `top | bottom | left | right` 的可选值有： `'always' | 'never'`。
+>   - `keyboardHidesTabBar` - Defaults to `false`. If `true` hide the tab bar when keyboard opens.
+
+- **案例**
+
+```bash
+import React, { Component } from 'react'
+import { View, Text, Image } from 'react-native'
+import { createAppContainer, createBottomTabNavigator } from 'react-navigation'
+
+import HomePage from '../Pages/HomePage'
+import HotPage from '../Pages/HotPage'
+import MyPage from '../Pages/MyPage'
+import SwipeableFlatListPage from '../Pages/SwipeableFlatListPage'
+import SectionListPage from '../Pages/SectionListPage'
+
+import FontAwesome from 'react-native-vector-icons/FontAwesome'
+import Ionicons from 'react-native-vector-icons/Ionicons'
+const AppBottomNavigator = createBottomTabNavigator(
+  {
+    HomePage: {
+      screen: HomePage,
+      navigationOptions: {
+        tabBarLabel: '首页',
+        tabBarIcon: ({ tintColor, focused }) => {
+          return (
+            <FontAwesome name={'home'} size={26} style={{ color: tintColor }} />
+          )
+        }
+      }
+    },
+    HotPage: {
+      screen: HotPage,
+      navigationOptions: {
+        tabBarLabel: '热门',
+        tabBarIcon: ({ tintColor, focused }) => {
+          return (
+            <FontAwesome name={'fire'} size={26} style={{ color: tintColor }} />
+          )
+        }
+      }
+    },
+    MyPage: {
+      screen: MyPage,
+      navigationOptions: {
+        tabBarLabel: '我的',
+        tabBarIcon: ({ tintColor, focused }) => {
+          return (
+            <Image
+              style={{ width: 26, height: 26 }}
+              source={
+                focused
+                  ? require('../pics/logo.png')
+                  : require('../pics/timg.jpeg')
+              }
+            />
+          )
+        }
+      }
+    },
+    SwipeableFlatListPage: {
+      screen: SwipeableFlatListPage,
+      navigationOptions: {
+        tabBarLabel: '侧滑'
+      }
+    },
+    SectionListPage: {
+      screen: SectionListPage,
+      navigationOptions: {
+        tabBarLabel: '分组'
+      }
+    }
+  },
+  {
+    tabBarOptions: {
+      activeTintColor: 'red',
+      inactiveTintColor: '#000',
+      style: { borderBottomWidth: 1, borderTopColor: 'red' }
+    }
+  }
+)
+
+export default createAppContainer(AppBottomNavigator)
+```
+
+#### 3.顶部导航
+
+- **createMaterialTopTabNavigator**
+
+> ```
+> createMaterialTopTabNavigator(RouteConfigs, TabNavigatorConfig):
+> ```
+
+> ## TabNavigatorConfig
+>
+> - `initialRouteName` -第一次加载时初始选项卡路由的 routeName。
+>
+> - `navigationOptions` - Navigation options for the navigator itself, to configure a parent navigator
+>
+> - `defaultNavigationOptions` - 用于屏幕的默认导航选项
+>
+> - `order` -定义选项卡顺序的 routeNames 数组。
+>
+> - `paths` - 提供 routeName 到 path 配置的映射, 它重写 routeConfigs 中设置的路径。
+>
+> - `backBehavior` - `initialRoute` to return to initial tab, `order` to return to previous tab, `history` to return to last visited tab, or `none`.
+>
+> - `tabBarPosition` - 标签栏的位置, 可以是 `'top'` 或 `'bottom'`。默认值是`top`。
+>
+> - `swipeEnabled` -是否允许在标签页之间进行滑动。
+>
+> - `animationEnabled` -是否在更改标签页时进行动画处理。
+>
+> - `lazy` - Defaults to `false`. If `true`, tabs are rendered only when they are made active or on peek swipe. When `false`, all tabs are rendered immediately.
+>
+> - `optimizationsEnabled` -是否将 Tab 页嵌套在到 [``](https://github.com/react-navigation/react-navigation-tabs/blob/master/src/views/ResourceSavingScene.js) 中。如果是，一旦该 Tab 页失去焦点，将被移出当前页面, 从而提高内存使用率。
+>
+> - `initialLayout` -可选对象, 其中包含初始的 `height` 和 `width`，可以通过传递该对象，来防止 [react-native-tab-view ](https://github.com/react-native-community/react-native-tab-view#avoid-one-frame-delay)渲染时一个帧的延迟。
+>
+> - `tabBarComponent` -可选，覆盖用作标签栏的组件.
+>
+> - ```
+>   tabBarOptions 
+>   ```
+>
+>   \- 具有以下属性的对象:
+>
+>   - `activeTintColor` -活动选项卡的标签和图标颜色。
+>   - `inactiveTintColor` -"非活动" 选项卡的标签和图标颜色。
+>   - `showLabel` -是否显示选项卡的图标，默认值为 false。
+>   - `showLabel` -是否显示选项卡的标签, 默认值为 true。
+>   - `upperCaseLabel` -是否使标签大写，默认为 true。
+>   - `pressColor` -Color for material ripple（仅支持 Android >= 5.0）
+>   - `pressOpacity` - Opacity for pressed tab (iOS and Android < 5.0 only).
+>   - `scrollEnabled` -是否支持 选项卡滚动
+>   - `tabStyle` -选项卡的样式对象。
+>   - `indicatorStyle` -选项卡指示器的样式对象（选项卡底部的行）。
+>   - `labelStyle` -选项卡标签的样式对象。
+>   - `iconStyle` -选项卡图标的样式对象。
+>   - `style` -选项卡栏的样式对象。
+>   - `allowFontScaling` -无论标签字体是否应缩放以尊重文字大小可访问性设置，默认值都是 true。
+>   - `renderIndicator` - Function which takes an object with the current route and returns a custom React Element to be used as a tab indicator.
+
+- **案例**
+
+```bash
+import React, { Component } from 'react'
+import { View, Text } from 'react-native'
+import {
+  createAppContainer,
+  createMaterialTopTabNavigator
+} from 'react-navigation'
+
+import HomePage from '../Pages/HomePage'
+import MyPage from '../Pages/MyPage'
+import HotPage from '../Pages/HotPage'
+import SectionListPage from '../Pages/SectionListPage'
+import SwipeableFlatListPage from '../Pages/SwipeableFlatListPage'
+
+const AppTopNavigator = createMaterialTopTabNavigator(
+  {
+    Home: {
+      screen: HomePage
+    },
+    My: {
+      screen: MyPage
+    },
+    Hot: {
+      screen: HotPage
+    },
+    SwipeableFlatList: {
+      screen: SwipeableFlatListPage
+    },
+    SectionList: {
+      screen: SectionListPage
+    }
+  },
+  {
+    lazy: true,
+    swipeEnabled: true,
+    tabBarOptions: {
+      upperCaseLabel: false,
+      scrollEnabled: true
+    },
+    initialRouteName: 'Hot'
+  }
+)
+
+class TopNavigator extends Component {
+  render() {
+    const AppTNavigator = createAppContainer(AppTopNavigator)
+    return (
+      <View style={{ flex: 1, paddingTop: 40 }}>
+        <AppTNavigator />
+      </View>
+    )
+  }
+}
+//AppNavigator不能直接暴露给根组件，所以需要使用createAppContainer包裹一下
+export default TopNavigator
+```
+
+- **动态配置导航**
+
+#### 4.抽屉导航
+
+#### 5.开关导航
 
 
 
+#### 6.导航框架设计
 
-## 三、React Native项目实战
 
-## 四、React Native部署
 
-## 五、Flutter认知与入门
+#### 7.离线缓存框架
+
+
+
+## 三、redux集成
+
+## 四、网络请求
+
+## 五、React Native项目实战
+
+## 六、React Native部署
+
+## 七、Flutter认知与入门
