@@ -1323,8 +1323,10 @@ react-native link react-native-vector-icons
 > 
 > ```
 >
+> ```
+> 
 > \- 具有以下属性的对象:
->
+> 
 >   - `activeTintColor` -活动选项卡的标签和图标颜色。
 >   - `activeBackgroundColor` -活动选项卡的背景色。
 >   - `inactiveTintColor` -"非活动" 选项卡的标签和图标颜色。
@@ -1338,6 +1340,8 @@ react-native link react-native-vector-icons
 >   - `adaptive` - Should the tab icons and labels alignment change based on screen size? Defaults to `true` for iOS 11. If `false`, tab icons and labels align vertically all the time. When `true`, tab icons and labels align horizontally on tablet.
 >   - `safeAreaInset` - 为 `<SafeAreaView>` 组件重写 `forceInset` prop， 默认值：`{ bottom: 'always', top: 'never' }`； `top | bottom | left | right` 的可选值有： `'always' | 'never'`。
 >   - `keyboardHidesTabBar` - Defaults to `false`. If `true` hide the tab bar when keyboard opens.
+> ```
+>
 > ```
 > 
 > ```
@@ -1467,8 +1471,10 @@ export default createAppContainer(AppBottomNavigator)
 > 
 > ```
 >
+> ```
+> 
 > \- 具有以下属性的对象:
->
+> 
 >   - `activeTintColor` -活动选项卡的标签和图标颜色。
 >   - `inactiveTintColor` -"非活动" 选项卡的标签和图标颜色。
 >   - `showLabel` -是否显示选项卡的图标，默认值为 false。
@@ -1484,6 +1490,8 @@ export default createAppContainer(AppBottomNavigator)
 >   - `style` -选项卡栏的样式对象。
 >   - `allowFontScaling` -无论标签字体是否应缩放以尊重文字大小可访问性设置，默认值都是 true。
 >   - `renderIndicator` - Function which takes an object with the current route and returns a custom React Element to be used as a tab indicator.
+> ```
+>
 > ```
 > 
 > ```
@@ -2404,6 +2412,519 @@ export default class DataStore {
 
 ## 七、React Native部署
 
+### 1.热更新
 
+免费的热更新工具：微软的CodePush和RN中文网的Pushy
+
+本节课我们使用RN官方推荐的Pushy热更新服务
+
+#### 1）react-native-update
+
+本组件是面向React Native提供热更新功能的组件，根据RN版本安装对应的版本，如果你的RN版本是0.46以上，就需要安装react-native-update 5.x版本
+
+#### 2）准备工作
+
+- **安装**
+
+在项目根目录下运行以下命令：
+
+```bash
+### npm 版本 推荐6.7
+npm i -g react-native-update-cli
+yarn add react-native-update@5.x 
+react-native link react-native-update
+```
+
+- 相应配置
+
+  > **iOS**的**ATS**例外配置**()** 版本更更新，⽂档未更新
+  >
+  > 从iOS9开始，苹果要求以白名单的形式在Info.plist中列出外部的非https接口，以督促开发者部署https协议。在我们的服务部署https协议之前，请在Info.plist中添加如下例外(右键点击Info.plist，选择open as - source code):
+  >
+  > ```basic
+  > <key>NSAppTransportSecurity</key>
+  > <dict>
+  >     <key>NSExceptionDomains</key>
+  >     <dict>
+  >         <key>reactnative.cn</key>
+  >         <dict>
+  >             <key>NSIncludesSubdomains</key>
+  >             <true/>
+  >             <key>NSExceptionAllowsInsecureHTTPLoads</key>
+  >             <true/>
+  >         </dict>
+  >    </dict>
+  > </dict>
+  > ```
+  >
+  > **Android**
+  >
+  > 在你的MainApplication中增加如下代码:
+  >
+  > ```basic
+  >  
+  > // ... 其它代码
+  > // 请注意不要少了这句import
+  > import cn.reactnative.modules.update.UpdateContext;
+  > public class MainApplication extends Application implements ReactApplication {
+  >   private final ReactNativeHost mReactNativeHost = new ReactNativeHost(this) { 
+  >   //添加代码
+  >   @Override
+  >   protected String getJSBundleFile() {
+  >           return UpdateContext.getBundleUrl(MainApplication.this);
+  >       }
+  >   // ... 其它代码 }
+  > }
+  > ```
+
+- **登录与创建应用**
+
+  首先请在https://update.reactnative.cn注册帐号，然后在你的项目根目录下运行以下命令:
+
+  ```basic
+  $ pushy login
+  email: <输⼊入你的注册邮箱> 
+  password: <输⼊入你的密码>
+  ```
+
+  这会在项目文件夹下创建一个 .update 文件，注意不要把这个文件上传到Git等CVS系统上。你可以 在 .gitignore 末尾增加一行 .update 来忽略这个文件。
+
+  登录之后可以创建应用。注意iOS平台和安卓平台需要分别创建:
+
+  ```basic
+  $ pushy createApp --platform ios
+  App Name: <输⼊入应⽤用名字>
+  $ pushy createApp --platform android 
+  App Name: <输⼊入应⽤用名字>
+  ```
+
+  两次输入的名字可以相同，这没有关系。
+  如果你已经在⽹页端或者其它地方创建过应用，也可以直接选择应用:
+
+  ```basic
+  $ pushy selectApp --platform ios 
+  1) ⻥鱼多多(ios)
+  3) 招财旺(ios)
+  Total 2 ios apps
+  Enter appId: <输⼊入应⽤前面的编号>
+  ```
+
+  选择或者创建过应用后，你将可以在文件夹下看到 update.json 文件，其内容类似如下形式:
+
+  ```basic
+  {
+    "ios": {
+    "appId": 1,
+    "appKey": "<⼀一串串随机字符串串>" },
+        "android": {
+            "appId": 2,
+    "appKey": "<⼀一串串随机字符串串>" }
+  }
+  ```
+
+- **App添加热更新功能**
+
+  - 获取appKey
+
+    检查更新时必须提供你的 appKey ，这个值保存在 update.json 中，并且根据平台不同⽽不同。你可以 用如下的代码获取:
+
+    ```basic
+    import {
+      Platform,
+    } from 'react-native';
+    import _updateConfig from './update.json';
+    const {appKey} = _updateConfig[Platform.OS];
+    ```
+
+  - 检查更新、下载更新
+
+    异步函数checkUpdate可以检查当前版本是否需要更新
+
+    ```basic
+     
+    import {
+      isFirstTime,
+      isRolledBack,
+      packageVersion,
+      currentVersion,
+      checkUpdate,
+      downloadUpdate,
+      switchVersion,
+      switchVersionLater,
+      markSuccess
+    } from "react-native-update";
+    checkUpdate(appKey)
+     .then(info => {})
+    ```
+
+    > 返回的info有三种情况:
+  >
+    > {expired: true} :该应用包(原生部分)已过期，需要前往应用市场下载新的版本。
+  >
+    > {upToDate: true} :当前已经更新到最新，无需进行更新。
+  >
+    > {update: true} :当前有新版本可以更新。info的 name 、 description 字段可以用于提示用户， 而 metaInfo 字段则可以根据你的需求自定义其它属性(如是否静默更新、 是否强制更新等等)。另外还 有几个字段，包含了完整更新包或补丁包的下载地址， react-native-update会首先尝试耗费流量更更少的更新方式。将info对象传递给downloadUpdate作为参数即可
+  
+  - 切换版本
+  
+    downloadUpdate的返回值是一个hash字符串，它是当前版本的唯一标识。
+    你可以使用 switchVersion 函数立即切换版本(此时应用会立即重新加载)，或者选择调用
+    switchVersionLater ，让应用在下一次启动的时候再加载新的版本。
+  
+  - 首次启动、回滚
+  
+    在每次更新完毕后的首次启动时， `isFirstTime` 常量会为 true 。 你必须在应用退出前合适的任何时机，调用 `markSuccess` ，否则应用下一次启动的时候将会进行回滚操作。 这一机制称作“反触发”，这样当你应用启动初期即遭遇问题的时候，也能在下一次启动时恢复运作。
+  
+    你可以通过 `isFirstTime` 来获知这是当前版本的首次启动，也可以通过 `isRolledBack` 来获知应用刚 刚经历了了一次回滚操作。 你可以在此时给予用户合理的提示。
+  
+  - 完整案例
+  
+    ```basic
+    //App.js
+    import React, { Component } from "react";
+    
+    import {
+      AppRegistry,
+      StyleSheet,
+      Platform,
+      Text,
+      View,
+      Alert,
+      TouchableOpacity,
+      Linking
+    } from "react-native";
+    
+    import {
+      isFirstTime,
+      isRolledBack,
+      packageVersion,
+      currentVersion,
+      checkUpdate,
+      downloadUpdate,
+      switchVersion,
+      switchVersionLater,
+      markSuccess
+    } from "react-native-update";
+    
+    import _updateConfig from "./update.json";
+    const { appKey } = _updateConfig[Platform.OS];
+    
+    export default class App extends Component {
+      componentWillMount() {
+        if (isFirstTime) {
+          Alert.alert(
+            "提示",
+            "这是当前版本第一次启动,是否要模拟启动失败?失败将回滚到上一版本",
+            [
+              {
+                text: "是",
+                onPress: () => {
+                  throw new Error("模拟启动失败,请重启应用");
+                }
+              },
+              {
+                text: "否",
+                onPress: () => {
+                  markSuccess();
+                }
+              }
+            ]
+          );
+        } else if (isRolledBack) {
+          Alert.alert("提示", "刚刚更新失败了,版本被回滚.");
+        }
+      }
+      doUpdate = info => {
+        downloadUpdate(info)
+          .then(hash => {
+            Alert.alert("提示", "下载完毕,是否重启应用?", [
+              {
+                text: "是",
+                onPress: () => {
+                  switchVersion(hash);
+                }
+              },
+              { text: "否" },
+              {
+                text: "下次启动时",
+                onPress: () => {
+                  switchVersionLater(hash);
+                }
+              }
+            ]);
+          })
+          .catch(err => {
+            Alert.alert("提示", "更新失败.");
+          });
+      };
+      checkUpdate = () => {
+        checkUpdate(appKey)
+          .then(info => {
+            if (info.expired) {
+              Alert.alert("提示", "您的应用版本已更新,请前往应用商店下载新的版本", [
+                {
+                  text: "确定",
+                  onPress: () => {
+                    info.downloadUrl && Linking.openURL(info.downloadUrl);
+                  }
+                }
+              ]);
+            } else if (info.upToDate) {
+              Alert.alert("提示", "您的应用版本已是最新.");
+            } else {
+              Alert.alert(
+                "提示",
+                "检查到新的版本" + info.name + ",是否下载?\n" + info.description,
+                [
+                  {
+                    text: "是",
+                    onPress: () => {
+                      this.doUpdate(info);
+                    }
+                  },
+                  { text: "否" }
+                ]
+              );
+            }
+          })
+          .catch(err => {
+            Alert.alert(err);
+            Alert.alert("提示", "更新失败.");
+          });
+      };
+      render() {
+        return (
+          <View style={styles.container}>
+            <Text style={styles.welcome}>欢迎使用热更新服务</Text>
+            <Text style={styles.instructions}>
+              这是版本是2.0 {"\n"}
+              当前包版本号: {packageVersion}
+              {"\n"}
+              当前版本Hash: {currentVersion || "(空)"}
+              {"\n"}
+            </Text>
+            <TouchableOpacity onPress={this.checkUpdate}>
+              <Text style={styles.instructions}>点击这里检查更新</Text>
+            </TouchableOpacity>
+          </View>
+        );
+      }
+    }
+    
+    const styles = StyleSheet.create({
+      container: {
+        flex: 1,
+        justifyContent: "center",
+        alignItems: "center",
+        backgroundColor: "#F5FCFF"
+      },
+      welcome: {
+        fontSize: 20,
+        textAlign: "center",
+        margin: 10
+      },
+      instructions: {
+        textAlign: "center",
+        color: "#333333",
+        marginBottom: 5
+      }
+    });
+    ```
+
+### 2.打包
+
+#### 1）Android打包APK
+
+Android 要求所有应用都有一个数字签名才会被允许安装在用户手机上，所以在把应用发布到类似Google Play store这样的应用市场之前，你需要先生成一个签名的 **APK** 包。
+
+- **生成一个签名秘钥**
+
+  你可以用 `keytool` 命令生成一个私有密钥。在Windows上 keytool 命令放在JDK的bin目录中(比如C:\Program Files\Java\jdkx.x.x_x\bin )，你可能需要在命令⾏中先进入那个目录才能执行此命令。
+
+  ```basic
+  $ keytool -genkey -v -keystore my-release-key.keystore -alias my-key-alias -keyalg RSA -keysize 2048 -validity 10000
+  ```
+
+​		这条命令会要求你输入密钥库(keystore)和对应密钥的密码，然后设置一些发行相关的信息。最后它会生成一		个叫做 my-release-key.keystore 的密钥库⽂件。
+
+​		在运行上面这条语句之后，密钥库里应该已经⽣成了一个单独的密钥，有效期为10000天。--alias参数后面的		别名是你将来为应用签名时所需要用到的，所以记得记录这个别名。
+
+		> 把 my-release-key.keystore 文件放到你工程中的 android/app ⽂件夹下
+		>
+		> 注意:请记得妥善地保管好你的密钥库文件，不要上传到版本库或者其它的地方。
+
+- **设置gradle变量**
+
+  一种全局设置:编辑 ~/.gradle/gradle.properties (没有这个文件你就创建一个)，添加如下的代码(注意把其中的 **** 替换为相应密码)
+  **~**符号表示用户目录，比如 **windows 上可能是C:\Users\用户名，而 mac 上可能是/Users/用户名**
+
+  
+
+  一种局部设置:项⽬里设置:项目/android/gradle.properties
+
+  ```basic
+  MYAPP_RELEASE_STORE_FILE=my-release-key.keystore
+  MYAPP_RELEASE_KEY_ALIAS=my-key-alias
+  MYAPP_RELEASE_STORE_PASSWORD=******
+  MYAPP_RELEASE_KEY_PASSWORD=******
+  ```
+
+  ***\******换为你刚才输入的口令
+  上面的这些会作为 gradle 的变量，在后面的步骤中可以用来给应用签名
+
+  一旦你在 Play Store 发布了你的应用，如果想修改签名，就必须用一个不同的包名来重新发布你的应用 (这样也会丢失所有的下载数和评分)。所以请务必备份好你的密钥库和密码。
+
+- **把签名加入到项目的gradle配置中**
+
+  编辑你项目录下的 android/app/build.gradle ，添加如下的签名配置:
+
+  ```basic
+  android {
+    
+    //添加——秘钥签名
+    signingConfigs {
+          release {
+            if (project.hasProperty('MYAPP_RELEASE_STORE_FILE')) {
+              storeFile file(MYAPP_RELEASE_STORE_FILE)
+              storePassword MYAPP_RELEASE_STORE_PASSWORD
+              keyAlias MYAPP_RELEASE_KEY_ALIAS
+              keyPassword MYAPP_RELEASE_KEY_PASSWORD
+            } 
+          }
+      }
+      buildTypes {
+        release {
+          signingConfig signingConfigs.release//添加——秘钥签名
+          minifyEnabled enableProguardInReleaseBuilds
+          proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
+          }
+      }
+  }
+  ```
+
+- **生成发行APK包**
+
+  只需在终端中运行以下命令:
+
+  ```basic
+  $ cd android
+  $ ./gradlew assembleRelease
+  ```
+
+  `./gradlew assembleRelease` 在 macOS、Linux 或是 windows 的 PowerShell 环境中表示执行当前目录下的名为 `gradlew` 的脚本文件，且其运行参数为 `assembleRelease`，注意这个 ./ 不可省略；而在windows 的传统 CMD 命令⾏下则需要去掉 ./ 。
+
+  Gradle 的 `assembleRelease` 参数会把所有用到的 JavaScript 代码都打包到一起，然后内置到 APK 包 中
+
+  请确保 `gradle.properties` 中 没有 包含 `org.gradle.configureondemand=true `，否则会跳过 js 打包的步骤，导致最终生成的 apk 是一个无法运行的空壳。
+
+  > ⽣成的 APK 文件位于 android/app/build/outputs/apk/release/app-release.apk ，它已经可以用来发布了。
+
+- **测试应用的发行版本**
+
+  在把发行版本提交到 Play Store 之前，你应该做一次最终测试。输入以下命令可以在设备上安装发行版本:
+
+  ```basic
+  react-native run-android --variant=release
+  ```
+
+  `--variant=release` 参数只能在你完成了上面的签名配置之后才可以使用。你现在可以关掉运行中的	packager了，因为你所有的代码和框架依赖已经都被打包到 apk 包中，可以离线运⾏了
+
+  > 记得卸载之前的应用
+  >
+  > ```basic
+  > cd android
+  > ./gradlew clean
+  > ```
+
+#### 2）IOS打包ipa
+
+### 3.发布应用
+
+现在你的应用已经具备了了检测更新的功能，下面我们来尝试发布并更新它
+
+注意，从update上传发布版本到发布版本正式上线期间，不要修改任何脚本和资源，这会影响update获取本地代码，从而导致版本不能更新。如果在发布之前修改了脚本或资源，请在⽹页端删除之前上传的版本并重新上传
+
+#### 1）发布安卓应用
+
+```basic
+//pushy uploadIpa <路径> 发布ios版本的ipa⽂件
+pushy uploadApk android/app/build/outputs/apk/release/app-release.apk
+```
+
+即可上传apk以供后续版本比对之用 随后你可以选择往应用市场发布这个版本，也可以先往设备上直接安装这个apk文件以进行测试
+
+#### 2）发布新的热更新版本
+
+你可以尝试修改一行代码(譬如将版本⼀一修改为版本二)，然后生成新的热更新版本
+
+```basic
+$ pushy bundle --platform <ios|android>
+Bundling with React Native version: 0.22.2
+<各种进度输出>
+Bundled saved to: build/output/android.1459850548545.ppk 
+Would you like to publish it?(Y/N)
+```
+
+如果想要立即发布，此时输入Y。当然，你也可以在将来使用` pushy publish --platform <ios|android> <ppkFile>` 来发布版本。
+
+```basic
+Uploading [========================================================] 100%
+0.0s
+Enter version name: <输⼊入版本名字，如1.0.0-rc> 
+Enter description: <输⼊入版本描述>
+Enter meta info: {"ok":1}
+Ok.
+Would you like to bind packages to this version?(Y/N)
+ 
+```
+
+元信息**(Meta Info)**的使⽤
+
+在发布热更新版本时，或者在⽹页端，你可以编辑版本的元信息。 这是一段在检查更新时可以获得的字符串，你可以在其中按你所想的格式保存一些信息。
+
+举例来说，可能某个版本包含一些重要的更新内容，所以用户会得到一个不同样式的通知。如何使用元信息，完全取决于您的想象力!
+
+
+
+此时版本已经提交到update服务，但用户暂时看不到此更新，你需要先将特定的包版本绑定到此热更新版本上。
+
+此时输入Y立即绑定，你也可以在将来使用 `pushy update --platform <ios|android>` 来使得对应包版本的用户更新。 除此以外，你还可以在⽹页端操作，简单的将对应的包版本拖到此版本下即可。
+
+![热更新绑定](/Users/qiaoxu/Desktop/myBlog/pic/update.png)
+
+版本绑定完毕后，客户端就应当可以检查到更新并进行更新了。 就理论⽽言，热更新操作到此结束，但是实际使用过程中，5000个⽤户⼤概会有100个丢掉的可能性。
+
+不是特别的准，也存在少量⽤户回滚版本的行为。听说公司其他部门的团队做的app用的是codePush目前Pushy热更新服务完全免费，但限制每个账号不超过3个应用;每个应⽤不超过10个活跃的包和100个活跃的热更新版本;每个应用每个月不超过10000次下载。iOS和Android版本记做不同的应用
 
 ## 八、Flutter认知与入门
+
+### 1.Flutter简介
+
+### 2.热门问答
+
+### 3.Flutter特点
+
+### 4.Flutter框架
+
+### 5.Flutter开发环境搭建
+
+### 6.Flutter创建应用
+
+### 7.Widget
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
