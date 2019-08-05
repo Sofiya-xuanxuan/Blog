@@ -59,7 +59,17 @@
 
  - [类数组对象转换为数组](https://github.com/LuoShengMen/StudyNotes/issues/141)
 
+   <details>
+     <summary><mark><font color='darkred'><a href='JS面试题/9.md'>点击查看详细内容</a></font></mark></summary>
+   <pre></pre>
+   </details>
+
  - [你熟悉 Typed Arrays 吗？ 如果熟悉，请解释他们与 JavaScript 中的传统数组相比的异同？](https://github.com/LuoShengMen/StudyNotes/issues/546)
+
+   <details>
+     <summary><mark><font color='darkred'><a href='JS面试题/10.md'>点击查看详细内容</a></font></mark></summary>
+   <pre></pre>
+   </details>
 
  - [symbol应用](https://github.com/LuoShengMen/StudyNotes/issues/265)
 

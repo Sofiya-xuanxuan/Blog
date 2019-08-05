@@ -1268,33 +1268,33 @@ react-native link react-native-vector-icons
 >
 >  - 具体配置
 >
->    #### `标题`
+> #### `标题`
 >
->    可用作 `headerTitle` 的回退的字符串。 此外, 将用作 `tabBarLabel` 的回退 (如果嵌套在 TabNavigator 中) 或 `drawerLabel` (如果嵌套在DrawerNavigator)。
+> 可用作 `headerTitle` 的回退的字符串。 此外, 将用作 `tabBarLabel` 的回退 (如果嵌套在 TabNavigator 中) 或 `drawerLabel` (如果嵌套在DrawerNavigator)。
 >
->    #### `header`
+> #### `header`
 >
->    React 元素或一个给定 `HeaderProps` 然后返回一个 React 元素的函数，将作为一个标题来显示。 设为 `null` ，则隐藏标题。
+> React 元素或一个给定 `HeaderProps` 然后返回一个 React 元素的函数，将作为一个标题来显示。 设为 `null` ，则隐藏标题。
 >
->    #### `headerTitle`
+> #### `headerTitle`
 >
->    Header 使用的字符串，React 元素或React组件。 默认是页面的 `title` 当一个组件被使用时，它会接受 `allowFontScaling`、 `style` 和 `children` 这几个 props。 标题字符串在`children`中传递。
+> Header 使用的字符串，React 元素或React组件。 默认是页面的 `title` 当一个组件被使用时，它会接受 `allowFontScaling`、 `style` 和 `children` 这几个 props。 标题字符串在`children`中传递。
 >
->    #### `headerTitleAllowFontScaling`
+> #### `headerTitleAllowFontScaling`
 >
->    AllowFontScaling -无论标签字体是否应缩放以尊重文字大小可访问性设置， 默认值都是 true。
+> AllowFontScaling -无论标签字体是否应缩放以尊重文字大小可访问性设置， 默认值都是 true。
 >
->    #### `headerBackAllowFontScaling`
+> #### `headerBackAllowFontScaling`
 >
->    Whether back button title font should scale to respect Text Size accessibility settings. Defaults to false.
+> Whether back button title font should scale to respect Text Size accessibility settings. Defaults to false.
 >
->    #### `headerBackImage`
+> #### `headerBackImage`
 >
->    React 元素或组件在标题的后退按钮中显示自定义图片。 当组件被调用时，它会在渲染时收到许多 props 如：（`tintColor`，`title`）。 默认为带有 `react-navigation/views/assets/back-icon.png` 这张图片的组件，后者是平台的默认后图标图像（iOS上为向左的符号，Android上为箭头）。
+> React 元素或组件在标题的后退按钮中显示自定义图片。 当组件被调用时，它会在渲染时收到许多 props 如：（`tintColor`，`title`）。 默认为带有 `react-navigation/views/assets/back-icon.png` 这张图片的组件，后者是平台的默认后图标图像（iOS上为向左的符号，Android上为箭头）。
 >
->    #### `headerBackTitle`
+> #### `headerBackTitle`
 >
->    Ios 上的后退按钮使用的标题字符串, 或 `null` 禁用标签。 默认为上一个场景的 `headerTitle`。 `headerBackTitle` 必须在源屏幕 (而不是目标屏幕) 中定义。 例如, 当您将 A 转换为 B, 并且要禁用 `B` 上的 `headerBackTitle`:
+> Ios 上的后退按钮使用的标题字符串, 或 `null` 禁用标签。 默认为上一个场景的 `headerTitle`。 `headerBackTitle` 必须在源屏幕 (而不是目标屏幕) 中定义。 例如, 当您将 A 转换为 B, 并且要禁用 `B` 上的 `headerBackTitle`:
 >
 > **BottomTabNavigatorConfig**
 >
@@ -1319,8 +1319,11 @@ react-native link react-native-vector-icons
 > - ```
 >   tabBarOptions
 >   ```
+> ```
+> 
+> ```
 >
->   \- 具有以下属性的对象:
+> \- 具有以下属性的对象:
 >
 >   - `activeTintColor` -活动选项卡的标签和图标颜色。
 >   - `activeBackgroundColor` -活动选项卡的背景色。
@@ -1335,6 +1338,9 @@ react-native link react-native-vector-icons
 >   - `adaptive` - Should the tab icons and labels alignment change based on screen size? Defaults to `true` for iOS 11. If `false`, tab icons and labels align vertically all the time. When `true`, tab icons and labels align horizontally on tablet.
 >   - `safeAreaInset` - 为 `<SafeAreaView>` 组件重写 `forceInset` prop， 默认值：`{ bottom: 'always', top: 'never' }`； `top | bottom | left | right` 的可选值有： `'always' | 'never'`。
 >   - `keyboardHidesTabBar` - Defaults to `false`. If `true` hide the tab bar when keyboard opens.
+> ```
+> 
+> ```
 
 - **案例**
 
@@ -1457,8 +1463,11 @@ export default createAppContainer(AppBottomNavigator)
 > - ```
 >   tabBarOptions 
 >   ```
+> ```
+> 
+> ```
 >
->   \- 具有以下属性的对象:
+> \- 具有以下属性的对象:
 >
 >   - `activeTintColor` -活动选项卡的标签和图标颜色。
 >   - `inactiveTintColor` -"非活动" 选项卡的标签和图标颜色。
@@ -1475,6 +1484,9 @@ export default createAppContainer(AppBottomNavigator)
 >   - `style` -选项卡栏的样式对象。
 >   - `allowFontScaling` -无论标签字体是否应缩放以尊重文字大小可访问性设置，默认值都是 true。
 >   - `renderIndicator` - Function which takes an object with the current route and returns a custom React Element to be used as a tab indicator.
+> ```
+> 
+> ```
 
 - **案例**
 
@@ -1539,24 +1551,859 @@ export default TopNavigator
 
 #### 4.抽屉导航
 
+- **createDrawerNavigator**
+
+> **createDrawerNavigator**(RouteConfigs, DrawerNavigatorConfig);
+
+> ### DrawerNavigatorConfig
+>
+> - `drawerWidth` -抽屉的宽度或返回它的函数。
+> - `drawerPosition` - 可选值： `left` 或 `right`， 默认值： `left`。
+> - `contentComponent` -用于呈现抽屉内容 (例如, 导航项) 的组件。 接收用于抽屉的 `navigation` 支柱。 默认为 `DrawerItems`。 有关详细信息, 请参阅下文。
+> - `contentOptions` -配置抽屉内容, 请参阅下面。
+> - `useNativeAnimations` - 使用原生动画， 默认值： `true`。
+> - `drawerBackgroundColor` - 使用抽屉背景色， 默认值：`white`。
+> - `navigationOptions` - Navigation options for the navigator itself, to configure a parent navigator
+> - `defaultNavigationOptions` - 用于屏幕的默认导航选项
+>
+> The DrawerNavigator uses [`DrawerLayout`](https://kmagiera.github.io/react-native-gesture-handler/docs/component-drawer-layout.html) under the hood, therefore it inherits the following props:
+>
+> - `drawerType` - One of front | back | slide
+> - `edgeWidth` - Allows for defining how far from the edge of the content view the swipe gesture should activate
+> - `hideStatusBar` - when set to true Drawer component will hide the OS status bar whenever the drawer is pulled or when its in an "open" state.
+> - `overlayColor` - Color overlay to be displayed on top of the content view when drawer gets open. A solid color should be used as the opacity is added by the Drawer itself and the opacity of the overlay is animated (from 0% to 70%).
+>
+> 几个被传递到底层路由以修改导航逻辑的选项：
+>
+> - `initialRouteName` -第一次加载时初始选项卡路由的 routeName。
+> - `order` -定义选项卡顺序的 routeNames 数组。
+> - `paths` - 提供 routeName 到 path 配置的映射, 它重写 routeConfigs 中设置的路径。
+> - `backBehavior` - 控制 "返回" 按钮是否会导致 Tab 页切换到初始 Tab 页? 如果是, 设置为 `initialRoute`, 否则 `none`。 默认为 `initialRoute`的行为。
+
+- **案例**
+
+```bash
+import React, { Component } from 'react'
+import { View, Text, Image } from 'react-native'
+import { createAppContainer, createDrawerNavigator } from 'react-navigation'
+
+import HomePage from '../Pages/HomePage'
+import HotPage from '../Pages/HotPage'
+import MyPage from '../Pages/MyPage'
+import SwipeableFlatListPage from '../Pages/SwipeableFlatListPage'
+import SectionListPage from '../Pages/SectionListPage'
+
+import FontAwesome from 'react-native-vector-icons/FontAwesome'
+import Ionicons from 'react-native-vector-icons/Ionicons'
+const AppDrawerNavigator = createDrawerNavigator(
+  {
+    HomePage: {
+      screen: HomePage,
+      navigationOptions: {
+        drawerLabel: '首页',
+        drawerIcon: ({ tintColor, focused }) => {
+          return (
+            <Ionicons
+              name={'ios-home'}
+              size={26}
+              style={{ color: tintColor }}
+            />
+          )
+        }
+      }
+    },
+    HotPage: {
+      screen: HotPage,
+      navigationOptions: {
+        drawerLabel: '热门',
+        drawerIcon: ({ tintColor, focused }) => {
+          return (
+            <FontAwesome name={'fire'} size={26} style={{ color: tintColor }} />
+          )
+        }
+      }
+    },
+    MyPage: {
+      screen: MyPage,
+      navigationOptions: {
+        drawerLabel: '我的',
+        drawerIcon: ({ tintColor, focused }) => {
+          return (
+            <Image
+              style={{ width: 26, height: 26 }}
+              source={
+                focused
+                  ? require('../pics/logo.png')
+                  : require('../pics/timg.jpeg')
+              }
+            />
+          )
+        }
+      }
+    },
+    SwipeableFlatListPage: {
+      screen: SwipeableFlatListPage,
+      navigationOptions: {
+        drawerLabel: '侧滑',
+        drawerIcon: ({ tintColor, focused }) => {
+          return (
+            <FontAwesome
+              name={'sliders'}
+              size={26}
+              style={{ color: tintColor }}
+            />
+          )
+        }
+      }
+    },
+    SectionListPage: {
+      screen: SectionListPage,
+      navigationOptions: {
+        drawerLabel: '分组',
+        drawerIcon: ({ tintColor, focused }) => {
+          return (
+            <FontAwesome
+              name={'align-justify'}
+              size={26}
+              style={{ color: tintColor }}
+            />
+          )
+        }
+      }
+    }
+  },
+  {
+    tabBarOptions: {
+      activeTintColor: 'red',
+      inactiveTintColor: '#000',
+      style: { borderBottomWidth: 1, borderTopColor: 'red' }
+    }
+  }
+)
+
+export default createAppContainer(AppDrawerNavigator)
+```
+
 #### 5.开关导航
 
+- **createSwitchNavigator**
 
+> **createSwitchNavigator**(RouteConfigs, SwitchNavigatorConfig);
+
+> ## SwitchNavigatorConfig
+>
+> 几个被传递到底层路由以修改导航逻辑的选项：
+>
+> - `initialRouteName` -第一次加载时初始选项卡路由的 routeName。
+> - `navigationOptions` - Navigation options for the navigator itself, to configure a parent navigator
+> - `defaultNavigationOptions` - 用于屏幕的默认导航选项
+> - `resetOnBlur` - 切换离开屏幕时，重置所有嵌套导航器的状态， Defaults to `true`.
+> - `paths` - 提供 routeName 到 path 配置的映射, 它重写 routeConfigs 中设置的路径。
+> - `backBehavior` - `initialRoute` to return to initial route, `order` to return to previous route, `history`to return to last visited route, or `none`.
+
+```bash
+import {
+  createAppContainer,
+  createStackNavigator,
+  createSwitchNavigator
+} from 'react-navigation'
+
+import WelcomePage from '../Pages/WelcomePage'
+import HomePage from '../Pages/HomePage'
+import DetailPage from '../Pages/DetailPage'
+
+const InitNavigator = createStackNavigator({
+  WelcomePage: {
+    screen: WelcomePage,
+    navigationOptions: {
+      header: null
+    }
+  }
+})
+const MainNavigator = createStackNavigator({
+  HomePage: {
+    screen: HomePage,
+    navigationOptions: {
+      header: null
+    }
+  },
+  DetailPage: {
+    screen: DetailPage,
+    navigationOptions: {
+      header: null
+    }
+  }
+})
+//AppNavigator不能直接暴露给根组件，所以需要使用createAppContainer包裹一下
+export default createAppContainer(
+  createSwitchNavigator({
+    Init: InitNavigator,
+    Main: MainNavigator
+  })
+)
+```
 
 #### 6.导航框架设计
 
+- **开关导航**
 
+- **欢迎页设计**
 
-#### 7.离线缓存框架
+  <font color='red'>3秒后跳转到App主页</font>
+
+```bash
+import React, { Component } from 'react'
+import { View, Text, StyleSheet } from 'react-native'
+
+export default class WelcomePage extends Component {
+  constructor(props) {
+    super(props)
+    console.disableYellowBox = true
+  }
+  componentDidMount() {
+    this.timer = setTimeout(() => {
+      const { navigation } = this.props
+      navigation.navigate('Main')
+    }, 3000)
+  }
+  render() {
+    return (
+      <View style={styles.container}>
+        <Text style={styles.text}> welcomePage </Text>
+      </View>
+    )
+  }
+}
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#f5f5f5'
+  },
+  text: {
+    fontSize: 26
+  }
+})
+```
+
+- **App主页HomePage**
+
+```bash
+import React, { Component } from 'react'
+import {
+  View,
+  Text,
+  StyleSheet,
+  Button,
+  Image,
+  ImageBackground,
+  Switch,
+  Modal,
+  TouchableHighlight,
+  SafeAreaView,
+  TextInput
+} from 'react-native'
+
+import { createAppContainer, createBottomTabNavigator } from 'react-navigation'
+import FontAwesome from 'react-native-vector-icons/FontAwesome'
+import NavigationUtil from '../Navigator/NavigationUtil'
+import IndexPage from './IndexPage'
+import MyPage from './MyPage'
+
+const TABS = {
+  IndexPage: {
+    screen: IndexPage,
+    navigationOptions: {
+      tabBarLabel: '首页',
+      tabBarIcon: ({ tintColor, focused }) => {
+        return (
+          <FontAwesome name={'home'} size={26} style={{ color: tintColor }} />
+        )
+      }
+    }
+  },
+  MyPage: {
+    screen: MyPage,
+    navigationOptions: {
+      tabBarLabel: '我的',
+      tabBarIcon: ({ tintColor, focused }) => {
+        return (
+          <FontAwesome name={'cog'} size={26} style={{ color: tintColor }} />
+        )
+      }
+    }
+  }
+}
+export default class HomePage extends Component {
+  constructor(props) {
+    super(props)
+    //去掉黄色警告
+    console.disableYellowBox = true
+  }
+  TabNavigator() {
+    return createAppContainer(createBottomTabNavigator(TABS))
+  }
+
+  render() {
+    NavigationUtil.navigation = this.props.navigation
+    const Tabs = this.TabNavigator()
+    return <Tabs />
+  }
+}
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#f5f5f5',
+    paddingBottom: 40,
+    paddingTop: 40
+  },
+  text: {
+    fontSize: 26
+  }
+})
+```
+
+- **App详情页DetailPage**
+
+```bash
+import React, { Component } from 'react'
+import { View, Text, Button, StyleSheet, SafeAreaView } from 'react-native'
+import {
+  createAppContainer,
+  createMaterialTopTabNavigator
+} from 'react-navigation'
+import NavigationUtil from '../Navigator/NavigationUtil'
+// 动态顶部导航
+export default class IndexPage extends Component {
+  constructor(props) {
+    super(props)
+    console.disableYellowBox = true
+    this.tabsName = ['html', 'css', 'js', 'vue', 'react', 'nodejs']
+  }
+  genTabs() {
+    const obj = {}
+    this.tabsName.forEach((item, index) => {
+      obj[`${item}`] = {
+        screen: props => {
+          return <IndexTab {...props} tabName={item} />
+        }
+      }
+    })
+    return obj
+  }
+  render() {
+    const TabNavigator = createAppContainer(
+      createMaterialTopTabNavigator(this.genTabs(), {
+        // lazy: true,
+        tabBarOptions: {
+          upperCaseLabel: false,
+          scrollEnabled: true
+        }
+      })
+    )
+    return (
+      <SafeAreaView style={{ flex: 1 }}>
+        <TabNavigator />
+      </SafeAreaView>
+    )
+  }
+}
+class IndexTab extends Component {
+  render() {
+    const { tabName } = this.props
+    return (
+      <View style={styles.container}>
+        <Text style={styles.welcome}>{tabName}</Text>
+        <Button
+          title="进入详情页"
+          onPress={() => {
+            NavigationUtil.navigation.navigate('DetailPage')
+          }}
+        />
+        <Button title="进入离线缓存框架测试" onPress={() => {}} />
+      </View>
+    )
+  }
+}
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#f5f5f5'
+  },
+  text: {
+    fontSize: 26
+  },
+  welcome: {
+    fontSize: 20,
+    textAlign: 'center',
+    margin: 10
+  }
+})
+```
+
+> App主页HomePage跳转到App详情页DetailPage，需要一个中转工具**NavigationUtil.js**
+
+#### 
 
 
 
 ## 三、redux集成
 
-## 四、网络请求
+> 第三方库的使用
+>
+> Redux + React Navigation有点复杂 因为Redux是自顶向下管理一套状态，React Navigation也是自顶 向下管理一套状态甚⾄⻚面，这俩融合起来就有点困难了
 
-## 五、React Native项目实战
+### 1.安装redux、react-redux、react-navigation-redux-helpers
 
-## 六、React Native部署
+```bash
+yarn add redux
+yarn add react-redux #因为redux其实是可以独立运行的js项⽬目，但使用在react项目中，还需要使用react-redux
+yarn add react-navigation-redux-helpers#在使⽤React Navigation 的项⽬中，想要集成 redux 就必须要引入 react-navigation-redux-helpers 这个库
+```
 
-## 七、Flutter认知与入门
+### 2.配置Navigation
+
+- **引入redux和react-navigation-redux-helpers**
+
+  ```bash
+  import { connect } from 'react-redux'
+  import {
+    createReactNavigationReduxMiddleware,
+    createReduxContainer
+  } from 'react-navigation-redux-helpers'
+  ```
+
+- **使用`createReduxContainer`方法，将`RootNavigator`封装成高阶组件
+  `AppWithNavigationState`，这个高阶组件完成了`navigation prop`的替换，改成了使用`redux`
+  里的`navigation`**
+
+  ```bash
+  export const RootNavigator = createAppContainer(
+    createSwitchNavigator({
+      Init: InitNavigator,
+      Main: MainNavigator
+    })
+  )
+  
+  const AppWithNavigationState = createReduxContainer(RootNavigator, 'root')
+  ```
+
+- **创建导航中间件:**`createReduxContainer`**把导航状态放到`props`里只是能被各个组件访问到，但
+  是`React Navigation`还不能识别，所以还需要最后一步——创建一个中间件，把需要导航的组件
+  与导航`reducer`连接起来**
+
+  ```bash
+  export const middleweare = createReactNavigationReduxMiddleware(
+    state => state.nav,
+    'root'
+  )
+  ```
+
+- **然后使用`Redux`的`connect`函数再封装一个高阶组件，默认导出**
+
+  ```bash
+  #将state到Props的映射关系
+  const mapStateToProps = state => {
+    return {
+      state: state.nav
+    }
+  }
+  #使用redux的connect函数再封装一个高阶组件，连接react组件与redux store
+  export default connect(mapStateToProps)(AppWithNavigationState)
+  ```
+
+### 3.配置reducer
+
+```bash
+import { combineReducers } from 'redux'
+import { rootCom, RootNavigator } from '../Navigator/AppNavigator'
+
+#1.指定默认state
+const navState = RootNavigator.router.getStateForAction(
+  RootNavigator.router.getActionForPathAndParams(rootCom)
+)
+
+/**上面的代码创建了一个导航action(表示我想打开rootCom)，那么我们就可以通过action创建导航state，通过方*法getStateForAction(action, oldNavigationState)
+ *俩参数，一个是新的action，一个是当前的导航state，返回新的状态，当没有办法执行这个action的时候，就返回*null。
+ **/
+
+
+#2.创建自己的 navigation reducer，
+
+const navReducer = (state = navState, action) => {
+  const nextState = RootNavigator.router.getStateForAction(action, state)
+  // 如果`nextState`为null或未定义，只需返回原始`state`
+  return nextState || state
+}
+
+/**
+#3.合并reducer
+ * @type {Reducer<any> | Reducer<any, AnyAction>}
+ */
+const index = combineReducers({
+  nav: navReducer
+})
+
+export default index
+
+```
+
+### 4.配置store
+
+```bash
+import { applyMiddleware, createStore } from 'redux'
+import reducers from '../Reducer'
+import { middleweare } from '../Navigator/AppNavigator'
+
+const middlewares = [middleweare]
+/**
+ * 创建store
+ */
+export default createStore(reducers, applyMiddleware(...middlewares))
+
+```
+
+### 5.在组件中应用
+
+```bash
+#App.js
+React, { Component } from 'react'
+import { Provider } from 'react-redux'
+import AppNavigator from './Navigator/AppNavigator'
+import store from './Store'
+
+export default class App extends Component {
+  render() {
+    /**
+     * 将store传递给App框架
+     */
+    return (
+      <Provider store={store}>
+        <AppNavigator />
+      </Provider>
+    )
+  }
+}
+```
+
+## 四、RN网络请求
+
+React native提供了和web标准一致的[Fetch API](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API)，用于满足开发者访问网络需求
+
+- **发起请求**
+
+要从任意地址获取内容的话，只需简单的将网址作为参数传递给fetch方法即可（fetch这个词本身也就是获取的意思）
+
+```bash
+fetch('https://mywebsite.com/mydata.json');
+```
+
+fetch还有可选的第二个参数，可以用来制定HTTP请求一些参数。可以指定header参数，或者指定使用post方法，又或是提交数据等等
+
+```bash
+fetch('https://mywebsite.com/endpoint/', {
+  method: 'POST',
+  headers: {
+    Accept: 'application/json',
+    'Content-Type': 'application/json',
+  },
+  body: JSON.stringify({
+    firstParam: 'yourValue',
+    secondParam: 'yourOtherValue',
+}), });
+```
+
+提交数据的格式取决于headers中`Content-Type`。`Content-Type`有很多种，对应body的格式也有区别。到底应该采用什么样的`Content-Type`取决于服务器端，所以请和服务器端的开发人员沟通确定清楚。常用`Content-Type`除了上面的`application/json`，还有传统的网页表单形式，如：
+
+```bash
+fetch('https://mywebsite.com/endpoint/', {
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/x-www-form-urlencoded',
+  },
+  body: 'key1=value1&key2=value2',
+});
+```
+
+Fetch方法会返回一个Promise，这种模式可以简化异步风格的代码
+
+```bash
+function getMoviesFromApiAsync() {
+  return fetch('https://facebook.github.io/react-native/movies.json')
+    .then((response) => response.json())
+    .then((responseJson) => {
+      return responseJson.movies;
+    })
+    .catch((error) => {
+      console.error(error);
+}); }
+```
+
+使用async/await
+
+```bash
+async function getMoviesFromApi() {
+try {
+// 注意这⾥里里的await语句句，其所在的函数必须有async关键字声明 let response = await fetch(
+      'https://facebook.github.io/react-native/movies.json',
+    );
+    let responseJson = await response.json();
+    return responseJson.movies;
+  } catch (error) {
+    console.error(error);
+  }
+}
+```
+
+错误处理
+
+> 当接收到一个代表错误的HTTP状态码时，从fetch()返回的promise不会被标记为reject，即使该HTTP
+> 响应的状态码是404或500。相反，它会将Promise状态标记为resolve(但是会将resolve的返回值的ok属
+> 性设置为false)，仅当网络故障时或请求被阻止时，才会被标记为reject。一次请求没有调用reject并不
+> 代表请求一定成功了，通常需要在resolve情况下，再判断response.ok属性为true.
+
+```bash
+let url = `https://api.github.com/search/repositories?q=NodeJS`;
+fetch(url)
+  .then(response => {
+    if (response.ok) {
+     return response.text();
+    }
+    throw new Error("Network response wat not ok");
+  })
+  .then(responseText => {
+    console.log(responseText);
+  })
+  .catch(e => {
+    console.log(e.toString());
+  });
+```
+
+## 五、数据存储																					
+
+> AsyncStorage
+>
+> AsyncStorage 是一个简单的、异步的、持久化的 Key-Value 存储系统，它对于 App 来说是全局性 
+>
+> 的。可用来代替 LocalStorage。
+> 我们推荐您在 AsyncStorage 的基础上做一层抽象封装，⽽不是直接使用 AsyncStorage。 
+>
+> 在 iOS 上， AsyncStorage 在原生端的实现是把较小值存放在序列化的字典中，而把较大值写入单独的文件。在 Android 上， AsyncStorage 会尝试使用RocksDB，或退而选择 SQLite。 
+
+- **如何使用AsyncStorage**
+
+在新版本的RN中AS已经从RN框架中移除了，使用第三⽅库 [react-native-community/react-native- 
+
+async-storage](https://github.com/react-native-community/async-storage) 来替代。 
+
+ - **安装**
+
+```bash
+# Install
+$ yarn add @react-native-community/async-storage
+# Link
+$ react-native link @react-native-community/async-storage
+```
+
+ - **使用**
+
+   ```bash
+   import AsyncStorage from '@react-native-community/async-storage';
+   ```
+
+   - 存储数据
+
+   ```basic
+   async doSave(){ 
+   	//用法1
+     AsyncStorage.setItem(Key,Value,err=>{
+       err && console.log(err.toString())
+   	})
+   	//用法2 
+   	AsyncStorage.setItem(Key,Value) .catch(e=>{
+       err && console.log(err.toString())
+     })
+   	//用法3 
+   	try{
+       await AsyncStorage.setItem(Key,value)
+     }catch(err){ 
+     	err && console.log(err.toString())
+   	}
+   }
+   ```
+
+   - 读取数据
+
+   ```basic
+    
+   async getData(){ 
+   	//用法1
+     AsyncStorage.getItem(Key,(err,value)=>{
+       console.log(value)
+       err && console.log(err.toString())
+   	})
+   	//用法2 
+   	AsyncStorage.getItem(Key) .then(value=>{
+       console.log(value)
+     })
+     .catch(e=>{
+       err && console.log(err.toString())
+   	})
+   	//用法3 
+   	try{
+       const value = await AsyncStorage.getItem(Key)
+       console.log(value)
+     }catch(err){
+       err && console.log(err.toString())
+     }
+   }
+   ```
+
+   - 删除数据
+
+   ```basic
+    
+   async doRemove(){ 
+     //用法1
+     AsyncStorage.removeItem(Key,(err)=>{
+       err && console.log(err.toString())
+   })
+   	//用法2 
+     AsyncStorage.removeItem(Key) .catch(e=>{
+       err && console.log(err.toString())
+     })
+   	//用法3 
+     try{
+       await AsyncStorage.removeItem(Key)
+     }catch(err){
+       err && console.log(err.toString())
+     }
+   }
+   ```
+
+## 六、离线缓存框架设计
+
+### 1.离线缓存有什么好处 
+
+提升用户体验，用户的网络情况我们不能控制，但是我们可以离线存储提升体验。
+节省流量:节省服务器流量，节省用户手机的流量
+
+### 2.离线缓存有么限制 
+
+数据的实时性要求不高，推荐使用
+
+### 3.离线缓存的策略
+
+![离线缓存流程](/Users/qiaoxu/Desktop/myBlog/pic/rn_asyncStorage.png)
+
+- 优先从本地获取数据，如果数据过时或者不存在，则从服务器获取数据，数据返回后同时将数据同步到本地数据库
+
+- 优先从服务器获取数据，数据返回后同步到本地数据库，如果发生网络故障，才从本地获取数据
+
+### 4.离线缓存框架的设计
+
+按照第一个策略:如果数据过时或者不存在，则从服务器获取数据，数据返回后同时将数据同步到本地数据库。
+
+- 优先从本地获取数据
+- 如果数据存在且在有效期内，我们将数据返回
+- 否则获取网络数据
+
+```basic
+//Http/AsDemo.js
+import AsyncStorage from '@react-native-community/async-storage'
+
+export default class DataStore {
+  //校验时间
+  static checkTimestampValid(timestamp) {
+    const currentDate = new Date();
+    const targetDate = new Date();
+    targetDate.setTime(timestamp);
+    if (currentDate.getMonth() !== targetDate.getMonth()) return false;
+    if (currentDate.getDate() !== targetDate.getDate()) return false;
+    if (currentDate.getHours() - targetDate.getHours() > 4) return false; //有效期4 个⼩ 小时
+    // if (currentDate.getMinutes() - targetDate.getMinutes() > 1)return false; return true;
+  }
+  //入口
+  fetchData(url) {
+    return new Promise((resolve, reject) => {
+      //获取本地数据 
+      this.fetchLocalData(url)
+        .then((wrapdata) => {
+          //检查有效期
+          if (wrapdata && DataStore.checkTimestampValid(wrapdata.timestamp)) {
+            resolve(wrapdata)
+          } else {
+            //获取⽹网络数据 
+            this.fetchNetData(url)
+              .then((data) => { //给数据打个时间戳
+                resolve(this._wrapData(data))
+              })
+              .catch((e) => {
+                reject(e)
+              })
+          }
+        })
+        .catch(error => {
+          this.fetchNetData(url)
+            .then(data => {
+              resolve(this._wrapData(data));
+            })
+            .catch(error => {
+              reject(error);
+            });
+        });
+    })
+  }
+  //存储数据
+  saveData(key, value, cb) {
+    if (!key || !value) return
+    AsyncStorage.setItem(key, JSON.stringify(this._wrapData(value)), cb)
+  }
+  //打时间戳——给离线数据，便于后期计算
+  _wrapData(data) {
+    return {
+      data: data,
+      timestamp: new Date().getTime()
+    }
+  }
+
+  //获取本地数据
+  fetchLocalData(key) {
+    return new Promise((resolve, reject) => {
+      AsyncStorage.getItem(key, (err, result) => {
+        if (!err) {
+          resolve(JSON.parse(result)) // getItem获取到的是string，我们需要将其反序列化 为object
+        } else {
+          reject(err)
+        }
+      })
+    })
+  }
+  //获取网络请求
+  fetchNetData(url) {
+    return new Promise((resolve, reject) => {
+      fetch(url).then((response) => {
+        return response.json()
+      }).then((responsData) => {
+        this.saveData(url, responsData)
+        resolve(responsData)
+      }).catch(e => {
+        reject(e)
+      })
+    })
+  }
+}
+```
+
+## 七、React Native部署
+
+
+
+## 八、Flutter认知与入门
