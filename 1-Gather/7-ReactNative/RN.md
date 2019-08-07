@@ -1325,8 +1325,10 @@ react-native link react-native-vector-icons
 >
 > ```
 > 
+> ```
+>
 > \- 具有以下属性的对象:
-> 
+>
 >   - `activeTintColor` -活动选项卡的标签和图标颜色。
 >   - `activeBackgroundColor` -活动选项卡的背景色。
 >   - `inactiveTintColor` -"非活动" 选项卡的标签和图标颜色。
@@ -1340,6 +1342,8 @@ react-native link react-native-vector-icons
 >   - `adaptive` - Should the tab icons and labels alignment change based on screen size? Defaults to `true` for iOS 11. If `false`, tab icons and labels align vertically all the time. When `true`, tab icons and labels align horizontally on tablet.
 >   - `safeAreaInset` - 为 `<SafeAreaView>` 组件重写 `forceInset` prop， 默认值：`{ bottom: 'always', top: 'never' }`； `top | bottom | left | right` 的可选值有： `'always' | 'never'`。
 >   - `keyboardHidesTabBar` - Defaults to `false`. If `true` hide the tab bar when keyboard opens.
+> ```
+> 
 > ```
 >
 > ```
@@ -1473,8 +1477,10 @@ export default createAppContainer(AppBottomNavigator)
 >
 > ```
 > 
+> ```
+>
 > \- 具有以下属性的对象:
-> 
+>
 >   - `activeTintColor` -活动选项卡的标签和图标颜色。
 >   - `inactiveTintColor` -"非活动" 选项卡的标签和图标颜色。
 >   - `showLabel` -是否显示选项卡的图标，默认值为 false。
@@ -1490,6 +1496,8 @@ export default createAppContainer(AppBottomNavigator)
 >   - `style` -选项卡栏的样式对象。
 >   - `allowFontScaling` -无论标签字体是否应缩放以尊重文字大小可访问性设置，默认值都是 true。
 >   - `renderIndicator` - Function which takes an object with the current route and returns a custom React Element to be used as a tab indicator.
+> ```
+> 
 > ```
 >
 > ```
@@ -2467,13 +2475,13 @@ react-native link react-native-update
   > // 请注意不要少了这句import
   > import cn.reactnative.modules.update.UpdateContext;
   > public class MainApplication extends Application implements ReactApplication {
-  >   private final ReactNativeHost mReactNativeHost = new ReactNativeHost(this) { 
-  >   //添加代码
-  >   @Override
-  >   protected String getJSBundleFile() {
-  >           return UpdateContext.getBundleUrl(MainApplication.this);
-  >       }
-  >   // ... 其它代码 }
+  >     private final ReactNativeHost mReactNativeHost = new ReactNativeHost(this) { 
+  >     //添加代码
+  >     @Override
+  >     protected String getJSBundleFile() {
+  >             return UpdateContext.getBundleUrl(MainApplication.this);
+  >         }
+  >     // ... 其它代码 }
   > }
   > ```
 
@@ -2483,8 +2491,8 @@ react-native link react-native-update
 
   ```basic
   $ pushy login
-  email: <输⼊入你的注册邮箱> 
-  password: <输⼊入你的密码>
+  email: <输入你的注册邮箱> 
+  password: <输入你的密码>
   ```
 
   这会在项目文件夹下创建一个 .update 文件，注意不要把这个文件上传到Git等CVS系统上。你可以 在 .gitignore 末尾增加一行 .update 来忽略这个文件。
@@ -2493,9 +2501,9 @@ react-native link react-native-update
 
   ```basic
   $ pushy createApp --platform ios
-  App Name: <输⼊入应⽤用名字>
+  App Name: <输入应用名字>
   $ pushy createApp --platform android 
-  App Name: <输⼊入应⽤用名字>
+  App Name: <输入应用名字>
   ```
 
   两次输入的名字可以相同，这没有关系。
@@ -2515,10 +2523,10 @@ react-native link react-native-update
   {
     "ios": {
     "appId": 1,
-    "appKey": "<⼀一串串随机字符串串>" },
+    "appKey": "<一串随机字符串>" },
         "android": {
             "appId": 2,
-    "appKey": "<⼀一串串随机字符串串>" }
+    "appKey": "<一串随机字符串>" }
   }
   ```
 
@@ -2896,21 +2904,7 @@ Would you like to bind packages to this version?(Y/N)
 
 不是特别的准，也存在少量⽤户回滚版本的行为。听说公司其他部门的团队做的app用的是codePush目前Pushy热更新服务完全免费，但限制每个账号不超过3个应用;每个应⽤不超过10个活跃的包和100个活跃的热更新版本;每个应用每个月不超过10000次下载。iOS和Android版本记做不同的应用
 
-## 八、Flutter认知与入门
 
-### 1.Flutter简介
-
-### 2.热门问答
-
-### 3.Flutter特点
-
-### 4.Flutter框架
-
-### 5.Flutter开发环境搭建
-
-### 6.Flutter创建应用
-
-### 7.Widget
 
 
 
