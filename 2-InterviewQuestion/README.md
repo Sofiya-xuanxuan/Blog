@@ -96,7 +96,18 @@
 
  - [什么是三元表达式 (Ternary expression)？“三元 (Ternary)” 表示什么意思](https://github.com/LuoShengMen/StudyNotes/issues/271)
 
+   三元表达式：
+
+   ```basic
+   test ? num1 : num2
+   ```
+
  - [从内存来看 null 和 undefined 本质的区别是什么？](https://github.com/LuoShengMen/StudyNotes/issues/66)
+
+   <details>
+     <summary><mark><font color='darkred'><a href='JS面试题/15.md'>点击查看详细内容</a></font></mark></summary>
+   <pre></pre>
+   </details>
 
  - [为什么普通 for 循环的性能远远高于 forEach 的性能，请解释其中的原因](https://github.com/LuoShengMen/StudyNotes/issues/441)
 
