@@ -111,6 +111,11 @@
 
  - [为什么普通 for 循环的性能远远高于 forEach 的性能，请解释其中的原因](https://github.com/LuoShengMen/StudyNotes/issues/441)
 
+   <details>
+     <summary><mark><font color='darkred'><a href='JS面试题/16.md'>点击查看详细内容</a></font></mark></summary>
+   <pre></pre>
+   </details>
+
  - [箭头函数与普通函数（function）的区别是什么？构造函数（function）可以使用 new 生成实例，那么箭头函数可以吗？为什么](https://github.com/LuoShengMen/StudyNotes/issues/247)
 
  - [箭头函数与普通函数的区别？](https://github.com/LuoShengMen/StudyNotes/issues/133)
