@@ -1,6 +1,6 @@
 # 微信小程序
 
-## 一、微信小程序实战
+## 一、微信小程序基础
 
 ### 1. 小程序开发模式 VS 传统web开发模式
 
@@ -57,17 +57,244 @@
 
 ### 8. 开发自己的第一个小程序
 
-## 二、小程序生态
+## 二、小程序云开发
+
+### 1.云函数引入
+
+```basic
+# cloundfunctions/kkb/index.js
+// 云函数模板
+// 部署：在 cloud-functions/login 文件夹右击选择 “上传并部署”
+
+const cloud = require('wx-server-sdk')
+
+// 初始化 cloud
+cloud.init()
+
+/**
+ * 这个示例将经自动鉴权过的小程序用户 openid 返回给小程序端
+ * 
+ * event 参数包含小程序端调用传入的 data
+ * 
+ */
+exports.main = (event, context) => {
+  console.log(event)
+  console.log(context)
+
+  // 可执行其他自定义逻辑
+  // console.log 的内容可以在云开发云函数调用日志查看
+
+  // 获取 WX Context (微信调用上下文)，包括 OPENID、APPID、及 UNIONID（需满足 UNIONID 获取条件）
+  const wxContext = cloud.getWXContext()
+
+  return {
+    event,
+    openid: wxContext.OPENID,
+    appid: wxContext.APPID,
+    unionid: wxContext.UNIONID,
+  }
+}
+```
+
+### 2.获取豆瓣图书信息
+
+```basic
+# cloundfunctions/kkb/index.js
+// 云函数入口文件
+const cloud = require('wx-server-sdk')
+const axios = require('axios')
+const doubanbook = require('doubanbook')
+const cheerio = require('cheerio')
+cloud.init()
+async function searchDouban(isbn) {
+  const url = 'https://book.douban.com/subject_search?search_text=' + isbn
+  let res = await axios.get(url)
+  //1.将数据拿出来
+  let reg = /window\.__DATA__ = "(.*)"/
+
+  if (reg.test(res.data)) {
+    let searchData = doubanbook(RegExp.$1)[0]
+    return searchData
+  }
+}
+searchDouban('9787559627230')
+// 云函数入口函数
+exports.main = async (event, context) => {
+  const wxContext = cloud.getWXContext()
+  let isbn = event.isbn
+  let info = await searchDouban(isbn)
+  const detailPage = await axios.get(info.url)
+  let $ = cheerio.load(detailPage.data)
+  let summary = $('#link-report .intro').text()
+  let authorInfo = $('#info').text().split('\n').map(v => v.trim()).filter(v => v)
+  let author = authorInfo[1]
+  return {
+    // info,
+    create_time: new Date().getTime(),
+    author,
+    summary,
+    image: info.cover_url,
+    rate: info.rating.value,
+    alt: info.url,
+    title: info.title,
+    // event,
+    openid: wxContext.OPENID,
+    // appid: wxContext.APPID,
+    // unionid: wxContext.UNIONID,
+  }
+}
+```
+
+```basic
+# miniprogram/me/index.js
+callLogin() {
+    wx.scanCode({
+      success: res => {
+        this.addBook(res.result)
+      },
+    })
+}
+
+addBook(isbn) {
+    console.log(isbn)
+    wx.cloud.callFunction({
+      name: 'kkb',
+      data: {
+        isbn
+      }
+    }).then(res => {
+      
+      wx.showModal({
+        title: '搜索成功',
+        content: `图书《${info.title}》 评分是${info.rating.value}`
+      })
+    })
+},
+```
+
+### 3.信息入库
+
+```basic
+# miniprogram/me/index.js
+callLogin() {
+    wx.scanCode({
+      success: res => {
+        this.addBook(res.result)
+      },
+    })
+}
+addBook(isbn) {
+    console.log(isbn)
+    wx.cloud.callFunction({
+      name: 'kkb',
+      data: {
+        isbn
+      }
+    }).then(res => {
+      let info = res.result
+      info.count = 1
+      console.log(info)
+      //信息入库
+      collection.add({
+        data: info,
+        success: res => {
+          console.log(res);
+          if (res._id) {
+            wx.showToast({
+              title: '添加成功',
+              icon: 'success',
+              duration: 2000
+            })
+          }
+        }
+      })
+    })
+},
+```
+
+### 4.查询数据库/读取数据库
+
+```basic
+const db = wx.cloud.database()
+const collection = db.collection('kkb')
+Page({
+  data: {
+    books: [],
+    page: 0
+  },
+  onLoad() {
+    this.getList(true) //首次加载
+  },
+  getList(isInit) {
+    wx.showLoading()
+    let SIZE = 2
+    collection.limit(SIZE).get({
+      success: res => {
+        if (isInit) {
+          this.setData({
+            books: res.data
+          })
+        } else {
+          this.setData({
+            books: this.data.books.concat(res.data)
+          })
+        }
+        wx.hideLoading()
+
+      }
+    })
+  },
+  //触底
+  onReachBottom() {
+    this.setData({
+      page: this.data.page + 1
+    })
+    this.getList()
+    console.log('触底')
+  },
+  //下拉刷新
+  onPullDownRefresh() {
+    this.getList(true) //首次加载
+  }
+}          
+```
+
+### 5.上传文件
+
+```basic
+callLogin() {
+    var _this = this
+    wx.chooseImage({
+      count: 1,
+      success: function (res) {
+        let filePath = res.tempFilePaths[0]
+        let cloudPath = 'kkb-quanzhan-10-' + (new Date().getTime())
+        console.log(filePath)
+        wx.cloud.uploadFile({
+          filePath,
+          cloudPath
+        }).then(res => {
+          _this.setData({
+            imgurl: res.fileID
+          })
+          console.log(_this.data.imgurl)
+        })
+      },
+    })
+}
+```
+
+## 三、小程序生态
 
 1. 小程序适用场景
 2. 快应用、百度小程序、支付宝小程序
 3. 一套代码编译各大厂商小程序：Taro、Mpvue
 
-## 三、小程序状态管理
+## 四、小程序状态管理
 
 1. 适用mbox管理小程序的数据流
 
-## 四、实战项目
+## 五、实战项目
 
 1. 小程序实战项目
 
