@@ -220,7 +220,7 @@ const collection = db.collection('kkb')
 Page({
   data: {
     books: [],
-    page: 0
+    page: 1
   },
   onLoad() {
     this.getList(true) //首次加载
@@ -228,7 +228,7 @@ Page({
   getList(isInit) {
     wx.showLoading()
     let SIZE = 2
-    collection.limit(SIZE).get({
+    collection.skip(this.data.page * SIZE).limit(SIZE).get({
       success: res => {
         if (isInit) {
           this.setData({
