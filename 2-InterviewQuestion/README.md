@@ -118,9 +118,24 @@
 
  - [箭头函数与普通函数（function）的区别是什么？构造函数（function）可以使用 new 生成实例，那么箭头函数可以吗？为什么](https://github.com/LuoShengMen/StudyNotes/issues/247)
 
+   <details>
+     <summary><mark><font color='darkred'><a href='JS面试题/17.md'>点击查看详细内容</a></font></mark></summary>
+   <pre></pre>
+   </details>
+
  - [箭头函数与普通函数的区别？](https://github.com/LuoShengMen/StudyNotes/issues/133)
 
+   <details>
+     <summary><mark><font color='darkred'><a href='JS面试题/17.md'>点击查看详细内容</a></font></mark></summary>
+   <pre></pre>
+   </details>
+
  - [JavaScript 中有哪些不同的函数调用模式](https://github.com/LuoShengMen/StudyNotes/issues/539)
+
+   <details>
+     <summary><mark><font color='darkred'><a href='JS面试题/18.md'>点击查看详细内容</a></font></mark></summary>
+   <pre></pre>
+   </details>
 
  - [解释 function foo() {} 与 var foo = function() {} 用法的区别](https://github.com/LuoShengMen/StudyNotes/issues/268)
 
