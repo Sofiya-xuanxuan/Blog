@@ -3715,7 +3715,7 @@ props:['pos'],
 
 </font>
 
-```
+```basic
 //utils/history.js
 const History={
     _history:[],
