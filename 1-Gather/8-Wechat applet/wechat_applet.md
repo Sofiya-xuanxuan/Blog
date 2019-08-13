@@ -626,6 +626,16 @@ callLogin() {
     }
   ```
 
+### 7.总结
+
+![总结](/Users/qiaoxu/Desktop/myBlog/pic/wechat_summary.png)
+
+## 四、小程序实战
+
+### 1.支付
+
+### 2.登录
+
 # Node.js微信公众号开发
 
 ## 一、微信开发实战

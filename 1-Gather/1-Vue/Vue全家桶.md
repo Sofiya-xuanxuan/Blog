@@ -4,213 +4,246 @@
 ## 0. 准备
 1.安装vue-cli
 
-    1. npm install -g @vue/cli  npm i -g @vue/cli version 3.x
-    2. npm install -g @vue/cli-service-global
+```basic
+1. npm install -g @vue/cli  npm i -g @vue/cli version 3.x
+2. npm install -g @vue/cli-service-global
+```
 2.新建项目
 
-    vue create vue-buy
+```basic
+vue create vue-buy
+```
 3.选择配置
 
-    1. Babel代码转义
-    2. Linter代码风格
-    3. 测试
+```basic
+1. Babel代码转义
+2. Linter代码风格
+3. 测试
+```
 4.启服务
 
-    npm run serve
+```basic
+npm run serve
+```
 5.项目结构
 
 6.一些概念解析
 
 **框架和库**
 
-    库，是一封装好的特定方法的集合，提供给开发者使用，库没有控制权，控制权在使用者手中，代表：jq、underscore、util
-        
-    框架，框架顾名思义就是一套架构，会基于自身的特点向用户提供一套相当完整的解决方案，而且控制权的在框架本身，使用者要找框架所规定的某种规范进行开发，代表：backbone、angular、vue
+```basic
+库，是一封装好的特定方法的集合，提供给开发者使用，库没有控制权，控制权在使用者手中，代表：jq、underscore、util
+    
+框架，框架顾名思义就是一套架构，会基于自身的特点向用户提供一套相当完整的解决方案，而且控制权的在框架本身，使用者要找框架所规定的某种规范进行开发，代表：backbone、angular、vue
+```
 
 **理解渐进式**
 
-    所谓渐进式，可以一步一步，有阶段性的使用vue，不是必在一开始把所有的东西都用上。
-    1.声明式的渲染（Declarative Rendering）
-    2.组件系统（component System）
-    3.客户端路由器（vue-router）
-    4.大规模的状态管理（vuex）
-    5.构建工具（vue-cli）
+```basic
+所谓渐进式，可以一步一步，有阶段性的使用vue，不是必在一开始把所有的东西都用上。
+1.声明式的渲染（Declarative Rendering）
+2.组件系统（component System）
+3.客户端路由器（vue-router）
+4.大规模的状态管理（vuex）
+5.构建工具（vue-cli）
+```
 
 **vue的两个核心点**
 
-    1.响应式的数据绑定
-        当数据发生变化->视图自动更新
-        忘记操作DOM这回事，而是专注于操作数据
-    2.可组合的视图组件
-        把视图按照功能，切分若干基本单元
-        组件可以一级一级组合成整个应用，形成了倒置的组件树
-        使用组件的好处：可维护、可重用、可测试
+```basic
+1.响应式的数据绑定
+    当数据发生变化->视图自动更新
+    忘记操作DOM这回事，而是专注于操作数据
+2.可组合的视图组件
+    把视图按照功能，切分若干基本单元
+    组件可以一级一级组合成整个应用，形成了倒置的组件树
+    使用组件的好处：可维护、可重用、可测试
+```
 
 **MVVM模式**
 
-    M:Model数据
-    V:view视图
-    VM:view-model视图模型
+```basic
+M:Model数据
+V:view视图
+VM:view-model视图模型
+```
 
 **声明式渲染**
 
-    声明式：只需要声明在哪里where 做什么what，而无需关心如何实现how
-    命令式：需要以具体代码表达在哪里where做什么what，如何实现how
-    声明式渲染理解：
-        1.DOM状态只是数据状态的一个映射
-        2.所有逻辑尽可能在状态的层面去进行
-        3.当状态改变了，view会被框架自动更新到合理的状态
-        
-    var arr = [1,2,3,4];
-    // 把数组中每一个属性X2，存在数组中
+```basic
+声明式：只需要声明在哪里where 做什么what，而无需关心如何实现how
+命令式：需要以具体代码表达在哪里where做什么what，如何实现how
+声明式渲染理解：
+    1.DOM状态只是数据状态的一个映射
+    2.所有逻辑尽可能在状态的层面去进行
+    3.当状态改变了，view会被框架自动更新到合理的状态
     
-    // 命令式
-    var newArr = [];
-    for( var i = 0; i < arr.length; i++ ){
-    	newArr.push(arr[i]*2)
-    }
-    console.log(newArr);
-    
-    // 声明式
-    let newArr2 = arr.map(item => item * 2);
-    console.log(newArr2);
+var arr = [1,2,3,4];
+// 把数组中每一个属性X2，存在数组中
+
+// 命令式
+var newArr = [];
+for( var i = 0; i < arr.length; i++ ){
+	newArr.push(arr[i]*2)
+}
+console.log(newArr);
+
+// 声明式
+let newArr2 = arr.map(item => item * 2);
+console.log(newArr2);
+```
 
 **响应式原理——只有计划好的才能做响应**
 
-    把一个普通的JavaScript对象传给Vue实例的data选项
-        
-    Vue将遍历此对象所有的属性，并使用Object.defineProperty把这些属性全部转为getter/setter
-        
-    vue内部会对数据进行劫持操作，进而追踪依赖，在属性被访问和修改时通知变化
-        
-    data对象中的数据都会转换为getter/setter，所以当数据发生变化时，自动更新在页面
-        
-    如果没有定义某个属性，那么就不能检测属性的变化（只有计划好的才能做响应）
+```basic
+把一个普通的JavaScript对象传给Vue实例的data选项
+    
+Vue将遍历此对象所有的属性，并使用Object.defineProperty把这些属性全部转为getter/setter
+    
+vue内部会对数据进行劫持操作，进而追踪依赖，在属性被访问和修改时通知变化
+    
+data对象中的数据都会转换为getter/setter，所以当数据发生变化时，自动更新在页面
+    
+如果没有定义某个属性，那么就不能检测属性的变化（只有计划好的才能做响应）
+```
 
 **对象响应式**
 
-    data(){
-        miaov:{
-            abc:123
-        }
+```basic
+data(){
+    miaov:{
+        abc:123
     }
-    
-    1.Vue.set（target,key,value）——静态方法
-    设置对象的属性。如果对象是响应式的，确保属性被创建后也是响应式的，同时触发视图更新。这个方法主要用于避开Vue不能检测属性被添加的限制
-    
-    静态方法是挂载在函数上的方法，调用的时候通过函数调用
-    
-    2.vm.$set(target,key,value)——实例上的方法$set
-    实例上的方法，
-    原型上的方法，需要通过实例调用
-    
-    3.改写属性的值，重新赋值
-    vm.miaov={ketang:'新的'}
-    
-    3.替换对象
-    //Object.assign返回的是第一个参数
-    vm.miaov=Object.assign(vm.miaov,{ketang:'新的'})————相当于
-    vm.miaov.ketang='新的'//这样并不会更新视图
-    
-    //重新赋值是可以的——给一个空对象重新赋值
-    vm.miaov=Object.assign({}，vm.miaov,{ketang:'新的'})
-    
-    注意：对象不能是Vue实例，或者Vue实例的根数据对象
+}
+
+1.Vue.set（target,key,value）——静态方法
+设置对象的属性。如果对象是响应式的，确保属性被创建后也是响应式的，同时触发视图更新。这个方法主要用于避开Vue不能检测属性被添加的限制
+
+静态方法是挂载在函数上的方法，调用的时候通过函数调用
+
+2.vm.$set(target,key,value)——实例上的方法$set
+实例上的方法，
+原型上的方法，需要通过实例调用
+
+3.改写属性的值，重新赋值
+vm.miaov={ketang:'新的'}
+
+3.替换对象
+//Object.assign返回的是第一个参数
+vm.miaov=Object.assign(vm.miaov,{ketang:'新的'})————相当于
+vm.miaov.ketang='新的'//这样并不会更新视图
+
+//重新赋值是可以的——给一个空对象重新赋值
+vm.miaov=Object.assign({}，vm.miaov,{ketang:'新的'})
+
+注意：对象不能是Vue实例，或者Vue实例的根数据对象
+```
 
 **数组响应式**
 
-    data(){
-        list:[1,2,3]
-    }
-    1.数组的变异方法：提供了观察数组的变异方法，使用这些方法将会触发视图更新，push()、pop()、shift()、unshift()、splice()、sort()、reverse()——会改变原数组
-    
-    map()、filter()不会改变原数组
-    //如果非要改变原数组，那么直接给原数组重新赋值
-    vm.list=vm.list.map(item=>item*3)
-    
-    2.不能触发视图更新：利用索引直接设置一个项时，修改数组的长度时
-    vm.list[0]='miaov'//监控不到变化
-    
-    vm.list.splice(0,1,'miaov')//这种方式可以——删除第一项，并替换成'miaov'
-    
-    vm.list.length=1//这种方式不可以改变数组长度的
+```basic
+data(){
+    list:[1,2,3]
+}
+1.数组的变异方法：提供了观察数组的变异方法，使用这些方法将会触发视图更新，push()、pop()、shift()、unshift()、splice()、sort()、reverse()——会改变原数组
+
+map()、filter()不会改变原数组
+//如果非要改变原数组，那么直接给原数组重新赋值
+vm.list=vm.list.map(item=>item*3)
+
+2.不能触发视图更新：利用索引直接设置一个项时，修改数组的长度时
+vm.list[0]='miaov'//监控不到变化
+
+vm.list.splice(0,1,'miaov')//这种方式可以——删除第一项，并替换成'miaov'
+
+vm.list.length=1//这种方式不可以改变数组长度的
+```
 **事件传参**
 
-    当给事件的方法传参后，需要手动使用$event把时间对象传给方法
-    @click='test($event,123)'  
+```basic
+当给事件的方法传参后，需要手动使用$event把时间对象传给方法
+@click='test($event,123)'  
+```
 
 **删除对象的属性**
     
-    this.$delete(this.choose,key)——实例上的方法
+```basic
+this.$delete(this.choose,key)——实例上的方法
+```
 
 **计算属性**
 
-    计算属性computed中，它不是方法，属性的值是函数的返回值
-    
-    把对处理数据的逻辑抽离在计算属性中，使得模板更加轻量易读
-    
-    计算属性的值会被缓存，根据依赖的数据变化而重新计算
-    
-    计算属性的使用：
-       取值：触发get函数，默认设置的函数
-       赋值：触发set函数
-    定义计算属性：
-        //计算属性挂在实例上
-        //计算属性对应的函数this都指向实例
-        //计算属性会把结果缓存，可在模板中重复使用
-        //计算属性中依赖了data中的数据，data中的数据发生变化，计算属性会重新计算
-        //定义了计算属性，没有使用，那不会执行这个函数
-       computed:{
-           
-       }
-    对计算属性操作：
-        只给计算属性一个函数，默认这个函数是在取值的时候触发的
-        取值：触发get(){}函数
-        设置值：触发set(newValue){}函数
-        如果要对计算属性设置：取值与设置值，那这个计算属性不应该是函数了，应该是一个对象
+```basic
+计算属性computed中，它不是方法，属性的值是函数的返回值
+
+把对处理数据的逻辑抽离在计算属性中，使得模板更加轻量易读
+
+计算属性的值会被缓存，根据依赖的数据变化而重新计算
+
+计算属性的使用：
+   取值：触发get函数，默认设置的函数
+   赋值：触发set函数
+定义计算属性：
+    //计算属性挂在实例上
+    //计算属性对应的函数this都指向实例
+    //计算属性会把结果缓存，可在模板中重复使用
+    //计算属性中依赖了data中的数据，data中的数据发生变化，计算属性会重新计算
+    //定义了计算属性，没有使用，那不会执行这个函数
+   computed:{
+       
+   }
+对计算属性操作：
+    只给计算属性一个函数，默认这个函数是在取值的时候触发的
+    取值：触发get(){}函数
+    设置值：触发set(newValue){}函数
+    如果要对计算属性设置：取值与设置值，那这个计算属性不应该是函数了，应该是一个对象
+```
 **Object.defineProperty：数据劫持（vue核心）**
     
-    -作用
-        直接在一个对象上定义一个新属性，或者修改一个对象的现有属性
-        
-    -语法
-        Object.defineProperty(obj，prop，descriptor)
-        
-    -参数
-        obj要在其上定义属性的对象
-        prop要定义或修改的属性名称
-        descriptor将被定义或修改的属性描述符
-        数据描述：（新添加的都默认为false）
-            configurable:是否可以删除目标属性，默认为false
-            enumerable:此属性是否可以被枚举，默认为false
-            value:改属性对应的值，默认为undefined
-            writable:属性的值是否可以被重写，默认为false
-        访问器描述：
-            getter：是一种忽的属性值的方法
-            setter：是一种设置属性值的方法
-            可以写configurable、enumerable
-            不能写value、writable
-        删除对象属性：
-            delete data.title
-        把属性转成访问器的方式：
-            getter：获取属性触发的
-            setter：设置属性触发的
+```basic
+-作用
+    直接在一个对象上定义一个新属性，或者修改一个对象的现有属性
+    
+-语法
+    Object.defineProperty(obj，prop，descriptor)
+    
+-参数
+    obj要在其上定义属性的对象
+    prop要定义或修改的属性名称
+    descriptor将被定义或修改的属性描述符
+    数据描述：（新添加的都默认为false）
+        configurable:是否可以删除目标属性，默认为false
+        enumerable:此属性是否可以被枚举，默认为false
+        value:改属性对应的值，默认为undefined
+        writable:属性的值是否可以被重写，默认为false
+    访问器描述：
+        getter：是一种忽的属性值的方法
+        setter：是一种设置属性值的方法
+        可以写configurable、enumerable
+        不能写value、writable
+    删除对象属性：
+        delete data.title
+    把属性转成访问器的方式：
+        getter：获取属性触发的
+        setter：设置属性触发的
+```
 
 
 ​    
 ## 1. VueJs基础语法
 **v-text**
-```
+```basic
 更新元素的textContent，可代替{{}}，直接用{{}}的话，网络慢的话，刚开始会出现{{}}，对用户不友好，所以可以使用v-text
 ```
 **v-html**
-```
+```basic
 更新元素的innerHTML，识别标签<div>hello</div>
 不使用则指令，插入的html结果不作为模板编译，作为文本显示
 不要插入不安全的html结构，有可能受到xss攻击
 ```
 **v-cloak**
-```
+
+```basic
 隐藏未编译的Mustache（小胡子语法）标签直到实例准备完毕
     <style>
     	[v-cloak]{
@@ -222,7 +255,7 @@
     </div>
 ```
 **v-once**
-```
+```basic
 只渲染一次，随后数据改变将不再重新渲染，视为静态内容，用于优化更新性能
     <div id="app" v-cloak>
 		<p v-once>{{message}}</p>
@@ -230,7 +263,7 @@
 ```
 **v-if**
 **v-for**
-```
+```basic
 循环对象：v-for="value,key,index in obj"
 index是根据object.keys()——拿到每个对象的key值，放在数组中的顺序
 
@@ -267,7 +300,7 @@ computed: {
 </ul>
 ```
 **v-on**
-```
+```basic
 -简写为@
 事件处理函数写在methods中
 在模板中不传参，只写上函数名字，函数第一个参数是时间处理函数（$event）
@@ -299,7 +332,7 @@ computed: {
 
 ```
 **v-modal**
-```
+```basic
 数据双向绑定
 ```
 ## 2. Vue-cli3脚手架
@@ -323,7 +356,7 @@ computed与watch的区别
 computed：
 
 传参总线模式
-```
+```basic
 Vue.prototype.$bus=new Vue();
 this.$bus.$emit(名称，数据);
 this.$bus.$on(名称，函数)
@@ -338,12 +371,12 @@ this.$root.$on(数据，函数)
 
 数组实例的 find() 和 findIndex()
 数组实例的find方法，用于找出第一个符合条件的数组成员。它的参数是一个回调函数，所有数组成员依次执行该回调函数，直到找出第一个返回值为true的成员，然后返回该成员。如果没有符合条件的成员，则返回undefined。
-```
+```basic
 [1, 4, -5, 10].find((n) => n < 0)
 // -5
 ```
 上面代码找出数组中第一个小于 0 的成员。
-```
+```basic
 [1, 5, 10, 15].find(function(value, index, arr) {
   return value > 9;
 }) // 10
@@ -351,7 +384,7 @@ this.$root.$on(数据，函数)
 上面代码中，find方法的回调函数可以接受三个参数，依次为当前的值、当前的位置和原数组。
 
 数组实例的findIndex方法的用法与find方法非常类似，返回第一个符合条件的数组成员的位置，如果所有成员都不符合条件，则返回-1。
-```
+```basic
 [1, 5, 10, 15].findIndex(function(value, index, arr) {
   return value > 9;
 }) // 2
@@ -363,7 +396,7 @@ this.cart.filter(c => c.active),返回符合条件的
 
 ## 5. 实现一个购物车项目
 - **App.vue**
-```
+```basic
 <template>
     <ul>
       <li v-for="(good,index) in goods" :key="good.id">
@@ -407,7 +440,7 @@ export default {
 ```
 - **cart组件**
 
-```
+```basic
 <template>
     <div id="cart">
         <h1>{{name}}</h1>
@@ -531,7 +564,7 @@ export default {
 
 用到watch：
 
-```
+```basic
 data() {
     return {
         cart: JSON.parse(localStorage.getItem("cart")) || []
@@ -549,17 +582,19 @@ watch: {
 **注意：**
 localStorage.setItem() 不会自动将Json对象转成字符串形式
 
-    1. 存储前先用JSON.stringify()方法将json对象转换成字符串形式
-    2. JSON.stringify() 方法可以将任意的 JavaScript 值序列化成 JSON 字符串
-    ```
-    var obj = {"a": 1,"b": 2};
-    obj = JSON.stringify(obj); //转化为JSON字符串
-    localStorage.setItem("temp2", obj);//返回{"a":1,"b":2}
-    ```
-    3. 后续要操作该JSON对象，要将之前存储的JSON字符串先转成JSON对象再进行操作
-    ```
-    obj=JSON.parse(localStorage.getItem("temp2"));
-    ```
+~~~basic
+1. 存储前先用JSON.stringify()方法将json对象转换成字符串形式
+2. JSON.stringify() 方法可以将任意的 JavaScript 值序列化成 JSON 字符串
+```
+var obj = {"a": 1,"b": 2};
+obj = JSON.stringify(obj); //转化为JSON字符串
+localStorage.setItem("temp2", obj);//返回{"a":1,"b":2}
+```
+3. 后续要操作该JSON对象，要将之前存储的JSON字符串先转成JSON对象再进行操作
+```
+obj=JSON.parse(localStorage.getItem("temp2"));
+```
+~~~
 
 ## 6. 深入了解Vue的组件化机制
 #### 1)学习vuejs组件化
@@ -583,7 +618,7 @@ localStorage.setItem() 不会自动将Json对象转成字符串形式
 #### 3)组件化设计思想
 **1. 组件注册**
 - 全局注册
-    ```
+    ```basic
     Vue.component('名称',{
         data(){
             return {
@@ -594,7 +629,7 @@ localStorage.setItem() 不会自动将Json对象转成字符串形式
     })
     ```
 - 局部注册（推荐，依赖可追溯）
-    ```
+    ```basic
     new Vue({
         el:'#app',
         components:{
@@ -607,7 +642,7 @@ localStorage.setItem() 不会自动将Json对象转成字符串形式
 **3. props传值**
 - 父子组件传值
 
-```
+```basic
 props
 props:{
     title:{
@@ -619,7 +654,7 @@ props:{
 
 **4. 组件事件**
 - 子组件给父组件传参
-```
+```basic
 //子组件
 this.$emit(事件名称，{msg:'hello'})
 //父组件
@@ -631,14 +666,14 @@ this.$on(事件名称，function(data) {
 **5. 实现组件的双向绑定**
 
 **v-model仅仅是一个语法糖**
-```
+```basic
 <input v-model="something"></input>
 
 //相当于
 <input v-bind:value="something" v-on:input="something=$event"></input>
 ```
 
-```
+```basic
 //input组件：要绑定value，要响应input事件
 <template>
     <!--实现数据双向绑定-->
@@ -689,7 +724,7 @@ this.$on(事件名称，function(data) {
 - 插槽用来扩展组件的内容
 - 容器性的组件
 - 匿名插槽/具名插槽
-```
+```basic
 //组件内
 <template>
     <div id="slot">
@@ -728,7 +763,7 @@ this.$on(事件名称，function(data) {
 **2.provide & inject**
 
 业务中不常用到的api，主要用于高阶组件和组件库的使用，用来和所有子孙元素提供数据，类似react中，假设A.vue和B.vue，B是A的子组件
-```
+```basic
 //A.vue
 export default{
     provide:{
@@ -750,7 +785,7 @@ provide与inject绑定并不是响应式的，这是刻意为之的，然而，�
 
 **3.Form组件的实现——第三方组件库element-ui的实现**
 - 设计好组件后，最终的使用
-```
+```basic
 <template>
     <div id="formName">
         <!--element组件-->
@@ -847,7 +882,7 @@ provide与inject绑定并不是响应式的，这是刻意为之的，然而，�
 </style>
 ```
 - form文件
-```
+```basic
 <template>
     <form action="">
         <slot></slot>
@@ -905,7 +940,7 @@ provide与inject绑定并不是响应式的，这是刻意为之的，然而，�
 </style>
 ```
 - formitem组件
-```
+```basic
 <template>
     <div>
         <!--接收label值-->
@@ -982,7 +1017,7 @@ provide与inject绑定并不是响应式的，这是刻意为之的，然而，�
 </style>
 ```
 - input组件(规则校验用的是async-validator（element也是用的这个）)
-```
+```basic
 <template>
     <!--实现数据双向绑定-->
     <div id="inputName">
@@ -1034,6 +1069,7 @@ provide与inject绑定并不是响应式的，这是刻意为之的，然而，�
 ```
 #### 4)思考
 **1.不同事件触发方式，怎么做校验**
+
 - change
 - input
 - blur
@@ -1043,7 +1079,7 @@ provide与inject绑定并不是响应式的，这是刻意为之的，然而，�
 
 input标签的各种事件
 
-```
+```basic
 最近在写一个手机端提交表单的项目，里面用了不少input标签，因为项目不太忙，所以，想做的完美点，但是遇到了一些问题，比如：页面中的必填项如果有至少一项为空，提交按钮就是不能提交的状态，所以需要对所有的input内容进行监听，刚开始我用了jquery的keyup事件解决问题，但是后来测试出一个bug，如果用户选择粘贴复制的话，keyup事件不能触发，也就不能通过判断input内容来改变提交按钮的状态。下面就这种问题做下总结，希望对自己和他人以后能有点帮助。
 1.onfocus 当input 获取到焦点时触发
 2.onblur 当input失去焦点时触发，注意：这个事件触发的前提是已经获取了焦点再失去焦点的时候会触发相应的js
@@ -1055,7 +1091,7 @@ input标签的各种事件
 8.oninput 当input的value值发生变化时就会触发，不用等到失去焦点（与onchange的区别）
 以上事件可以直接放到input的属性里，例如：<input type="text" onfocus="a();" onblur="b()" onchange="c();" onkeydown="d();" />，也可以通过js给input dom元素添加相应的事件，如：document.getElementByTagName('input').onfocus = function();
 ```
-```
+```basic
 //input组件中
 <input :type="type" :value="value" @input="onInput" @blur="onBlur" @change="onChange">
 methods: {
@@ -1126,7 +1162,7 @@ element-ui中：github上src/mixins/emitter.js中
 
 自己扩展dispatch指定事件向父元素传播
 - dispatch方法
-```
+```basic
 //util.js
 function broadcast(componentName, eventName, params) {
     this.$children.forEach(child => {
@@ -1168,7 +1204,7 @@ export default {
 - 页面中使用
     1. disaptch
     2. input实现blur
-```
+```basic
 <template>
     <!--实现数据双向绑定-->
     <div id="inputName">
@@ -1224,7 +1260,7 @@ methods:{
 npm i axios -S：表示写入到packjson文件中
 ## 8. 本地mock数据
 vue.config.js
-```
+```basic
 module.exports={
     configureWebpack:{
         devServer:{
@@ -1246,7 +1282,7 @@ module.exports={
 ```
 ## 9. ES7处理异步中级方案 async+await
 ### async  await
-```
+```basic
 async created(){
     try {
         const res=await axios.get('api/goods');
@@ -1297,24 +1333,28 @@ v-if
 
 是Vue.js官方路由管理器。它和Vue.js的核心深度集成，让构建单页面应用 功能有：
 
-    1. 嵌套路由/视图表
-    2. 模块化的、基于组件的路由配置
-    3. 路由参数
-    4. 基于vue.js过渡系统的视图过渡效果
-    5. 细粒度的导航控制
-    6. 带有自动激活的CSS class的链接
-    7. HTML5历史模式或hash模式
+```basic
+1. 嵌套路由/视图表
+2. 模块化的、基于组件的路由配置
+3. 路由参数
+4. 基于vue.js过渡系统的视图过渡效果
+5. 细粒度的导航控制
+6. 带有自动激活的CSS class的链接
+7. HTML5历史模式或hash模式
+```
 - **vue Router安装**
 
 
-    1. 新建项目vue create vue-router-vuex
-    2. 安装vue-router vue add router/npm install vue-router --save
-    3. npm run serve
+```basic
+1. 新建项目vue create vue-router-vuex
+2. 安装vue-router vue add router/npm install vue-router --save
+3. npm run serve
+```
 
 - **router挂载**
 
 安装完成后，需要将router挂载上去
-```
+```basic
 import Vue from 'vue';
 import axios from 'axios';
 import App from './App.vue';
@@ -1337,7 +1377,7 @@ vue-router有两种模式，<font color="red">hash模式和history模式</font>
 - **hash模式**
 
 hash模式的工作原理是hashchange事件，可以在window监听hash的变化。我们在url后面随便添加一个#xx触发这个事件。
-```
+```basic
 window.onhashchange = function(event){
     console.log(event.oldURL, event.newURL);
     let hash = location.hash.slice(1);
@@ -1356,7 +1396,7 @@ history api可以分为两大部分，切换和修改，参考MDN
 1. 切换历史状态
 
 包括back,forward,go三个方法，对应浏览器的前进，后退，跳转操作，有同学说了，(谷歌)浏览器只有前进和后退，没有跳转，嗯，在前进后退上长按鼠标，会出来所有当前窗口的历史记录，从而可以跳转(也许叫跳更合适)：
-```
+```basic
 history.go(-2);//后退两次
 history.go(2);//前进两次
 history.back(); //后退
@@ -1365,7 +1405,7 @@ hsitory.forward(); //前进
 2. 修改历史状态
 
 包括了pushState,replaceState两个方法,这两个方法接收三个参数:stateObj,title,url
-```
+```basic
 history.pushState({color:'red'}, 'red', 'red'})
  
 window.onpopstate = function(event){
@@ -1391,7 +1431,7 @@ history.forward();
 
 webpack中配置publicPath来解决
 
-```
+```basic
 //router.js
 import Vue from 'vue'
 import Router from 'vue-router'
@@ -1430,12 +1470,12 @@ module.exports={
 
 **<font color="red">引入路径：@是别名的方式，相当于src的</font>**
 - 导航链接
-```
+```basic
 <router-link to="/">Home</router-link> |
 <router-link to="/about">About</router-link>
 ```
 - 路由视图
-```
+```basic
 <router-view/>
 ```
 - 路由配置
@@ -1451,7 +1491,7 @@ module.exports={
 **子路由配置**
 
 要注意，子路由中以 / 开头的嵌套路径会被当作根路径。 这让你充分的使用嵌套组件而无须设置嵌套的路径。
-```
+```basic
 const routerMap = new Router({
     //模式：默认有2中模式：history——用户友好，搜索引擎友好
     //hash模式——前端路由，#之后的
@@ -1497,7 +1537,7 @@ const routerMap = new Router({
 })
 ```
 **<router-link> 映射路由**
-```
+```basic
 //router.js
 {path:'/detail/:id',component:Detail,props:true}//:id参数占位符——为的就是刷新的时候不丢参  设置props:true，为了让组件获取参数
 
@@ -1513,14 +1553,14 @@ props:['id']
 **编程式导航**
 
 想要导航到不同的 URL，则使用 router.push 方法。这个方法会向 history 栈添加一个新的记录，所以，当用户点击浏览器后退按钮时，则回到之前的 URL。
-```
+```basic
 当你点击 <router-link> 时，这个方法会在内部调用，所以说，点击 <router-link :to="..."> 等同于调用 router.push(...)。
 
 声明式	编程式
 <router-link :to="...">	router.push(...)
 ```
 该方法的参数可以是一个字符串路径，或者一个描述地址的对象。例如：
-```
+```basic
 // 字符串
 router.push('home')
 
@@ -1534,7 +1574,7 @@ router.push({ name: 'user', params: { userId: '123' }})
 router.push({ path: 'register', query: { plan: 'private' }})
 ```
 <font color="red">注意：如果提供了 path，params 会被忽略，上述例子中的 query 并不属于这种情况。取而代之的是下面例子的做法，你需要提供路由的 name 或手写完整的带有参数的 path：</font>
-```
+```basic
 const userId = '123'
 router.push({ name: 'user', params: { userId }}) // -> /user/123
 router.push({ path: `/user/${userId}` }) // -> /user/123
@@ -1556,36 +1596,42 @@ router.push({ path: '/user', params: { userId }}) // -> /user
 - 给组件传静态参数
 
 
-    props:{foo:'bar'}
+```basic
+props:{foo:'bar'}
+```
 - 给组件传动态参数
 
 
-    props:true  将route.params中参数作为属性出入进去
+```basic
+props:true  将route.params中参数作为属性出入进去
+```
 - 以函数形式传参
 
 
-    props:func
-    function func(route){
-        return {
-            id:route.params.id,
-            msg:route.params.msg,
-            foo:route.query.foo
-        }
+```basic
+props:func
+function func(route){
+    return {
+        id:route.params.id,
+        msg:route.params.msg,
+        foo:route.query.foo
     }
-    //改成参数解构的方式
-    function func({params,query}){
-        return {
-            id:params.id,
-            msg:params.msg,
-            foo:query.foo
-        }
+}
+//改成参数解构的方式
+function func({params,query}){
+    return {
+        id:params.id,
+        msg:params.msg,
+        foo:query.foo
     }
+}
+```
 #### 4)路由守卫
 
 - **全局路由守卫**
 
 beforeEach(to, from, next)
-```
+```basic
 routes:[
     {
         path: '/about', name: 'about',
@@ -1621,7 +1667,7 @@ methods: {
 - **路由独享守卫**
 
 beforeEnter(to,from,next)
-```
+```basic
 routes:[
     {
         path: '/about', name: 'about',
@@ -1651,7 +1697,7 @@ routes:[
 仅路由参数发生变化时触发，比如/page/vue  /page/react
 
 **beforeRouteLeave(to,from.next)**
-```
+```basic
 export default {
     name: "About",
     components: {FormTest},
@@ -1687,7 +1733,7 @@ export default {
 
 注意：全局beforeEach与全局beforeResolve有什么区别，beforeEach可能初始化工作还没做完，beforeResolve是组件中要提前做的事情都做的差不多了，时间点靠后一点
 #### 5)路由守卫实战
-```
+```basic
 import router from './router'
 import store from './store'
 import { Message } from 'element-ui'
@@ -1783,7 +1829,7 @@ router.afterEach(() => {
 
 ```
 #### 5)vue-router原理
-```
+```basic
 //kRouter.js
 import Vue from 'vue';
 const routes=[
@@ -1847,7 +1893,7 @@ new VueRouter(Vue,{routes})//这边进行了解构，{routes}等同于{routes：
 ```
 
 #### 6)vue中render解析
-```
+```basic
 new Vue({
   //router挂载，为什么呢？稍后解答
   router,
@@ -1856,17 +1902,17 @@ new Vue({
 }).$mount('#app')
 ```
 render: h => h(App)是ES6的写法，其实就是如下内容的简写：
-```
+```basic
 render: function (createElement) {
      return createElement(App);
 }
 ```
 然后ES6写法,
-```
+```basic
 render: createElement => createElement(App)
 ```
 然后用h代替createElement，使用箭头函数来写：
-```
+```basic
 render: h => h(App)
 ```
 也就是说，createElement 函数是用来生成 HTML DOM 元素的，而上文中的 Hyperscript也是用来创建HTML结构的脚本，这样作者才把 createElement 简写成 h。
@@ -1884,10 +1930,10 @@ vue中多个视图依赖于同一状态时，视图间传参和状态同步比�
 
 
 #### 2)安装
-```
+```basic
 vue add vuex
 ```
-```
+```basic
 import Vue from 'vue'
 import Vuex from 'vuex'
 
@@ -1931,7 +1977,7 @@ this.$store.state.isLogin
 取值：
 
 this.$store.getters.loginState
-```
+```basic
 //template
 <div id="nav">
   <router-link to="/" v-if="!isLogin">Login</router-link>
@@ -1960,7 +2006,7 @@ dispatch：
 this.$store.dispatch('requestLogin')
 #### 6)mapActions、mapMutations、mapGetters、mapState
 
-```
+```basic
 <script>
     import {mapActions,mapMutations} from 'vuex';
     export default {
@@ -2004,7 +2050,7 @@ this.$store.dispatch('requestLogin')
 vuex与vue有强耦合，所以只能用于vue，这是跟redux最大的区别
 
 源码地址：https://github.com/vuejs/vuex
-```
+```basic
 //kStore.js
 import Vue from 'vue';
 
@@ -2075,7 +2121,7 @@ export default new kStore({
 - 购物车
 
 将原先的addCart方法（添加购物车时将数据push到list中）挪到了store.js中
-```
+```basic
 //store.js
 import Vue from 'vue'
 import Vuex from 'vuex'
@@ -2149,7 +2195,7 @@ export default new Vuex.Store({
     3.nginx配置
     
     4.起服务start nginx
-```
+```basic
 server {
     listen 80;
     server_name localhost;
@@ -2166,11 +2212,13 @@ server {
 ```
 ## 15. vuejs源码
 
-    知识要点：
-    vue工作机制
-    vue响应式的原理
-    依赖收集与追踪
-    编译compile
+```basic
+知识要点：
+vue工作机制
+vue响应式的原理
+依赖收集与追踪
+编译compile
+```
 ### 1.vue工作机制
 - **初始化**
 
@@ -2182,9 +2230,11 @@ server {
 <font color="red">new Vue（）之后——>$mount挂载——>compile编译——>generate生成render function——>做两件事
 </font> 
 
-    1. render虚拟dom树，最终会进入patch（打补丁包函数），patch函数会把虚拟dom变成真实dom
-    
-    2. touch：依赖收集（告诉vue，在data中哪些数据是与视图中哪些部分是绑定的，将来哪个数据变，就更新视图中的哪部分）
+```basic
+1. render虚拟dom树，最终会进入patch（打补丁包函数），patch函数会把虚拟dom变成真实dom
+
+2. touch：依赖收集（告诉vue，在data中哪些数据是与视图中哪些部分是绑定的，将来哪个数据变，就更新视图中的哪部分）
+```
 
 <font color="red">
 ——>更新周期，用户不断更改data中的值，当值发生变化的时候，因为刚刚做了依赖收集，重新生成全新的虚拟dom树，新生成的虚拟dom树会与原来的老dom树进行比较，这个称为diff算法，比较出新的与老的变化，发现某个节点发生变化，那打个补丁包，只对这个节点进行更新，这样比较高效
@@ -2209,7 +2259,7 @@ Virtual DOM是react首创，vue2开始支持，就是用JavaScript对象来描�
 在做observe这件事
 
 getter什么时候会被执行：obj中的name被访问时就会执行
-```
+```basic
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -2261,7 +2311,7 @@ object.defineProperty
 **6. 监听器watcher**
 
 - html
-```
+```basic
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -2317,7 +2367,7 @@ object.defineProperty
 </html>
 ```
 - kvuejs
-```
+```basic
 //期待用法
 // new KVue({
 //     data:{msg:'hello'}
@@ -2419,7 +2469,7 @@ class Watcher {
 }
 ```
 - compile.js
-```
+```basic
 //期待用法
 //new Compile(el,vm);
 
