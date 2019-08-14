@@ -25,7 +25,7 @@
 ## 小程序多端开发
 
 - [小程序多端开发](https://github.com/Sofiya-xuanxuan/blog/tree/master/1-Gather/8-WechatApplet/wechat_applet.md)
-- [自动化测试](https://github.com/Sofiya-xuanxuan/blog/tree/master/1-Gather/8-WechatApplet/PerformanceOptimization.md)
+- [自动化测试](https://github.com/Sofiya-xuanxuan/blog/tree/master/1-Gather/8-WechatApplet/AutomatedTesting.md)
 - [前端数据结构与算法](https://github.com/Sofiya-xuanxuan/blog/tree/master/1-Gather/8-WechatApplet/Algorithm.md)
 - [前端性能优化](https://github.com/Sofiya-xuanxuan/blog/tree/master/1-Gather/8-WechatApplet/PerformanceOptimization.md)
 - [面试经](https://github.com/Sofiya-xuanxuan/blog/tree/master/1-Gather/8-WechatApplet/Interview.md)
