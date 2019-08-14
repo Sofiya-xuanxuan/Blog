@@ -19,6 +19,6 @@
 
 ## 小程序多端开发
 
-- [小程序多端开发](https://github.com/Sofiya-xuanxuan/blog/tree/master/1-Gather/8-Wechat applet)
+- [小程序多端开发](https://github.com/Sofiya-xuanxuan/blog/tree/master/1-Gather/8-WechatApplet)
 - 
 
