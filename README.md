@@ -10,13 +10,15 @@
 
 - [每周阅读](https://github.com/Sofiya-xuanxuan/blog/tree/master/3-Weeklyreading)
 
-- [读书笔记](https://github.com/Sofiya-xuanxuan/blog/tree/master/4-ReadNotes)
+- [周报](https://github.com/Sofiya-xuanxuan/blog/tree/master/4-Weekly)
 
-- [前端学习资料分类整理](https://github.com/Sofiya-xuanxuan/blog/tree/master/5-LearningMaterials)
+- [读书笔记](https://github.com/Sofiya-xuanxuan/blog/tree/master/5-ReadNotes)
 
-- [大神的鸡汤](https://github.com/Sofiya-xuanxuan/blog/tree/master/6-EfficientLearning)
+- [前端学习资料分类整理](https://github.com/Sofiya-xuanxuan/blog/tree/master/6-LearningMaterials)
 
-- [优秀者Blog](https://github.com/Sofiya-xuanxuan/blog/tree/master/7-ExcellentBlog)
+- [大神的鸡汤](https://github.com/Sofiya-xuanxuan/blog/tree/master/7-EfficientLearning)
+
+- [优秀者Blog](https://github.com/Sofiya-xuanxuan/blog/tree/master/8-ExcellentBlog)
 
   ​					
 
