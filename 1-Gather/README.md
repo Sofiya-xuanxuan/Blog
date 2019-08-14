@@ -5,7 +5,7 @@
 - [vue全家桶](https://github.com/Sofiya-xuanxuan/blog/tree/master/1-Gather/1-Vue/Vue全家桶.md)
 - [Vuex](https://github.com/Sofiya-xuanxuan/blog/tree/master/1-Gather/1-Vue/Vuex.md)
 - [Nuxt](https://github.com/Sofiya-xuanxuan/blog/tree/master/1-Gather/1-Vue/Nuxt.md)
-- [Typescript](https://github.com/Sofiya-xuanxuan/blog/tree/master/1-Gather/1-Vue/Typescript.md)
+- [TypeScript](https://github.com/Sofiya-xuanxuan/blog/tree/master/1-Gather/1-Vue/TypeScript.md)
 - [自动化测试](https://github.com/Sofiya-xuanxuan/blog/tree/master/1-Gather/1-Vue/自动化测试.md)
 ## react
 - [react全家桶](https://github.com/Sofiya-xuanxuan/blog/tree/master/1-Gather/2-React/React全家桶.md)
