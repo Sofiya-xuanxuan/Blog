@@ -139,13 +139,38 @@
 
  - [解释 function foo() {} 与 var foo = function() {} 用法的区别](https://github.com/LuoShengMen/StudyNotes/issues/268)
 
+   <details>
+     <summary><mark><font color='darkred'><a href='JS面试题/19.md'>点击查看详细内容</a></font></mark></summary>
+   <pre></pre>
+   </details>
+
  - [纯函数的概念？](https://github.com/LuoShengMen/StudyNotes/issues/253)
+
+   <details>
+     <summary><mark><font color='darkred'><a href='JS面试题/20.md'>点击查看详细内容</a></font></mark></summary>
+   <pre></pre>
+   </details>
 
  - [Javascript中，有一个函数，执行时对象查找时，永远不会去查找原型，这个函数是？](https://github.com/LuoShengMen/StudyNotes/issues/201)
 
+   <details>
+     <summary><mark><font color='darkred'><a href='JS面试题/21.md'>点击查看详细内容</a></font></mark></summary>
+   <pre></pre>
+   </details>
+
  - [请解释为什么接下来这段代码不是 IIFE (立即调用的函数表达式)：function foo(){ }();要做哪些改动使它变成 IIFE](https://github.com/LuoShengMen/StudyNotes/issues/269)
 
+   <details>
+     <summary><mark><font color='darkred'><a href='JS面试题/22.md'>点击查看详细内容</a></font></mark></summary>
+   <pre></pre>
+   </details>
+
  - [请举出一个匿名函数的典型用例](https://github.com/LuoShengMen/StudyNotes/issues/270)
+
+   <details>
+     <summary><mark><font color='darkred'><a href='JS面试题/23.md'>点击查看详细内容</a></font></mark></summary>
+   <pre></pre>
+   </details>
 
  - [请指出以下代码的区别：function Person(){}、var person = Person()、var person = new Person()？](https://github.com/LuoShengMen/StudyNotes/issues/266)
 

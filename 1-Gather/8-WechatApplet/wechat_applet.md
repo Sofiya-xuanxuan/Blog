@@ -510,7 +510,7 @@ callLogin() {
 
 - **book.js**
 
-  ```basic
+  ```js
   import Taro, { Component } from '@tarojs/taro'
   import {
     View,
@@ -607,7 +607,7 @@ callLogin() {
 
 - **app.js**
 
-  ```basic
+  ```js
   class App extends Component {
     config = {
       pages: ['pages/book/book', 'pages/index/index'],
@@ -634,7 +634,43 @@ callLogin() {
 
 ### 1.支付
 
+> 工具库：wx-js-utils（github上）
+
+- **统一下单**
+- **查询订单**
+- **关闭订单**
+- **申请退款**
+- **验证签名**
+
 ### 2.登录
+
+#### 小程序登录
+
+小程序可以通过微信官方提供的登录能力方便地获取微信提供的用户身份标识，快速建立小程序内的用户体系。
+
+#### 登录流程时序
+
+![微信小程序登录](/Users/qiaoxu/Desktop/myBlog/pic/wxlogin.png)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 # Node.js微信公众号开发
 
