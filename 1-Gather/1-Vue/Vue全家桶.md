@@ -5,7 +5,8 @@
 1.安装vue-cli
 
 ```basic
-1. npm install -g @vue/cli  npm i -g @vue/cli version 3.x
+1. npm install -g @vue/cli  
+npm i -g @vue/cli version 3.x
 2. npm install -g @vue/cli-service-global
 ```
 2.新建项目
@@ -2367,7 +2368,7 @@ object.defineProperty
 </html>
 ```
 - kvuejs
-```basic
+```js
 //期待用法
 // new KVue({
 //     data:{msg:'hello'}
@@ -2469,7 +2470,7 @@ class Watcher {
 }
 ```
 - compile.js
-```basic
+```js
 //期待用法
 //new Compile(el,vm);
 
