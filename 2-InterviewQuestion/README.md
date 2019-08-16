@@ -174,13 +174,38 @@
 
  - [请指出以下代码的区别：function Person(){}、var person = Person()、var person = new Person()？](https://github.com/LuoShengMen/StudyNotes/issues/266)
 
+   <details>
+     <summary><mark><font color='darkred'><a href='JS面试题/24.md'>点击查看详细内容</a></font></mark></summary>
+   <pre></pre>
+   </details>
+
  - [caller, callee和arguments分别是什么?](https://github.com/LuoShengMen/StudyNotes/issues/207)
+
+   <details>
+     <summary><mark><font color='darkred'><a href='JS面试题/25.md'>点击查看详细内容</a></font></mark></summary>
+   <pre></pre>
+   </details>
 
  - [for of , for in 和 forEach,map 的区别](https://github.com/LuoShengMen/StudyNotes/issues/143)
 
+   <details>
+     <summary><mark><font color='darkred'><a href='JS面试题/26.md'>点击查看详细内容</a></font></mark></summary>
+   <pre></pre>
+   </details>
+
  - [介绍下深度优先遍历和广度优先遍历，如何实现？](https://github.com/LuoShengMen/StudyNotes/issues/19)
 
- - [Object.assion()和...解构的区别](https://github.com/LuoShengMen/StudyNotes/issues/283)
+   <details>
+     <summary><mark><font color='darkred'><a href='JS面试题/27.md'>点击查看详细内容</a></font></mark></summary>
+   <pre></pre>
+   </details>
+
+ - [Object.assign()和...解构的区别](https://github.com/LuoShengMen/StudyNotes/issues/283)
+
+   <details>
+     <summary><mark><font color='darkred'><a href='JS面试题/28.md'>点击查看详细内容</a></font></mark></summary>
+   <pre></pre>
+   </details>
 
  - [何为作用域链](https://github.com/LuoShengMen/StudyNotes/issues/59)
 
