@@ -6,5 +6,9 @@
 - [JS无形装逼，最为致命](https://juejin.im/post/5cc55eb5e51d456e577f93f0)
 - [基于 webpack 的持久化缓存方案](https://github.com/pigcan/blog/issues/9)
 - [Vue 进阶系列（一）之响应式原理及实现](https://github.com/yygmind/blog/issues/6)
-- 
+
+### 2019年8月第二周
+
+- [JS 系列一：var、let、const、解构、展开、函数](https://juejin.im/post/5d596b7ff265da0394020748)
+- [Vue.js中最重要的角色-组件](https://juejin.im/post/5d5822d86fb9a06b326070dd)
 
