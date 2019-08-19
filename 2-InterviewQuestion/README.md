@@ -209,9 +209,24 @@
 
  - [何为作用域链](https://github.com/LuoShengMen/StudyNotes/issues/59)
 
+   <details>
+     <summary><mark><font color='darkred'><a href='JS面试题/29.md'>点击查看详细内容</a></font></mark></summary>
+   <pre></pre>
+   </details>
+
  - [执行上下文(EC)](https://github.com/LuoShengMen/StudyNotes/issues/150)
 
+   <details>
+     <summary><mark><font color='darkred'><a href='JS面试题/30.md'>点击查看详细内容</a></font></mark></summary>
+   <pre></pre>
+   </details>
+
  - [为什么 var 可以重复声明](https://github.com/LuoShengMen/StudyNotes/issues/402)
+
+   <details>
+     <summary><mark><font color='darkred'><a href='JS面试题/31.md'>点击查看详细内容</a></font></mark></summary>
+   <pre></pre>
+   </details>
 
  - [全局作用域中，用const 和let声明的变量不在 window 上,那到底在哪里？如何去获取](https://github.com/LuoShengMen/StudyNotes/issues/46)
 
