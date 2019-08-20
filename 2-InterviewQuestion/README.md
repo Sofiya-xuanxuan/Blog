@@ -230,9 +230,24 @@
 
  - [全局作用域中，用const 和let声明的变量不在 window 上,那到底在哪里？如何去获取](https://github.com/LuoShengMen/StudyNotes/issues/46)
 
- - [var、let 和 const 区别的理是什么](https://github.com/LuoShengMen/StudyNotes/issues/473)
+   <details>
+     <summary><mark><font color='darkred'><a href='JS面试题/32.md'>点击查看详细内容</a></font></mark></summary>
+   <pre></pre>
+   </details>
+
+ - [var、let 和 const 区别是什么](https://github.com/LuoShengMen/StudyNotes/issues/473)
+
+   <details>
+     <summary><mark><font color='darkred'><a href='JS面试题/33.md'>点击查看详细内容</a></font></mark></summary>
+   <pre></pre>
+   </details>
 
  - [什么是闭包，作用是什么，会带来哪些影响](https://github.com/LuoShengMen/StudyNotes/issues/56)
+
+   <details>
+     <summary><mark><font color='darkred'><a href='JS面试题/34.md'>点击查看详细内容</a></font></mark></summary>
+   <pre></pre>
+   </details>
 
  - [4类常见内存泄漏及如何避免](https://github.com/LuoShengMen/StudyNotes/issues/65)
 
