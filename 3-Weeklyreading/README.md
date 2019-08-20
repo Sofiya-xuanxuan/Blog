@@ -12,4 +12,6 @@
 - [JS 系列一：var、let、const、解构、展开、函数](https://juejin.im/post/5d596b7ff265da0394020748)
 - [Vue.js中最重要的角色-组件](https://juejin.im/post/5d5822d86fb9a06b326070dd)
 - [require时，exports和module.exports的区别你真的懂吗？](https://juejin.im/post/5d5639c7e51d453b5c1218b4)
+- [深入 JavaScript 设计模式，从此有了优化代码的理论依据](https://juejin.im/post/5d58ca046fb9a06ad0056cc7)
+- 
 
