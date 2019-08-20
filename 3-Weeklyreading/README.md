@@ -13,5 +13,7 @@
 - [Vue.js中最重要的角色-组件](https://juejin.im/post/5d5822d86fb9a06b326070dd)
 - [require时，exports和module.exports的区别你真的懂吗？](https://juejin.im/post/5d5639c7e51d453b5c1218b4)
 - [深入 JavaScript 设计模式，从此有了优化代码的理论依据](https://juejin.im/post/5d58ca046fb9a06ad0056cc7)
+- [掘金排行前5000大佬 | 掘金文章排行 看这里](https://juejin.im/post/5d57f9a6f265da03b1204953)
+- [Vue 项目性能优化 — 实践指南（网上最全 / 详细）](https://juejin.im/post/5d548b83f265da03ab42471d)
 - 
 
