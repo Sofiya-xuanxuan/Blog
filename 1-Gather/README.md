@@ -25,9 +25,18 @@
 ## 小程序多端开发
 
 - [小程序多端开发](https://github.com/Sofiya-xuanxuan/blog/tree/master/1-Gather/8-WechatApplet/wechat_applet.md)
-- [自动化测试](https://github.com/Sofiya-xuanxuan/blog/tree/master/1-Gather/8-WechatApplet/AutomatedTesting.md)
-- [前端性能优化](https://github.com/Sofiya-xuanxuan/blog/tree/master/1-Gather/8-WechatApplet/PerformanceOptimization.md)
-- [前端数据结构与算法](https://github.com/Sofiya-xuanxuan/blog/tree/master/1-Gather/8-WechatApplet/Algorithm.md)
-- [前端设计模式](https://github.com/Sofiya-xuanxuan/blog/tree/master/1-Gather/8-WechatApplet/DesignPatterns.md)
-- [面试经](https://github.com/Sofiya-xuanxuan/blog/tree/master/1-Gather/8-WechatApplet/Interview.md)
+
+## 插件设计并部署
+
+- [部署公用插件](https://github.com/Sofiya-xuanxuan/blog/tree/master/1-Gather/8-WechatApplet/deployPlugin.md)
+
+## 前端高级
+
+自动化测试、性能优化、算法、设计模式
+
+- [自动化测试](https://github.com/Sofiya-xuanxuan/blog/tree/master/1-Gather/9-HighLevel/AutomatedTesting.md)
+- [前端性能优化](https://github.com/Sofiya-xuanxuan/blog/tree/master/1-Gather/9-HighLevel/PerformanceOptimization.md)
+- [前端数据结构与算法](https://github.com/Sofiya-xuanxuan/blog/tree/master/1-Gather/9-HighLevel/Algorithm.md)
+- [前端设计模式](https://github.com/Sofiya-xuanxuan/blog/tree/master/1-Gather/9-HighLevel/DesignPatterns.md)
+- [面试经](https://github.com/Sofiya-xuanxuan/blog/tree/master/1-Gather/9-HighLevel/Interview.md)
 
