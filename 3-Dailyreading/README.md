@@ -44,7 +44,11 @@
 
 - **`JavaScript`对象的底层数据结构是什么**
 
+  - [再谈js对象数据结构底层实现原理-object array map set](https://www.cnblogs.com/zhoulujun/p/10881639.html)
 
+  > **Summary：**
+  >
+  > 堆、栈
 
 
 
