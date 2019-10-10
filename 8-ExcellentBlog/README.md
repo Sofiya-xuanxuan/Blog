@@ -8,5 +8,7 @@
   - [ZhiQiangHou的博客](https://github.com/zhiqiang21/blog)
   - [LJianshu Blog](https://github.com/ljianshu/Blog)
   - [MuYunyun](https://github.com/MuYunyun/blog)
+  - [左耳朵耗子](https://coolshell.cn/)
+  - [张鑫旭的博客](https://www.zhangxinxu.com/wordpress/)
   - [优秀者集合](https://github.com/FrankFang/best-chinese-front-end-blogs)
 

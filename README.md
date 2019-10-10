@@ -6,15 +6,15 @@
 
 - [前端知识分类整理](https://github.com/Sofiya-xuanxuan/blog/tree/master/1-Gather)
 
+- [前端学习资料分类整理](https://github.com/Sofiya-xuanxuan/blog/tree/master/6-LearningMaterials)
+
 - [面试题分类汇总](https://github.com/Sofiya-xuanxuan/blog/tree/master/2-InterviewQuestion)
 
-- [每周阅读](https://github.com/Sofiya-xuanxuan/blog/tree/master/3-Weeklyreading)
+- [每日阅读Summary](https://github.com/Sofiya-xuanxuan/blog/tree/master/3-Dailyreading)
 
-- [周报](https://github.com/Sofiya-xuanxuan/blog/tree/master/4-Weekly)
+- [每周技术文章产出](https://github.com/Sofiya-xuanxuan/blog/tree/master/4-WeeklyOutputArticles)
 
-- [读书笔记](https://github.com/Sofiya-xuanxuan/blog/tree/master/5-ReadNotes)
-
-- [前端学习资料分类整理](https://github.com/Sofiya-xuanxuan/blog/tree/master/6-LearningMaterials)
+- [每月读书笔记产出](https://github.com/Sofiya-xuanxuan/blog/tree/master/5-ReadNotes)
 
 - [大神的鸡汤](https://github.com/Sofiya-xuanxuan/blog/tree/master/7-EfficientLearning)
 
