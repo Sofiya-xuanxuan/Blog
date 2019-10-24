@@ -14,7 +14,7 @@
 
 - [每周技术文章产出](https://github.com/Sofiya-xuanxuan/blog/tree/master/4-WeeklyOutputArticles)
 
-- [每月读书笔记产出](https://github.com/Sofiya-xuanxuan/blog/tree/master/5-ReadNotes)
+- [每月读书笔记产出](https://github.com/Sofiya-xuanxuan/blog/tree/master/5-MonthReadNotes)
 
 - [大神的鸡汤](https://github.com/Sofiya-xuanxuan/blog/tree/master/7-EfficientLearning)
 
