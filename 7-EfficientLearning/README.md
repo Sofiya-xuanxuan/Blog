@@ -18,4 +18,5 @@
  - [如何在项目优化中提升自己的价值，来年升职加薪？](https://mp.weixin.qq.com/s/6RaSp9fOnAkX-cbsFRLojg)
  - [思考和表达的方法论](https://www.yuque.com/f2e-growth/notes/cqeqbs)
  - [成为优秀程序员（和人类）的101个技巧](https://juejin.im/post/5d26ec8a6fb9a07f0a2e0ad5)
+ - [前端大神 Winter 直播笔记及我的学习方法论](https://github.com/yygmind/blog/issues/28)
 
