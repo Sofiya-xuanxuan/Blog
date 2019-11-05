@@ -4476,3 +4476,106 @@ server {
     }
 }
 ```
+
+### 7.Vue问题汇总
+
+#### 1.watch与mounted、created等生命周期的的执行顺序
+
+> **在页面首次加载执行顺序有如下：**
+>
+> beforeCreate //在实例初始化之后、创建之前执行
+>
+> created //实例创建后执行
+>
+> beforeMounted //在挂载开始之前调用
+>
+> filters //挂载前加载过滤器
+>
+> computed //计算属性
+>
+> directives-bind //只调用一次，在指令第一次绑定到元素时调用
+>
+> directives-inserted //被绑定元素插入父节点时调用
+>
+> activated //keek-alive组件被激活时调用，则在keep-alive包裹的嵌套的子组件中触发
+>
+> mounted //挂载完成后调用
+>
+> {{}} //mustache表达式渲染页面
+>
+> **修改页面input时，被自动调用的选项顺序如下：**
+>
+> watch //首先先监听到了改变事件
+>
+> filters //过滤器没有添加在该input元素上，但是也被调用了
+>
+> beforeUpdate //数据更新时调用，发生在虚拟dom打补丁前
+>
+> directived-update //指令所在的组件的vNode更新时调用，但可能发生在其子vNode更新前
+>
+> directives-componentUpdated//指令所在的组件的vNode及其子组件的vNode全部更新后调用
+>
+> updated //组件dom已经更新
+>
+> **组件销毁时，执行顺序如下：**
+>
+> beforeDestroy //实例销毁之前调用
+>
+> directives-unbind //指令与元素解绑时调用，只调用一次
+>
+> deactivated //keep-alive组件停用时调用
+>
+> destroyed //实例销毁之后调用
+
+#### 2.Vue父子组件生命周期执行的顺序
+
+> 父组件beforeCreated ->父组件created ->父组件beforeMounted ->子组件beforeCreated ->子组件created ->子组件beforeMounted ->子组件mounted -> 父组件mounted
+
+#### 3.params给参数占位
+
+> 解决params传参，刷新丢参的问题， path: "merchantManageDetail/:mch_id",
+
+#### 4.computed、watch与方法
+
+- **计算属性&方法**
+
+你可能已经注意到我们可以通过在表达式中调用方法来达到同样的效果：
+
+```js
+<p>Reversed message: "{{ reversedMessage() }}"</p>
+// 在组件中
+methods: {
+  reversedMessage: function () {
+    return this.message.split('').reverse().join('')
+  }
+}
+```
+
+我们可以将同一函数定义为一个方法而不是一个计算属性。两种方式的最终结果确实是完全相同的。然而，不同的是**计算属性是基于它们的响应式依赖进行缓存的**。只在相关响应式依赖发生改变时它们才会重新求值。这就意味着只要 `message` 还没有发生改变，多次访问 `reversedMessage` 计算属性会立即返回之前的计算结果，而不必再次执行函数。
+
+这也同样意味着下面的计算属性将不再更新，因为 `Date.now()` 不是响应式依赖：
+
+```js
+computed: {
+  now: function () {
+    return Date.now()
+  }
+}
+```
+
+相比之下，每当触发重新渲染时，调用方法将**总会**再次执行函数。
+
+我们为什么需要缓存？假设我们有一个性能开销比较大的计算属性 **A**，它需要遍历一个巨大的数组并做大量的计算。然后我们可能有其他的计算属性依赖于 **A** 。如果没有缓存，我们将不可避免的多次执行 **A** 的 getter！如果你不希望有缓存，请用方法来替代。
+
+> **computed 和 methods相比，computed有缓存，性能开销小，何谓computed缓存呢？在改变number（任一跟computed中不相关的数据）时，整个应用会重新渲染，如果使用的是getName ()方法，则这个方法会被重复调用（<font color='red'>data中任一数据发生变化，vue都会重新执行下面的过程一遍。每个vue实例都有一个根元素id的属性el，Vue对象通过它来找到要渲染的部分。之后使用createDocumentFragment()方法创建一个documentFragment，遍历根元素的所有子元素，依次劫持并插入文档片段，将根元素掏空。然后执行Vue的编译：遍历documentFragment中的节点，对其中的v-for,v-text等属性进行相应的处理。最后，把编译完成后的documentFragment还给根元素。</font>）**
+> **而computed不会重新计算，只有依赖的值有变化时（该案例中，number不是computed依赖的值），才会去重新计算，这就是computed的缓存**
+
+- **计算属性&侦听属性**
+
+虽然计算属性在大多数情况下更合适，但有时也需要一个自定义的侦听器。这就是为什么 Vue 通过 `watch` 选项提供了一个更通用的方法，来响应数据的变化。当需要在数据变化时执行异步或开销较大的操作时，这个方式是最有用的。
+
+> **总结：**
+>
+> **1. watch擅长处理的场景：一个数据影响多个数据**
+> **2. computed擅长处理的场景：一个数据受多个数据影响**
+
