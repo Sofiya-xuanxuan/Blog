@@ -1374,7 +1374,10 @@ new Vue({
 ```
 #### 2)vue-router两种模式
 
-vue-router有两种模式，<font color="red">hash模式和history模式</font>
+vue-router有两种模式，<font color="red">hash模式和history模式（默认是hash模式）</font>
+
+> `vue-router` 默认 hash 模式 —— 使用 URL 的 hash 来模拟一个完整的 URL，于是当 URL 改变时，页面不会重新加载。
+
 - **hash模式**
 
 hash模式的工作原理是hashchange事件，可以在window监听hash的变化。我们在url后面随便添加一个#xx触发这个事件。
@@ -1432,7 +1435,7 @@ history.forward();
 
 webpack中配置publicPath来解决
 
-```basic
+```js
 //router.js
 import Vue from 'vue'
 import Router from 'vue-router'
@@ -4578,4 +4581,244 @@ computed: {
 >
 > **1. watch擅长处理的场景：一个数据影响多个数据**
 > **2. computed擅长处理的场景：一个数据受多个数据影响**
+
+#### 5.渲染函数Render
+
+- **createElement参数**
+
+  ```js
+  // @returns {VNode}
+  createElement(
+    // {String | Object | Function}
+    // 一个 HTML 标签名、组件选项对象，或者
+    // resolve 了上述任何一种的一个 async 函数。必填项。
+    'div',
+  
+    // {Object}
+    // 一个与模板中属性对应的数据对象。可选。
+    {
+      // (详情见下一节)
+    },
+  
+    // {String | Array}
+    // 子级虚拟节点 (VNodes)，由 `createElement()` 构建而成，
+    // 也可以使用字符串来生成“文本虚拟节点”。可选。
+    [
+      '先写一些文字',
+      createElement('h1', '一则头条'),
+      createElement(MyComponent, {
+        props: {
+          someProp: 'foobar'
+        }
+      })
+    ]
+  )
+  ```
+
+#### 6.自定义指令
+
+​	当页面加载时，`input`该元素将获得焦点 (注意：`autofocus` 在移动版 Safari 上不工作)。事实上，只要你在打开这个页面后还没点击过任何内容，这个输入框就应当还是处于聚焦状态。现在让我们用指令来实现这个功能：
+
+```js
+// 注册一个全局自定义指令 `v-focus`
+Vue.directive('focus', {
+  // 当被绑定的元素插入到 DOM 中时……
+  inserted: function (el) {
+    // 聚焦元素
+    el.focus()
+  }
+})
+```
+
+如果想注册局部指令，组件中也接受一个 `directives` 的选项：
+
+```js
+directives: {
+  focus: {
+    // 指令的定义
+    inserted: function (el) {
+      el.focus()
+    }
+  }
+}
+```
+
+然后你可以在模板中任何元素上使用新的 `v-focus` 属性，如下：
+
+```js
+<input v-focus>
+```
+
+##### 钩子函数
+
+一个指令定义对象可以提供如下几个钩子函数 (均为可选)：
+
+- `bind`：只调用一次，指令第一次绑定到元素时调用。在这里可以进行一次性的初始化设置。
+- `inserted`：被绑定元素插入父节点时调用 (仅保证父节点存在，但不一定已被插入文档中)。
+- `update`：所在组件的 VNode 更新时调用，**但是可能发生在其子 VNode 更新之前**。指令的值可能发生了改变，也可能没有。但是你可以通过比较更新前后的值来忽略不必要的模板更新 (详细的钩子函数参数见下)。
+
+##### 钩子函数参数
+
+指令钩子函数会被传入以下参数：
+
+- `el`：指令所绑定的元素，可以用来直接操作 DOM 。
+- `binding`：一个对象，包含以下属性：
+  - `name`：指令名，不包括 `v-` 前缀。
+  - `value`：指令的绑定值，例如：`v-my-directive="1 + 1"` 中，绑定值为 `2`。
+  - `oldValue`：指令绑定的前一个值，仅在 `update` 和 `componentUpdated` 钩子中可用。无论值是否改变都可用。
+  - `expression`：字符串形式的指令表达式。例如 `v-my-directive="1 + 1"` 中，表达式为 `"1 + 1"`。
+  - `arg`：传给指令的参数，可选。例如 `v-my-directive:foo` 中，参数为 `"foo"`。
+  - `modifiers`：一个包含修饰符的对象。例如：`v-my-directive.foo.bar` 中，修饰符对象为 `{ foo: true, bar: true }`。
+- `vnode`：Vue 编译生成的虚拟节点。移步 [VNode API](https://cn.vuejs.org/v2/api/#VNode-接口) 来了解更多详情。
+- `oldVnode`：上一个虚拟节点，仅在 `update` 和 `componentUpdated` 钩子中可用。
+
+> 除了 `el` 之外，其它参数都应该是只读的，切勿进行修改。如果需要在钩子之间共享数据，建议通过元素的 [`dataset`](https://developer.mozilla.org/zh-CN/docs/Web/API/HTMLElement/dataset) 来进行。
+
+这是一个使用了这些属性的自定义钩子样例：
+
+```html
+<div id="hook-arguments-example" v-demo:foo.a.b="message"></div>
+```
+
+```js
+Vue.directive('demo', {
+  bind: function (el, binding, vnode) {
+    var s = JSON.stringify
+    el.innerHTML =
+      'name: '       + s(binding.name) + '<br>' +
+      'value: '      + s(binding.value) + '<br>' +
+      'expression: ' + s(binding.expression) + '<br>' +
+      'argument: '   + s(binding.arg) + '<br>' +
+      'modifiers: '  + s(binding.modifiers) + '<br>' +
+      'vnode keys: ' + Object.keys(vnode).join(', ')
+  }
+})
+
+new Vue({
+  el: '#hook-arguments-example',
+  data: {
+    message: 'hello!'
+  }
+})
+```
+
+```js
+//结果
+name: "demo"//指令名
+value: "hello!"//绑定的值
+expression: "message"//绑定的变量名
+argument: "foo"//指令后面跟的参数
+modifiers: {"a":true,"b":true}//指令修饰参数
+vnode keys: tag, data, children, text, elm, ns, context, fnContext, fnOptions, fnScopeId, key, componentOptions, componentInstance, parent, raw, isStatic, isRootInsert, isComment, isCloned, isOnce, asyncFactory, asyncMeta, isAsyncPlaceholder
+```
+
+element中自定义loading指令：
+
+```js
+Vue.directive('loading', {
+    bind: function(el, binding, vnode) {
+      // el :绑定 v-loading 的元素节点
+      const textExr = el.getAttribute('element-loading-text');
+      const spinnerExr = el.getAttribute('element-loading-spinner');
+      const backgroundExr = el.getAttribute('element-loading-background');
+      const customClassExr = el.getAttribute('element-loading-custom-class');
+      const vm = vnode.context;
+      const mask = new Mask({
+        el: document.createElement('div'), // 在loding.vue中添加元素div节点
+        data: {
+          text: vm && vm[textExr] || textExr,
+          spinner: vm && vm[spinnerExr] || spinnerExr,
+          background: vm && vm[backgroundExr] || backgroundExr,
+          customClass: vm && vm[customClassExr] || customClassExr,
+          fullscreen: !!binding.modifiers.fullscreen // 获取调用者在组件中的
+        }
+      });
+      el.instance = mask;
+      el.mask = mask.$el;
+      el.maskStyle = {};
+
+      binding.value && toggleLoading(el, binding);
+    },
+
+    update: function(el, binding) {
+      el.instance.setText(el.getAttribute('element-loading-text'));
+      if (binding.oldValue !== binding.value) {
+        toggleLoading(el, binding);
+      }
+    },
+
+    unbind: function(el, binding) {
+      if (el.domInserted) {
+        el.mask &&
+        el.mask.parentNode &&
+        el.mask.parentNode.removeChild(el.mask);
+        toggleLoading(el, { value: false, modifiers: binding.modifiers });
+      }
+    }
+  });
+```
+
+> // 引入组件
+> import LoadingComponent from './loading.vue'
+> // 定义 Loading 对象
+> const Loading={
+>    <font color='red'>  install 是默认的方法。当外界在 use 这个组件的时候，就会调用本身的 install 方法，同时传一个 Vue 这个类的参数。</font>
+>     install:function(Vue){
+>         Vue.component('Loading',LoadingComponent)
+>     }
+> }
+> // 导出
+> export default Loading
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
