@@ -4892,9 +4892,27 @@ clickLink(path) {
 }
 ```
 
+#### 10.Vue.config.productionTip = false
 
+Vue.config.productionTip = false这句代码是在入口文件里的
 
+![Vue.config](../../pic/productionTip.png)
 
+1.先看看没有这句代码的效果
+这张图上面 显示出来的就是没有这句代码的效果 他说（You are running Vue in development mode.
+Make sure to turn on production mode when deploying for production.
+See more tips at https://vuejs.org/guide/deployment.html）阻止了生产模式，此时是以开发模式运行的
+
+> 综上所述，  没有Vue.config.productionTip = false这句代码，它会显示你生产模式的消息
+
+![Vue.config](../../pic/productionTip2.png)
+
+2.有这句代码的效果
+灭有这句代码后，他没有显示（You are running Vue in development mode.
+Make sure to turn on production mode when deploying for production.
+See more tips at https://vuejs.org/guide/deployment.html）这条消息
+
+> 综上所述， 有了Vue.config.productionTip = false这句代码，它会阻止你显示显示生产模式的消息
 
 
 
