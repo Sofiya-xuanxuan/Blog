@@ -4772,6 +4772,128 @@ Vue.directive('loading', {
 
 
 
+####7.vue什么时候检测不到数据的变化？
+
+- 由于 JavaScript 的限制，Vue 不能检测以下数组的变动：
+
+  当你利用索引直接设置一个数组项时，例如：vm.items[indexOfItem] = newValue
+  当你修改数组的长度时，例如：vm.items.length = newLength
+
+  ```js
+  举个例子：
+  
+  var vm = new Vue({
+    data: {
+      items: ['a', 'b', 'c']
+    }
+  })
+  vm.items[1] = 'x' // 不是响应性的
+  vm.items.length = 2 // 不是响应性的
+  为了解决第一类问题，以下两种方式都可以实现和 vm.items[indexOfItem] = newValue 相同的效果，同时也将在响应式系统内触发状态更新：
+  
+  // Vue.set
+  Vue.set(vm.items, indexOfItem, newValue)
+  // Array.prototype.splice
+  vm.items.splice(indexOfItem, 1, newValue)
+  你也可以使用 vm.$set 实例方法，该方法是全局方法 Vue.set 的一个别名：
+  
+  vm.$set(vm.items, indexOfItem, newValue)
+  为了解决第二类问题，你可以使用 splice：
+  
+  vm.items.splice(newLength)
+  ```
+
+- 还是由于 JavaScript 的限制，**Vue 不能检测对象属性的添加或删除**：
+
+```js
+var vm = new Vue({
+  data: {
+    a: 1
+  }
+})
+// `vm.a` 现在是响应式的
+
+vm.b = 2
+// `vm.b` 不是响应式的
+对于已经创建的实例，Vue 不允许动态添加根级别的响应式属性。但是，可以使用 Vue.set(object, propertyName, value) 方法向嵌套对象添加响应式属性。例如，对于：
+
+var vm = new Vue({
+  data: {
+    userProfile: {
+      name: 'Anika'
+    }
+  }
+})
+你可以添加一个新的 age 属性到嵌套的 userProfile 对象：
+
+Vue.set(vm.userProfile, 'age', 27)
+你还可以使用 vm.$set 实例方法，它只是全局 Vue.set 的别名：
+
+vm.$set(vm.userProfile, 'age', 27)
+有时你可能需要为已有对象赋值多个新属性，比如使用 Object.assign() 或 _.extend()。在这种情况下，你应该用两个对象的属性创建一个新的对象。所以，如果你想添加新的响应式属性，不要像这样：
+
+Object.assign(vm.userProfile, {
+  age: 27,
+  favoriteColor: 'Vue Green'
+})
+你应该这样做：
+
+vm.userProfile = Object.assign({}, vm.userProfile, {
+  age: 27,
+  favoriteColor: 'Vue Green'
+})
+```
+
+#### 8.组件间的传值
+
+基本都能回答上来，父传子：props；子传父：$emit；兄弟：eventbus；vuex；有一些会说到sessionStorage和localStorage、路由传参（这个答案其实并不是我想要问的，不过也可以实现一定的传值）
+
+- provide / inject
+  这对选项需要一起使用，以允许一个祖先组件向其所有子孙后代注入一个依赖，不论组件层次有多深，并在起上下游关系成立的时间里始终生效。
+
+- Vue.observable
+  让一个对象可响应。Vue 内部会用它来处理 data 函数返回的对象。
+  返回的对象可以直接用于渲染函数和计算属性内，并且会在发生改变时触发相应的更新。也可以作为最小化的跨组件状态存储器，用于简单的场景：
+
+```js
+const state = Vue.observable({ count: 0 })
+
+const Demo = {
+  render(h) {
+    return h('button', {
+      on: { click: () => { state.count++ }}
+    }, `count is: ${state.count}`)
+  }
+}
+```
+
+- $attrs
+  包含了父作用域中不作为 prop 被识别 (且获取) 的特性绑定 (class 和 style 除外)。当一个组件没有声明任何 prop 时，这里会包含所有父作用域的绑定 (class 和 style 除外)，并且可以通过 `v-bind="​attrs"` 传入内部组件——在创建高级别的组件时非常有用。
+- $listeners
+  包含了父作用域中的 (不含 .native 修饰器的) v-on 事件监听器。它可以通过 `v-on="​listeners" `传入内部组件——在创建更高层次的组件时非常有用。
+- props
+- $emit
+- eventbus
+- vuex
+- $parent / ​children / ref
+
+####9.vue项目点击侧边栏页面不刷新
+
+不改变 current URL 就不会触发任何东西，那我可不可以强行触发你的 hook 呢？上有政策， 下有对策我们变着花来 hack。方法也很简单，通过不断改变 url 的 query 来触发 view 的变化。我们监听侧边栏每个 link 的 click 事件，每次点击都给 router push 一个不一样的 query 来确保会重新刷新 view。
+
+```js
+clickLink(path) {
+  this.$router.push({
+    path,
+    query: {
+      t: +new Date() //保证每次点击路由的query项都是不一样的，确保会重新刷新view
+    }
+  })
+}
+```
+
+
+
 
 
 
