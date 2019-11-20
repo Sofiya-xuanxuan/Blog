@@ -4914,13 +4914,29 @@ See more tips at https://vuejs.org/guide/deployment.html）这条消息
 
 > 综上所述， 有了Vue.config.productionTip = false这句代码，它会阻止你显示显示生产模式的消息
 
+#### 11.request.context
 
+```js
+const modulesFiles = require.context('./modules', true, /\.js$/)
+```
 
+**入参：**
 
+ 1. 你要引入文件的目录
 
+ 2.是否要查找该目录下的子级目录
 
+ 3.匹配要引入的文件
 
+**返回：**
 
+require.context函数执行后返回的是**一个函数,并且这个函数有3个属性**
+
+1. resolve {Function} -接受一个参数request,request为test文件夹下面匹配文件的相对路径,返回这个匹配文件相对于整个工程的相对路径
+2. keys {Function} -返回匹配成功模块的名字组成的数组
+3. id {String} -执行环境的id,返回的是一个字符串,主要用在module.hot.accept,应该是热加载?
+
+这三个都是作为函数的属性(注意是作为函数的属性,函数也是对象,有对应的属性)
 
 
 
