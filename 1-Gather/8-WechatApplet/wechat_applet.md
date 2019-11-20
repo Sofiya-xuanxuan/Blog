@@ -284,7 +284,55 @@ callLogin() {
 }
 ```
 
-## 三、React开发小程序
+## 三、支持多端开发的一些框架比对
+
+> **Chameleon：**
+>
+> 1. 公司：滴滴出品
+> 2. DSL：类vue
+> 3. Typescript：不支持
+> 4. Css：SASS、LESS、Stylus
+> 5. 语法检测：有独立的语法检查工具
+> 6. 开发工具：没有独立的开发工具，分别用到 微信开发者工具，Android studio ,xcode 等等来集成，不支持在线打包实现APP应用。
+> 7. 支持端：web端、安卓IOS端、微信小程序、百度小程序、QQ小程序、头条小程序、支付宝小程序、快应用
+>
+> **Uni-app：**
+>
+> 1. 公司：DCloud
+> 2. DSL：vue
+> 3. Typescript：支持，tab实现编辑器自动补全
+> 4. Css：SASS、LESS、Stylus
+> 5. 语法检测：IDE支持
+> 6. 开发工具：HBuildX内置相关环境，开箱即用，无序配置nodejs
+> 7. 支持端：iOS、Android、H5、以及各种小程序（微信/支付宝/百度/头条/QQ/钉钉）等多个平台
+> 8. 优势：可在线打包App应用
+>
+> **Wepy和Mpvue**
+>
+> 1. 公司：
+> 2. DSL：类vue/vue
+> 3. Typescript：支持，tab实现编辑器自动补全
+> 4. Css：SASS、LESS、Stylus
+> 5. 开发工具：无，使用 CLI 命令行工具
+> 6. 支持端：`mpvue` 和 `WePY` 都提供了转换各端小程序的功能，但都没有 h5 和移动端的支持。
+>
+> **Taro：**
+>
+> 1. 公司：
+> 2. DSL：react
+> 3. Typescript：支持，tab实现编辑器自动补全
+> 4. Css：SASS、LESS、Stylus、CSS Modules
+> 5. 语法检测：单独写了ESlint规则和规则集
+> 6. 开发工具：无，使用 CLI 命令行工具
+> 7. 支持端：微信、百度、支付宝、头条
+>
+> **总结：**
+>
+> ![多端开发框架比对](/Users/qiaoxu/Desktop/myBlog/pic/multiport.jpg)
+
+
+
+## 四、React开发小程序
 
 ### 1.为什么要有跨端的框架
 
@@ -630,7 +678,7 @@ callLogin() {
 
 ![总结](/Users/qiaoxu/Desktop/myBlog/pic/wechat_summary.png)
 
-## 四、小程序实战
+## 五、小程序实战
 
 ### 1.支付
 
