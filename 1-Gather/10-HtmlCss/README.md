@@ -335,6 +335,46 @@ BFC是CSS布局的一个概念，是一块独立的渲染区域，是一个环�
 }
 ```
 
+### 14.响应式rem
+
+> 设计稿宽度/适配屏幕的宽度=根元素html的font-size=100px/要适配的font-size
+>
+> ```js
+> function adaptive() {
+>   var _self = this || document.body;
+>   _self.width = 375; // 设置默认最大宽度
+>   _self.fontSize = 100; // 默认字体大小
+>   _self.widthProportion = function () {
+>     var p = (document.body && document.body.clientWidth || document.getElementsByTagName("html")[0].offsetWidth) / _self.width;
+>     return p > 1 ? 1 : (p < (32 / 37.5) ? (32 / 37.5) : p);
+>   };
+>   _self.changePage = function () {
+>     document.getElementsByTagName("html")[0].setAttribute("style", "font-size:" + _self.widthProportion() * _self.fontSize + "px !important");
+>   }
+>   _self.changePage();
+>   if (window.addEventListener) {
+>     window.addEventListener('resize', function () {
+>       _self.changePage();
+>     }, false);
+>   } else {
+>     window.attachEvent("onresize", function () {
+>       _self.changePage();
+>     });
+>   }
+> }
+> ```
+>
+> **媒体查询：**
+>
+> @media screen and (min-width:1200px){ ... }/* 大型设备（大台式电脑，1200px 起） */
+>
+> @media screen and (min-width:992px){ ... }/* 中型设备（台式电脑，992px 起） */
+>
+> @media screen and (min-width:768px) { ... } /* 小型设备（平板电脑，768px 起） */
+>
+> @media screen and (min-width:480px){ ... }/* 超小设备（手机，小于 768px） */
+>
+> 在设置时，需要注意先后顺序，不然后面的会覆盖前面的样式。
 
 
 

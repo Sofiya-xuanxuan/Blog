@@ -8,6 +8,8 @@
 
 - [前端学习资料分类整理](https://github.com/Sofiya-xuanxuan/blog/tree/master/6-LearningMaterials)
 
+- [前端优秀插件汇总及好的软件汇总](https://github.com/Sofiya-xuanxuan/blog/tree/master/9-ExcellentPlugins)
+
 - [面试题分类汇总](https://github.com/Sofiya-xuanxuan/blog/tree/master/2-InterviewQuestion)
 
 - [每日阅读Summary](https://github.com/Sofiya-xuanxuan/blog/tree/master/3-Dailyreading)
