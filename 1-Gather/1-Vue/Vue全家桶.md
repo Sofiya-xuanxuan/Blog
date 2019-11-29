@@ -4938,9 +4938,87 @@ require.context函数执行后返回的是**一个函数,并且这个函数有3�
 
 这三个都是作为函数的属性(注意是作为函数的属性,函数也是对象,有对应的属性)
 
+#### 12.Vue.use()
 
+安装插件的方式
 
+- **Loading.vue组件**
 
+  ```js
+  <template>
+      <div class="loading-box">
+          Loading...
+      </div>
+  </template>
+  ```
+
+  
+
+- **在index.js 中 引入 Loading.vue ，并导出**
+
+  ```js
+  // 引入组件
+  import LoadingComponent from './loading.vue'
+  // 定义 Loading 对象
+  const Loading={
+      // install 是默认的方法。当外界在 use 这个组件的时候，就会调用本身的 install 方法，同时传一个 Vue 这个类的参数。
+      install:function(Vue){
+          Vue.component('Loading',LoadingComponent)
+      }
+  }
+  // 导出
+  export default Loading
+  ```
+
+  
+
+- **在 main.js 中引入 loading 文件下的 index**
+
+  ```js
+  // 其中'./components/loading/index' 的 /index 可以不写，webpack会自动找到并加载 index 。如果是其他的名字就需要写上。
+  import Loading from './components/loading/index'
+  // 这时需要 use(Loading)，如果不写 Vue.use()的话，浏览器会报错，大家可以试一下
+  Vue.use(Loading)
+  ```
+
+  
+
+- **在App.vue里面写入定义好的组件标签 **
+
+  ```js
+  <template>
+    <div id="app">
+      <h1>vue-loading</h1>
+      <Loading></Loading>
+    </div>
+  </template>
+  ```
+
+> ```js
+> // 插件
+> const plugin = {
+>   install(){
+>     document.write('我是install内的代码')
+>   }
+> }
+> 
+> // 初始化插件
+> Vue.use(plugin); // 页面显示"我是install内的代码"
+> ```
+>
+> 总结：**
+>
+> 1. Vue的插件是一个**对象**, 就像`Element`.
+> 2. 插件**对象**必须有`install`字段.
+> 3. `install`字段是一个函数.
+> 4. 初始化插件**对象**需要通过`Vue.use()`.
+>
+> **扩展学习：**
+>
+> 1. `Vue.use()`调用必须在`new Vue`之前.
+> 2. 同一个插件多次使用Vue.use()也只会被运行一次.
+
+#### 13.为什么Vue.use()在new Vue()之前使用
 
 
 
