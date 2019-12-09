@@ -5024,6 +5024,135 @@ require.context函数执行后返回的是**一个函数,并且这个函数有3�
 
 
 
+```js
+let formData = new FormData()
+  let update_img_url = '/pic/api/uploadImage'
+  formData.append('img_content', file)
+  formData.append('img_type', 1)
+  formData.append('sort_num', 1)
+  formData.append('check_id', uuid())
+  formData.append('file_name', file.name)
+  $.ajax({
+    url: update_img_url,
+    async: true, //请求是否异步，默认为异步，这也是ajax重要特性
+    crossDomain: true,
+    dataType: 'json', //dataType设置你收到服务器数据的格式
+    type: 'post',
+    data: formData,
+    processData: false, //对表单data数据是否进行序列化
+    contentType: false,
+    cache: false,
+    xhr: function () { //ajax进度条
+      var xhr = $.ajaxSettings.xhr();
+      if (xhr.upload) {
+        xhr.upload.addEventListener("progress", function (evt) {
+          percentCb(index, Math.floor(100 * evt.loaded / evt.total))
+        }, false)
+      }
+      return xhr;
+    },
+    success: function (data) {
+      imgCb(data, index)
+    },
+    error: function () {
+      Toast('failed')
+    }
+  })
+```
+
+
+
+```js
+getFileWechat_h5 (event, index) {
+      var _this = this;
+      uploadImg_h5(
+        event,
+        index,
+        this.lang.upload_img_type,
+        function (index, value) {
+          _this.percent[index] = value; //已经上传的百分比
+          if (_this.percent[index] == 100) {
+            event.target.nextElementSibling.nextElementSibling.lastElementChild.style.display =
+              "block";
+            setTimeout(function () {
+              _this.percent[index] = 0;
+            }, 1000);
+          }
+        },
+        function (data, index) {
+          if (data.errcode == 0) {
+            if (data.url) {
+              _this.commonData.mch_img_list[index].img_url = data.url;
+              if (index === 0) {
+                _this.wrongInfo.img_url0_wrong = "";
+              } else if (index === 2) {
+                _this.wrongInfo.img_url2_wrong = "";
+              } else if (index === 3) {
+                _this.wrongInfo.img_url3_wrong = "";
+              } else if (
+                _this.commonData.mch_img_list[4].img_url &&
+                _this.commonData.mch_img_list[5].img_url
+              ) {
+                _this.wrongInfo.img_url4_wrong = "";
+              }
+            }
+          } else {
+            _this.percent[index] = 0;
+            _this.Toast("failed");
+          }
+        }
+      );
+    },
+```
+
+```js
+export default function uploadImg_h5(event, index, msg, percentCb, imgCb) {
+  var _this = this
+  var file = event.target.files[0]
+  const isJPG = file.type === 'image/jpeg' || file.type === 'image/jpg' || file.type === 'image/png';
+  if (!isJPG) {
+    Toast(msg)
+    event.target.value = null
+    return
+  }
+  let formData = new FormData()
+  let update_img_url = '/pic/api/uploadImage'
+  formData.append('img_content', file)
+  formData.append('img_type', 1)
+  formData.append('sort_num', 1)
+  formData.append('check_id', uuid())
+  formData.append('file_name', file.name)
+  $.ajax({
+    url: update_img_url,
+    async: true, //请求是否异步，默认为异步，这也是ajax重要特性
+    crossDomain: true,
+    dataType: 'json', //dataType设置你收到服务器数据的格式
+    type: 'post',
+    data: formData,
+    processData: false, //对表单data数据是否进行序列化
+    contentType: false,
+    cache: false,
+    xhr: function () { //ajax进度条
+      var xhr = $.ajaxSettings.xhr();
+      if (xhr.upload) {
+        xhr.upload.addEventListener("progress", function (evt) {
+          percentCb(index, Math.floor(100 * evt.loaded / evt.total))
+        }, false)
+      }
+      return xhr;
+    },
+    success: function (data) {
+      imgCb(data, index)
+    },
+    error: function () {
+      Toast('failed')
+    }
+  })
+}
+```
+
+
+
 
 
 
