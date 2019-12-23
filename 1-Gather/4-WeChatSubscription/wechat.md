@@ -26,7 +26,7 @@
 
 - 开发者工具——公众平台测试账号
 
-  ![wechat](/pic/wechat.png)
+  ![wechat](https://i.loli.net/2019/12/23/ncoCSiTIm2HJwyQ.png)
 
 - 安装sunny-ngrok实现外网映射
 
@@ -308,7 +308,7 @@ const api = new wechatAPI(
 
 - **网页授权过程**
 
-![wechat-oauth-process](/pic/wechat-oauth.png)
+![wechat-oauth-process](https://i.loli.net/2019/12/23/hqOLX9wRIgYQyJt.png)
 
 - **认证请求——生成用户URL**
 

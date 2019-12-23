@@ -192,7 +192,7 @@ react-native run-ios
 
   打开Android Studio，打开对应的项目，点击右上角的手机样式的按钮，如下图
 
-  ![安卓启动按钮](/Users/qiaoxu/Desktop/myBlog/pic/Android_start.png)
+  ![安卓启动按钮](https://i.loli.net/2019/12/18/QNGy79otVhjAmJP.png)
 
   ```bash
   cd 项目名

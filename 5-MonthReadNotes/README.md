@@ -13,9 +13,9 @@
   - [ ] JavaScript编程全解
   - [ ] JavaScript编程精粹
   - [ ] 精通JavaScipt开发
-  - [ ] JavaScript设计模式与开发实践 
-  - [ ] 学习JavaScript数据结构与算法
-  - [ ] 数据结构与算法JavaScript描述
+  - [x] JavaScript设计模式与开发实践 
+  - [x] 学习JavaScript数据结构与算法
+  - [x] 数据结构与算法JavaScript描述
   - [ ] 同构JavaScript应用开发
   - [ ] 深入浅出React
   - [ ] 深入React技术栈

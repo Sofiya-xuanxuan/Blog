@@ -18,7 +18,7 @@
 
   - 2017.5 - Google I/O正式向外界公布了Flutter，这个时候Flutter才正式进去大家的视􏰀野
 
-  - 2018年2月，Flutter推出了了第一个Beta版本
+  - 2018年2月，Flutter推出了第一个Beta版本
 
   - 在2018年12月5日，Flutter1.0版本发布
 
@@ -46,7 +46,7 @@
 
   - 工具链
 
-    RN在打包发布⽅面有被前端广泛使用的webpack支持，官方自⼰己提供了基于浏览器的debug⼯具，与前端同学管⽤的调试方式并⽆二致。
+    RN在打包发布⽅面有被前端广泛使用的webpack支持，官方自己提供了基于浏览器的debug⼯具，与前端同学惯⽤的调试方式并⽆二致。
 
     flutter基于iOS和Android已有的打包工具添加了flutter产物打包功能，同样debug工具也由官方⾃己提供，除了刚发布的基于浏览器的调试工具外，flutter团队提供的调试工具可以直接在Android Studio或者VScode这类IDE上直接使用。
 

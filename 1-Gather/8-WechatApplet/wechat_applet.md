@@ -340,7 +340,7 @@ callLogin() {
 
   每个页面都是.js  .wxss .wxml .json四个部分构成
 
-  ![code](/Users/qiaoxu/Desktop/myBlog/pic/wechat_code.png)
+  ![code](https://i.loli.net/2019/12/23/rFGh8LsSOKzZxmv.png)
 
 - **开发方式**
 
@@ -676,7 +676,7 @@ callLogin() {
 
 ### 7.总结
 
-![总结](/Users/qiaoxu/Desktop/myBlog/pic/wechat_summary.png)
+![总结](https://i.loli.net/2019/12/23/5oErTjWB6LgidPK.png)
 
 ## 五、小程序实战
 
@@ -698,27 +698,7 @@ callLogin() {
 
 #### 登录流程时序
 
-![微信小程序登录](/Users/qiaoxu/Desktop/myBlog/pic/wxlogin.png)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+![微信小程序登录](https://i.loli.net/2019/12/18/maps2MyroxhFSL9.png)
 
 # Node.js微信公众号开发
 

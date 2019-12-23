@@ -4,7 +4,7 @@
 
 ### 1. 什么是webpack
 
-![webpack](/pic/webpack.png)
+![webpack](https://i.loli.net/2019/12/23/AnGy4EtchSwo8sz.png)
 
 Webpack is module bundler（模块打包工具）
 
@@ -1177,7 +1177,7 @@ github地址：https://github.com/webpack/analyse
 
 https://webpack.js.org/guides/code-splitting/#bundle-analysis 
 
-![官方推荐](/pic/official_analyse.png)
+![官方推荐](https://i.loli.net/2019/12/18/ht9sx4SOzyf1TiE.png)
 
 #### 15）webpack官方推荐的编码方式
 
@@ -1649,7 +1649,7 @@ sourceURL=webpack:///./index.js?'
   const info = entry('./src/index.js')
   ```
 
-  ![bundle](/pic/bundle.png)
+  ![bundle](https://i.loli.net/2019/12/18/s4FJkygKiAnzMD9.png)
 
   >  分析上图，我们要分析出信息：
   >

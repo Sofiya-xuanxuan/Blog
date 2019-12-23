@@ -7,4 +7,5 @@
 - [Git详解](https://github.com/Sofiya-xuanxuan/blog/tree/master/4-Weekly/weekly/3.md)-2019.11.23
 - [Webpack](https://github.com/Sofiya-xuanxuan/blog/tree/master/4-Weekly/weekly/4.md)-2019.11.30
 - [前端下载文件汇总](https://github.com/Sofiya-xuanxuan/blog/tree/master/4-Weekly/weekly/5.md)-2019.12.07
+- [跨域]()-2019.12.23
 

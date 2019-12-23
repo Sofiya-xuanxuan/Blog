@@ -151,7 +151,7 @@ package.json 文件用于描述应用的依赖关系和对外暴露的脚本接�
 
 该文件名为Nuxt.js保留的，不可更改。
 - 别名
-![别名](/pic/alias.png)
+![别名](https://i.loli.net/2019/12/18/hQGUi1mdxtlvjus.png)
 
 默认情况下，src目录和根目录相同
 
@@ -1061,7 +1061,7 @@ actions: {
 ```
 ## 15.nuxt命令和部署
 - **命令列表**
-![执行命令](/pic/build.png)
+![执行命令](https://i.loli.net/2019/12/18/7K2Vmnf6Rlqj54D.png)
 - **开发模式**
 ```
 nuxt
@@ -1078,7 +1078,7 @@ nuxt start
 ```
 2. 静态应用部署
 
-Nuxt.js 可依据路由配置将应用静态化，使得我们可以将应用部署至任何一个静态站点主机服务商。
+Nuxt.js 可依据路由配置将应用静态化，使得我们可以将应用部署至任何一个静态站点主![build](/Users/qiaoxu/Desktop/myBlog/pic/build.png)机服务商。
 
 可利用下面的命令生成应用的静态目录和文件：
 ```

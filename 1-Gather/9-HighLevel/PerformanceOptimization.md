@@ -21,7 +21,7 @@
 
 ​	2）少执行代码
 
-![浏览器运行](/Users/qiaoxu/Desktop/myBlog/pic/browser.png)
+![浏览器运行](https://i.loli.net/2019/12/18/yqSkATeQf538G2m.png)
 
 ### 2. DNS
 
@@ -182,6 +182,7 @@
   - 懒加载
 
 - 减少用户和服务器的距离
+  
   - cdn：分发网络
 
 ### 4. 三次握手

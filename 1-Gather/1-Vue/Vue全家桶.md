@@ -1930,7 +1930,7 @@ render: h => h(App)
 vuex遵循“单向数据流”理念，易于问题追踪以及提高代码可维护性
 
 vue中多个视图依赖于同一状态时，视图间传参和状态同步比较困难，vuex能够很好的解决该问题
-![vuex](/pic/vuex.png)
+![vuex](https://i.loli.net/2019/12/23/SryW6GlDTMzXYIb.png)
 
 
 #### 2)安装
@@ -2229,7 +2229,7 @@ vue响应式的原理
 在new Vue()之后。Vue会调用进行初始化，会初始化生命周期、事件、props、methods、data、computed与watch等。其中最重要的是通过object.defineProperty设置setter与getter，用来实现【响应式】以及【依赖收集】。
 
 初始化之后，$mount挂载，做了一件编译compile（parse、optimize、generate）
-![vue工作机制](/pic/vue.png)
+![vue工作机制](https://i.loli.net/2019/12/23/wRrqfc7Q8zHig19.png)
 
 <font color="red">new Vue（）之后——>$mount挂载——>compile编译——>generate生成render function——>做两件事
 </font> 
@@ -2257,7 +2257,7 @@ vue响应式的原理
 
 Virtual DOM是react首创，vue2开始支持，就是用JavaScript对象来描述dom结构，数据修改的时候，我们先修改虚拟dom中的数据，然后数组做diff，最后再汇总所有的diff，力求做最少的dom操作，毕竟js里对比很快，而真实dom操作太慢
 - **更新视图**
-![vue工作机制](/pic/vue_simple.png)
+![vue工作机制](https://i.loli.net/2019/12/23/lqmNcMy1XdvsoSf.png)
 
 ### 2.响应式原理object.defineProperty
 在做observe这件事
@@ -3803,7 +3803,7 @@ router.afterEach((to,from)=>{
 
 传统的web开发：纯服务端渲染
 
-![纯服务端渲染](/pic/client.png)
+![纯服务端渲染](https://i.loli.net/2019/12/18/GeNPRf9LCncUTA6.png)
 ```
 const express = require('express')
 const app = express()

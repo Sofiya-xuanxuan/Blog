@@ -70,3 +70,11 @@
 Sourcetree简化了如何与Git存储库进行交互，这样您就可以集中精力编写代码。通过Sourcetree的简单Git GUI可视化和管理存储库。
 
 ### 2.
+
+
+
+# 技术插件
+
+### 1.Google转json插件——JsonView
+
+https://www.cnblogs.com/songyanan/p/9224347.html
