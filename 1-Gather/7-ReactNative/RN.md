@@ -2898,7 +2898,7 @@ Would you like to bind packages to this version?(Y/N)
 
 此时输入Y立即绑定，你也可以在将来使用 `pushy update --platform <ios|android>` 来使得对应包版本的用户更新。 除此以外，你还可以在⽹页端操作，简单的将对应的包版本拖到此版本下即可。
 
-![热更新绑定](/Users/qiaoxu/Desktop/myBlog/pic/update.png)
+![热更新绑定](https://i.loli.net/2019/12/24/TqJow8FaGUhnrcP.png)
 
 版本绑定完毕后，客户端就应当可以检查到更新并进行更新了。 就理论⽽言，热更新操作到此结束，但是实际使用过程中，5000个⽤户⼤概会有100个丢掉的可能性。
 

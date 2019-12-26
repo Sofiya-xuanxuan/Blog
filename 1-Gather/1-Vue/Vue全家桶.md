@@ -2630,7 +2630,7 @@ vue中组件是怎么实现的：全局声明方式（组件参数：名字、�
 - vant
 
 选择一个合适的UI库:
-![合适的UI库](/pic/ui.png)
+![合适的UI库](https://i.loli.net/2019/12/24/sJin9yFGBT3R6xU.png)
 ```
 //选择cube-ui
 vue add cube-ui
@@ -3402,7 +3402,7 @@ export default store;
 
 6. v-leave-to: 2.1.8版及以上 定义离开过渡的结束状态。在离开过渡被触发之后下一帧生效 (与此同时 v-leave 被删除)，在过渡/动画完成之后移除。
 
-![transition](/pic/transition.png)
+![transition](https://i.loli.net/2019/12/24/WuQkUmjdAlsyzPG.png)
 
 #### 2.JavaScript 钩子动画
 - before-enter

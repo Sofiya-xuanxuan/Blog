@@ -2755,7 +2755,7 @@ next();
 
 ![dva](/pic/dva.png)
 
-![umi](/pic/umi.png)
+![umi](https://i.loli.net/2019/12/24/FQPExygCSstHANk.png)
 
 - **安装**
 ```

@@ -419,7 +419,7 @@ callLogin() {
   taro init 项目名称
   ```
 
-  ![taro](/Users/qiaoxu/Desktop/myBlog/pic/taro.png)
+  ![taro](https://i.loli.net/2019/12/24/W3EZQKbUYuyk8tR.png)
 
 - **启动项目**
 

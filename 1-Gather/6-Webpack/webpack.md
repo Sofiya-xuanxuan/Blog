@@ -1208,7 +1208,7 @@ document.addEventListener('click', () => {
 
 ​	c）查看代码利用率
 
-![代码利用率](/pic/use-rate.png)
+![代码利用率](https://i.loli.net/2019/12/24/ePD8AUYdxVXgIZS.png)
 
 - **将异步代码抽离出来**
 

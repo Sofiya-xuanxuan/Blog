@@ -2551,7 +2551,7 @@ app.listen(3000);
 
 - **token原理**
 
-  ![token](/pic/token.jpeg)
+  ![token](https://i.loli.net/2019/12/24/irTBsMkm1ZCbw9R.jpg)
 
   - 客户端使用用户名跟密码请求登录
   - 服务端收到请求，去验证用户名与密码
