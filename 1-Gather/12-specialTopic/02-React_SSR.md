@@ -46,7 +46,7 @@
 1. 如何在server端去渲染react html
 2. 通过一个简单的html+js的效果，怎么让一个应用有两个入口，两个webpack配置，打出两个包，并且通过node让html渲染不同的入口包呢？
 
-![同构](/Users/qiaoxu/Desktop/myBlog/pic/ssr-des.png)
+![同构](https://i.loli.net/2019/12/27/2tBohs9quDSPUvI.png)
 
 ### 第三节-ssr环境搭建
 
@@ -65,7 +65,7 @@
 
 项目结构：
 
-![项目结构](/Users/qiaoxu/Desktop/myBlog/pic/ssr-structure.png)
+![项目结构](https://i.loli.net/2019/12/27/bagXHz4qWxlMrus.png)
 
 #### 2.初始化项目
 
@@ -350,7 +350,7 @@ ReactDom.hydrate(Page, document.getElementById('root'))
 
 ### 第九节-ssr支持数据流
 
-![ssr数据流](/Users/qiaoxu/Desktop/myBlog/pic/ssr_data.png)
+![ssr数据流](https://i.loli.net/2019/12/27/ztwf7GyjNrhJ45l.png)
 
 ### 第十节-redux同构支持
 

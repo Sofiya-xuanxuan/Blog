@@ -2235,7 +2235,7 @@ rl.on("close", function() {
 
   - 原理
 
-  ![session](/pic/session.jpeg)
+  ![session](https://i.loli.net/2019/12/27/UxJhFaWYqpMOZHi.jpg)
 
   > 实现原理：
   >
@@ -2922,9 +2922,9 @@ https://github.com/hezhii/nodejs-sso-example
 
   有一个独立的认证中心，只有认证中心才能接受用户的用户名和密码等信息进行认证，其他系统不提供登录入口，只接受认证中心的间接授权。间接授权通过令牌实现，当用户提供的用户名和密码通过认证中心认证后，认证中心会创建授权令牌，在接下来的跳转过程中，授权令牌作为参数发送给各个子系统，子系统拿到令牌即得到了授权，然后创建局部会话。
 
-  ![sso](/pic/sso.png)
+  ![sso](https://i.loli.net/2019/12/27/3r1S5fUznYbuQEp.png)
 
-  ![sso](/pic/sso2.png)
+  ![sso](https://i.loli.net/2019/12/27/FLd17yI6CVUhfBN.png)
 
 下面对上图进行解释：
 

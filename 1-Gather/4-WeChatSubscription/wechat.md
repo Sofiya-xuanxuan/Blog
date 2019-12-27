@@ -175,7 +175,7 @@
   >
   > 验证过程：
   >
-  > ![signature](/pic/signature.png)
+  > ![signature](https://i.loli.net/2019/12/27/LJsUnZr6MkpjPqb.png)
   >
   > SHA1算法——类似MD5 SHA256
   >

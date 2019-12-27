@@ -1628,7 +1628,7 @@ npm install redux react-redux --save
 >   4.在redux中，提交和变更只有dispatch，在vuex中有dispatch和commit，在redux中，dispatch是同步的    
 >   5.redux是一个非常包容的库，是通用的，可以用在vue、angular中
 
-![redux流程图](/pic/redux.jpg)
+![redux流程图](https://i.loli.net/2019/12/27/dyTgNELWlXDUzfc.jpg)
 
 - **创建store实例**
 ```
@@ -4132,9 +4132,9 @@ console.log(foo)//'foo'
 ```
 setState并没有直接操作去渲染，而是执行了一个异步的updater队列，我们使用一个类来专门管理
 
-![setState工作原理1](/pic/setState1.png)
+![setState工作原理1](https://i.loli.net/2019/12/27/7UStz9b1XrBamdP.png)
 
-![setState工作原理2](/pic/setState2.png)
+![setState工作原理2](https://i.loli.net/2019/12/27/8wyiIBU6vHcueNA.png)
 
 关键代码：
 

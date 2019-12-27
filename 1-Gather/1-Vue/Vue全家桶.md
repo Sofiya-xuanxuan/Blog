@@ -3839,11 +3839,11 @@ SEO友好
 ### 2. spa时代
 到了vue、react时代，单页应用优秀的用户体验，逐渐成为了主流，页面整体是JS渲染出来的，称之为客户端渲染
 
-![单页面渲染](/pic/spa.png)
+![单页面渲染](https://i.loli.net/2019/12/27/9nzmVR1aWSkgjCN.png)
 
 单页渲染返回的html只有一个空的div，剩下的都是js生成的：
 
-![单页渲染返回的代码](/pic/spa_code.png)
+![单页渲染返回的代码](https://i.loli.net/2019/12/27/y1bM2rsGKLFXgUv.png)
 
 这里可看到单页应用的两个缺点：
 
@@ -3866,7 +3866,7 @@ SEO不友好
 
 为了解决这两个问题，出现了SSR解决方案，后端渲染出完成的首屏的dom结构返回，前端拿到的内容带上首屏，后续的页面操作，再用单页的路由跳转和渲染，称之为服务端渲染（server side render）
 
-![ssr渲染](/pic/ssr.png)
+![ssr渲染](https://i.loli.net/2019/12/27/1ByP2JqRVmkaKcW.png)
 
 同构开发，打包代码后，一份客户端，一份服务端，首次请求后，会返回首屏的url，之后就跟单页开发一样了，直接ajax请求即可。
 

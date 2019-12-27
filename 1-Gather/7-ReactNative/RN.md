@@ -2317,7 +2317,7 @@ $ react-native link @react-native-community/async-storage
 
 ### 3.离线缓存的策略
 
-![离线缓存流程](/Users/qiaoxu/Desktop/myBlog/pic/rn_asyncStorage.png)
+![离线缓存流程](https://i.loli.net/2019/12/27/JRAXN49Zko8tVlh.png)
 
 - 优先从本地获取数据，如果数据过时或者不存在，则从服务器获取数据，数据返回后同时将数据同步到本地数据库
 
