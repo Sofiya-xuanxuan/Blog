@@ -437,7 +437,7 @@ app.listen(3000,()=>{
 
     koa中间件机制：koa中间件机制就是函数组合的概念，将一组需要顺序执行的函数复合为一个函数，外层函数的参数实际就是内层函数的返回值。洋葱模型可以形象表示这种机制，是源码中的精髓和难点。
 
-  ![koa](D:/7/Desktop/pic/koa.png)
+  ![koa](https://i.loli.net/2020/01/02/awzBHv3UWQt7qXu.png)
 
   - 优雅的API设计
   - 增强的错误处理
@@ -2046,7 +2046,7 @@ rl.on("close", function() {
 
     - 基于mongodb驱动，简化操作
 
-      ![mongoose](D:/7/Desktop/pic/mongoose.png)
+      ![mongoose](https://i.loli.net/2020/01/02/m23yA7MO1qhQsCx.png)
 
   - 安装：npm i mongoose -S
 
@@ -2756,7 +2756,7 @@ app.listen(3000);
 
     - OAuth登录流程：
 
-      ![oauth](/pic/oauth.png)
+      ![oauth](https://i.loli.net/2020/01/02/pJ7w3vy2ZVzbOIP.png)
 
     - 案例：oauth登录
 
@@ -4985,7 +4985,7 @@ https://yeasy.gitbooks.io/docker_practice/container/run.html
 
 #### 3）对比传统虚拟机总结
 
-![docker](/pic/docker.png)
+![docker](https://i.loli.net/2020/01/04/qBWCo8aMLYKRnhO.png)
 
 #### 4）三个核心概念
 

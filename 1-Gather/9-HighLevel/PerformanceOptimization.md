@@ -30,7 +30,7 @@
 
 优化：prefetch预获取，比如使用的cdn域名
 
-![prefetch](/Users/qiaoxu/Desktop/myBlog/pic/prefetch.png)
+![prefetch](https://i.loli.net/2020/01/02/6LtYBZ2OJq5XGbs.png)
 
 ### 3. TCP
 
@@ -467,7 +467,7 @@ npm install -g lighthouse
 lighthouse https://www.kaikeba.com/ --view
 ```
 
-![lighthose](/Users/qiaoxu/Desktop/myBlog/pic/lighthouse.png)
+![lighthose](https://i.loli.net/2020/01/02/3PvjcGhuSXIQMek.png)
 
 ### 4. 节流和防抖
 

@@ -131,7 +131,7 @@
 
 - **Flutter系统架构图**
 
-  ![flutter](/Users/qiaoxu/Desktop/myBlog/pic/flutter.png)
+  ![flutter](https://i.loli.net/2020/01/04/BiatKnLQcIgreuU.png)
 
   如上图所示为Flutter官方给出的系统架构图，可以看出Flutter框架分为三层:Framework层、Engine层和Embedder层。
 
@@ -151,7 +151,7 @@
 
 ⽆论是iOS还是安卓都是提供一个平台的View给Flutter层，⻚面内容渲染交由Flutter层自身来完成，所以其相对React Native等框架性能更好。Flutter中图形渲染流程:
 
-![flutter原理](/Users/qiaoxu/Desktop/myBlog/pic/flutter_theory.png)
+![flutter原理](https://i.loli.net/2020/01/04/S7TUlaHYtOf8zIc.png)
 
 大致流程如下:
 

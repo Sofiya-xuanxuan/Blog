@@ -1241,7 +1241,7 @@ document.addEventListener('click', () => {
 > - preload chunk 会在父 chunk 中立即请求，用于当下时刻。prefetch chunk 会用于未来的某个时刻。
 > - 浏览器支持程度不同。
 
-![代码利用率](/pic/code-useRate.png)
+![代码利用率](https://i.loli.net/2020/01/04/SIpL7kzwU2jM3bJ.png)
 
 ## 二、webpack互动扩展
 
@@ -1729,7 +1729,7 @@ sourceURL=webpack:///./index.js?'
 
   打印结果：
 
-  ![info](/pic/info.png)
+  ![info](https://i.loli.net/2020/01/02/9N7xJpautZWrQDY.png)
 
   - 分析依赖——完成项目中所有模块的分析
 

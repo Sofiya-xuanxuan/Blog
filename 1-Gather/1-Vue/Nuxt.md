@@ -423,7 +423,7 @@ export default {
 </style>
 ```
 Nuxt.js 为页面提供的特殊配置项：
-![nuxt页面配置项](/pic/nuxt_config.png)
+![nuxt页面配置项](https://i.loli.net/2020/01/02/LtCg82R6Kk3iovS.png)
 - **HTML头部**
 
 ## 10.nuxt异步数据

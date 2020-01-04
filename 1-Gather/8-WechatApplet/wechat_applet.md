@@ -328,7 +328,7 @@ callLogin() {
 >
 > **总结：**
 >
-> ![多端开发框架比对](/Users/qiaoxu/Desktop/myBlog/pic/multiport.jpg)
+> ![多端开发框架比对](https://i.loli.net/2020/01/02/XMPbV7rdixAoJcq.jpg)
 
 
 

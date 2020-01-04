@@ -34,7 +34,7 @@
 
   - 开通隧道
 
-    ![wechat](/pic/ngrok.png)
+    ![wechat](https://i.loli.net/2020/01/02/a4smMOEyNtfz9FU.png)
 
   - 下载ngrok
 
@@ -46,7 +46,7 @@
 
   - 映射成功后
 
-    ![ngrok-success](/pic/ngrok-success.png)
+    ![ngrok-success](https://i.loli.net/2020/01/02/PjsROXlqBLa1UIS.png)
 
 ### 3.客服消息-你问我答
 
@@ -300,9 +300,9 @@ const api = new wechatAPI(
 
 - **网页授权2个地方需要配置**
 
-![oauth1](/pic/oauth1.png)
+![oauth1](https://i.loli.net/2020/01/02/aGL1vUAhqoOkKcf.png)
 
-![oauth2](/pic/oauth2.jpeg)
+![oauth2](https://i.loli.net/2020/01/02/L1TzNu6exGhbMBC.jpg)
 
 > 注意：只填写域名，不要加http或者https
 

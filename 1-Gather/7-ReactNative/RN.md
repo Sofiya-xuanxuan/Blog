@@ -233,7 +233,7 @@ react-native run-ios
 
   - 点击后自动打开浏览器
 
-  ![浏览器debugger](/Users/qiaoxu/Desktop/myBlog/pic/debugger.png)
+  ![浏览器debugger](https://i.loli.net/2020/01/04/5AXhy9gGkrflemI.png)
 
   - 打开浏览器检查
 

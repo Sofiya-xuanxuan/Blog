@@ -14,7 +14,8 @@
 - **单一使用vue.js的场景**
 
 这种组件之间相互传参非常麻烦，子组件需要通过prop来接收父组件传来的参数，而子组件给父组件传参的时候，需要$emit事件通知父组件，而父组件需要$on监听参数的传递
-![vuex-store](/pic/component.jpg)
+![vuex-store](https://i.loli.net/2020/01/04/p8QVwxBjKAHzCyt.png)
+
 - **使用vuex.js的场景**
 ![vuex-store](https://i.loli.net/2019/12/23/fciDFBMeksnZRIL.png)
 

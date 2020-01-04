@@ -2299,7 +2299,7 @@ getter什么时候会被执行：obj中的name被访问时就会执行
 
 object.defineProperty
 **2. Dep**
-![依赖收集](/pic/dep_collect.png)
+![依赖收集](https://i.loli.net/2020/01/04/MqOTr8wJZsA5x2G.png)
 如何实现呢，需要扫描视图收集依赖，知道视图中到底哪些地方对数据有依赖，这样当数据变化时就能有的放矢了。
 
 有多个地方都对某个数据进行了依赖，这时候就需要一个管理者，叫dependency，这里面有一个数组，记住，有一个key就有一个dependency，每个dependency中会有多个watcher
@@ -2310,7 +2310,7 @@ object.defineProperty
 **4. 编译compile**
 - 解析指令
 - 初始化视图
-![编译的过程](/pic/compile.png)
+![编译的过程](https://i.loli.net/2020/01/04/bUBxGZfLu7rtK3A.png)
 
 **6. 监听器watcher**
 
@@ -3909,7 +3909,7 @@ nuxt.js是一个基于Vue.js的通用应用框架
 ```
 #### 2) nuxt渲染流程
 
-![nuxt流程渲染图](/pic/nuxt_process.png)
+![nuxt流程渲染图](https://i.loli.net/2020/01/02/TEc8PqmXL6QWlji.png)
 
 每个路由变化都会触发中间件
 
@@ -4026,7 +4026,7 @@ export default {
 
 页面组件是上是Vue组件，只不过Nuxt.js为这些组件添加了一些特殊的配置项：
 
-![页面配置项](/pic/page.png)
+![页面配置项](https://i.loli.net/2020/01/02/6EetXlGQfoUg9OY.png)
 
 <font color='red'>head配置：</font>
 ```
@@ -4896,7 +4896,7 @@ clickLink(path) {
 
 Vue.config.productionTip = false这句代码是在入口文件里的
 
-![Vue.config](../../pic/productionTip.png)
+![Vue.config](https://i.loli.net/2020/01/02/PC91wnDGzfH3uYX.png)
 
 1.先看看没有这句代码的效果
 这张图上面 显示出来的就是没有这句代码的效果 他说（You are running Vue in development mode.
@@ -4905,7 +4905,7 @@ See more tips at https://vuejs.org/guide/deployment.html）阻止了生产模式
 
 > 综上所述，  没有Vue.config.productionTip = false这句代码，它会显示你生产模式的消息
 
-![Vue.config](../../pic/productionTip2.png)
+![Vue.config](https://i.loli.net/2019/12/30/KeraMZquipyjtUd.png)
 
 2.有这句代码的效果
 灭有这句代码后，他没有显示（You are running Vue in development mode.

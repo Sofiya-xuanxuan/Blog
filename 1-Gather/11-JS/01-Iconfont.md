@@ -1,8 +1,10 @@
 # Iconfont
 
 > 顾名思义，IconFont 就是字体图标。严格地说，就是一种字体，但是，它们不包含字母或数字，而是包含符号和字形。您可以使用 CSS 设置样式，就像设置常规文本一样，这使得 IconFont 成为 Web 开发时图标的热门选择。
+>
+> <font color='red'>iconfont提供了png,ai,svg三种格式，同时使用也支持unicode，font-class，symbol三种方式。</font>
 
-## 1. 字体格式介绍**
+## 1. 字体格式介绍
 
 目前最主要的几种网络字体(web font)格式包括WOFF，SVG，EOT，OTF/TTF。
 
