@@ -11,7 +11,8 @@ assetsPublicPath: './',
 - `index`: 模板
 - `assetRoot`: 打包后文件要存放的路径
 - `assetsSubDirectory`: 除了 index.html 之外的静态资源要存放的路径，
-- `assetsPublicPath`: 代表打包后，index.html里面引用资源的的相对地址
+- `assetsPublicPath`: 代表打包后，index.html里面引用资
+- 
 
 ## 第章-Webpack初探
 
@@ -142,17 +143,33 @@ npm run bundle——>webpack
 
 > webpack不能识别非js结尾的模块，所以需要loader来让webpack识别出来
 
-file-loader
+file-loader：将图片复制了一个
+
+vue-loader：处理.vue结尾的文件
 
 commonjs：require
 
+### 7.使用Loader打包静态资源（图片篇）
 
+```js
+{
+        test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
+        loader: 'url-loader',
+        options: {
+          limit: 20000,
+          #占位符：placeholder
+          name: utils.assetsPath('img/[name].[hash:7].[ext]')
+        }
+}
+```
 
-
-
-
-
-
+> url-loader：可以将图片打包成base64，放入了出口文件中app.js中
+>
+> 注意：当图片的大小在limit范围内容，则会打包成base64，插入出口文件app.js中，这个limit限制不能设置太大，插入过大的图片，会导致出口文件app.js过大，影响加载的速度
+>
+> 当图片大小超过limit限制时，url-loader会与file-loader有一样的作用，将图片直接复制到相应的文件中
+>
+> <font color='red'>需要注意两种处理方式，引入图片的方式要怎么处理</font>
 
 
 
