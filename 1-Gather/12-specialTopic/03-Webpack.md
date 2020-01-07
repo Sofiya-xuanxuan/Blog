@@ -171,6 +171,143 @@ commonjs：require
 >
 > <font color='red'>需要注意两种处理方式，引入图片的方式要怎么处理</font>
 
+### 8.使用Loader打包静态资源（样式篇-上）
+
+> 直接引入.css文件是不能识别的，必须装相应的loader来解析
+>
+> Loader是有顺序的，从下到上，从右到左，所以配置的时候要注意顺序
+
+```js
+{
+  test:/\.scss$/,
+  use:[
+    'style-loader',
+    'css-loader',
+    'sass-loader',
+    'postcss-loader'// 兼容各个浏览器，样式加hacker前缀
+  ]  
+}
+```
+
+- **安装相关依赖**
+
+```js
+npm i postcss-loader -D
+
+npm i autoprefixer -D
+```
+
+> postcss-loader有一个配置文件，在根目录下创建：`.postcssrc.js`文件：
+
+```js
+# 方式一：
+module.exports = {
+
+  "plugins": {
+
+​    "postcss-import": {},
+
+​    "postcss-url": {},
+
+​    // to edit target browsers: use "browserslist" field in package.json
+
+​    "autoprefixer": {}
+
+  }
+}
+
+# 方式二：
+module.exports = {
+  "plugins": {
+		require('autoprefixer')
+  }
+}
+```
+
+### 9.使用Loader打包静态资源（样式篇-下）
+
+- **css模块化打包**
+
+```js
+{
+  test:/\.scss$/,
+  use:[
+    'style-loader',
+    {
+      loader:'css-loader',
+      options:{
+        importLoaders:2,// 表示必须先走下面的两个loader来处理css
+        modules:true//表示css打包-模块化，这里不配置的话，引入的css就是全局的，修改的话会污染全局
+      }
+    },
+    'sass-loader',
+    'postcss-loader'// 兼容各个浏览器，样式加hacker前缀
+  ]  
+}
+```
+
+- **使用wabpack打包字体库**
+
+```js
+{
+        test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/,
+        loader: 'url-loader',
+        options: {
+          limit: 10000,
+          name: utils.assetsPath('fonts/[name].[hash:7].[ext]')
+        }
+}
+```
+
+### 10.使用plugins让打包更便捷
+
+> plugin 可以在webpack运行到某个时刻的时候，帮你做一些事情
+
+- **HtmlWebpackPlugin**
+
+会在打包结束后，自动生成一个html文件，并把打包生成的js自动引入这个html文件中
+
+- **clean-webpack-plugin**
+
+会在打包之前运行，每次打包之前会将dist目录删除，然后重新生成新的dist目录
+
+### 11.Entry与Output的基础配置
+
+```js
+output: {
+  	publicPath:'http://cdn.com.cn',//打包后的出口文件，在引入html文件中的路径前缀会加上这个
+    path: config.build.assetsRoot,
+    filename: utils.assetsPath('js/[name].[chunkhash].js'),
+    chunkFilename: utils.assetsPath('js/[id].[chunkhash].js')
+  },
+```
+
+### 12.SourceMap的配置
+
+> 它是一个映射关系，映射出当前报错的地方，配置source-map后，打包速度会变慢
+
+```js
+{
+  devtool:'#source-map'
+  # cheap-inline-source-map 只告诉我报错的行即可，只管业务代码，不会管第三方插件中的代码错误
+  # cheap-module-inline-source-map 会将第三方的报错地方也告知
+  # inline-source-map
+  # eval 打包速度最快，性能最好，但是面对复杂代码，可能提示信息不全
+  # development：cheap-module-eval-source-map 打包速度快，提示信息全
+  # production：cheap-module-source-map  线上用这个比较好
+}
+```
+
+
+
+### 13.使用WebpackDevServer提升开发效率
+
+
+
+
+
+
+
 
 
 

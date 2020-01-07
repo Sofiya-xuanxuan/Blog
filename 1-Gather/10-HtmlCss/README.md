@@ -376,6 +376,19 @@ BFC是CSS布局的一个概念，是一块独立的渲染区域，是一个环�
 >
 > 在设置时，需要注意先后顺序，不然后面的会覆盖前面的样式。
 
+### 15.去掉input type=number时显示的上下箭头
+
+```js
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+
+input[type="number"]{
+  -moz-appearance: textfield;
+}
+```
+
 
 
 
