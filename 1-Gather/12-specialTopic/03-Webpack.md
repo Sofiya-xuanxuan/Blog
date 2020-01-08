@@ -302,6 +302,259 @@ output: {
 
 ### 13.使用WebpackDevServer提升开发效率
 
+- **安装**
+
+```js
+npm i webpack-dev-server -D
+```
+
+> 自动打包并自动刷新浏览器
+
+```js
+{
+  devServer:{
+    contentBase:'./dist',//表示我的服务器起到哪个项目下
+    open:true,//启动服务后自动打开浏览器并访问localhost:8090
+    proxy:{//代理——来处理跨域
+      
+    }  
+  }
+}
+
+# package.json
+"scripts": {
+  	"watch":"webpack --watch",
+    "dev": "webpack-dev-server",
+      
+}  
+```
+
+
+
+```js
+#package.json
+{
+  "bundle":"webpack",#打包
+  "watch":"webapck --watch"  
+  #自动打包，不需要手动打包，但是不会给我们起一个服务，还需要手动刷新浏览器
+  "dev":"webpack-dev-server"
+  #帮助启动http服务(可以发ajax请求)，并会打包代码，打包到dist目录下，自动刷新浏览器
+  "middleware":"node server.js"
+  #使用中间件的方式，来监听代码的改变，来刷新浏览器(这是自己实现一个webpack-dev-server)
+}
+```
+
+- **安装相关**
+
+```js
+npm i express webpack-dev-middleware -D
+
+#server.js
+const express=require('express')
+const webpack=require('webpack')
+const webpackDevMiddkeware=require('webpack-dev-middleware')
+const config=require('./webpack.config.js')
+const compiler=webpack(config)
+
+const app=express()
+//中间件
+//只要文件发生改变了，compiler就会重新运行，重新运行生成的文件对应的打包输出的内容的publicPath就是config.output.publicPath
+app.use(webpackDevMiddkeware(compiler,{
+  publicPath:config.output.publicPath
+}))
+
+app.listen(3000,()=>{
+  consoe.log('监听成功')
+})
+
+# 目前到这步是需要手刷新的，如果要实现webpack-dev-server，中间需要写很多配置
+
+```
+
+### 14.Hot Module Replacement 热模块更新（1）
+
+> 实现html或者css修改后，浏览器不需要自动刷新，只需要重新加载样式即可
+
+```js
+devServer:{
+  hot:true,
+  hotOnly:true  
+  #即便是html功能没有生效，也不让浏览器自动重新刷新
+}
+
+
+plugins:[
+  new webpack.HotModuleReplacementPlugin(), //热更新插件
+]
+```
+
+
+
+### 15.Hot Module Replacement 热模块更新（2）
+
+```js
+// 当某个js文件发生改变时，要手动去更新这个js文件，这样页面上才会更新
+module.hot.accept('./number',()=>{
+  number()
+})
+```
+
+> css-loader：底层已经实现了热更新，所以不需要额外写热更新代码
+>
+> vue-loader：底层实现了对js、css等热更新，所以不需要额外写更新代码
+>
+> react：是借助babel-preset，内置了html热更新实现
+
+
+
+### 16.使用Babel处理ES6语法（1）
+
+> 打包将ES6语法转为ES5语法
+
+- **安装**
+
+```js
+#babel-loader:只是webpack与babel通信的桥梁，但babel-loader并不会将ES6的语法转为ES5
+npm i babel-loader @babel/core -D
+
+#@babel/preset-env：将ES6语法转为ES5
+npm i @babel/preset-env -D
+```
+
+- **介绍**
+
+babel-loader：帮助webpack打包用的
+
+@babel/core：babel的核心库，babel识别js中的代码，将js代码转成AST抽象语法树，然后将语法树编译出来
+
+```js
+module: {
+    rules: [
+      {
+        test: /\.js$/,
+        loader: 'babel-loader',
+        exclude:/node_modules/, #第三库中不需要转，人家已经做好处理了
+        include: [resolve('src'), resolve('test'), resolve('node_modules/webpack-dev-server/client')],
+          options:{
+            presets:["@babel/preset-env"]#将ES6转为ES5
+          }
+      }
+}      
+```
+
+- **除了将ES6语法转为ES5语法，还需做别的**
+
+<font color='red'>除了将ES6语法转为ES5语法，还需要将缺失的变量还有函数补充到低版本浏览器中</font>
+
+**这时候需要借助`babel-polyfill`**
+
+	1. 安装
+
+```js
+npm i @babel/polyfill -S
+```
+
+2. 引入
+
+在所有代码运行之前，先去引入`@babel/polyfill`
+
+import '@babel/polyfill'
+
+3. 打包后文件变得非常大
+
+引入babel-polyfill后，入口文件变得非常大，这时候需要做配置，用到哪些方法就引入什么，不要全部都引入
+
+```js
+module: {
+    rules: [
+      {
+        test: /\.js$/,
+        loader: 'babel-loader',
+        exclude:/node_modules/, #第三库中不需要转，人家已经做好处理了
+        include: [resolve('src'), resolve('test'), resolve('node_modules/webpack-dev-server/client')],
+          options:{
+            presets:[["@babel/preset-env",{
+              useBuiltIns:'usage'
+              #使用babel-polyfill做填充的时候，加一些低版本浏览器可能不存在的特性的时候，不是把所有的特性都加入进去，根据您业务代码用到什么加入什么，这样入口文件就不会变特别大
+            }]]#将ES6转为ES5
+          }
+      }
+}   
+```
+
+
+
+### 17.使用Babel处理ES6语法（2）
+
+> babel-polyfill && babel-runtime
+>
+> 先说两种方式的原理：
+>
+> babel-polyfill，它不会将代码编译成低版本的ECMAScript，他的原理是当运行环境中并没有实现的一些方法，babel-polyfill中会给做兼容
+>
+> babel-runtime，将es6编译成es5去运行，前端可以使用es6的语法来写，最终浏览器上运行的是es5
+>
+> 优缺点：
+>
+> babel-polyfill：通过向全局对象和内置对象的prototype上添加方法来实现，比如运行环境中不支持Array-prototype.find，引入polyfill，前端就可以放心的在代码里用es6的语法来写；但是这样会造成全局空间污染。比如像Array-prototype.find就不存在了，还会引起版本之前的冲突。不过即便是引入babel-polyfill，也不能全用，代码量比较大。
+>
+> babel-runtime：不会污染全局对象和内置的对象原型。比如当前运行环境不支持promise，可以通过引入babel-runtime/core-js/promise来获取promise，或者通过babel-plugin-transform-runtime自动重写你的promise。但是它不会模拟内置对象原型上的方法，比如Array-prototype.find，就没法支持了，如果运行环境不支持es6，代码里又使用了find方法，就会出错，因为es5并没有这个方法
+
+- **安装**
+
+```js
+#polyfill是在全局注入代码，会污染全局
+
+
+#以闭包的形式注入，不会污染全局环境，如果写插件什么的，就要使用这种方式
+npm i @babel/plugin-transform-runtime -D
+
+npm i @babel/runtime-corejs2 -S
+
+module: {
+    rules: [
+      {
+        test: /\.js$/,
+        loader: 'babel-loader',
+        exclude:/node_modules/, #第三库中不需要转，人家已经做好处理了
+        include: [resolve('src'), resolve('test'), resolve('node_modules/webpack-dev-server/client')],
+          options:{
+            presets:[["@babel/preset-env",{
+              useBuiltIns:'usage'
+              #使用babel-polyfill做填充的时候，加一些低版本浏览器可能不存在的特性的时候，不是把所有的特性都加入进去，根据您业务代码用到什么加入什么，这样入口文件就不会变特别大
+            }]],#将ES6转为ES5
+            "plugins":[["@babel/plugin-transform-runtime",{
+              "corejs":2,
+              "helpers":true,
+              "regenerator":true,
+              "useESModules":false
+            }]]
+          }
+      }
+} 
+```
+
+- **在根目录下创建.babelrc文件做配置**
+
+```js
+{
+  presets:[["@babel/preset-env",{
+              useBuiltIns:'usage'
+              #使用babel-polyfill做填充的时候，加一些低版本浏览器可能不存在的特性的时候，不是把所有的特性都加入进去，根据您业务代码用到什么加入什么，这样入口文件就不会变特别大
+            }]],#将ES6转为ES5
+  "plugins":[["@babel/plugin-transform-runtime",{
+              "corejs":2,#配置为2表示当页面不存在promise等方法时，才会将代码打包进main.js中，需要额外安装@babel/runtime-corejs2
+              "helpers":true,
+              "regenerator":true,
+              "useESModules":false
+            }]]
+}
+```
+
+
+
+### 18.webpack实现React框架代码的打包
+
 
 
 
