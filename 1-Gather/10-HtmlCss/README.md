@@ -389,6 +389,25 @@ input[type="number"]{
 }
 ```
 
+### 16.网站加favicon小图标
+
+1. 创建一张favicon图标：[www.bitbug.net](http://www.bitbug.net)
+2. 在html中引入图标`<**link** rel="shortcut icon" href="./favicon.ico">`
+3. webpack中配置：将图标放在根目录下即可
+
+```js
+plugins: [
+    new HtmlWebpackPlugin({
+      filename: 'index.html',
+      template: 'index.html',
+      inject: true,
+      favicon: path.resolve('favicon.ico') // 在此处设置
+    })
+]  
+```
+
+
+
 
 
 

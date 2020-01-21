@@ -24,6 +24,18 @@
 ```
 cnpm install --save vuex
 ```
+- **vuex四大核心特征**
+  - state 用来数据共享数据存储
+  - mutation 用来注册改变数据状态
+  - getters 用来对共享数据进行过滤操作
+  - action 解决异步改变共享数据
+
+- **辅助用法**
+  - mapState 辅助函数
+  - mapGetters 辅助函数
+  - mapMutations 辅助函数
+  - mapActions 辅助函数
+
 - **store.js文件——存储数据state**
 
 Vuex 通过 store 选项，提供了一种机制将状态从根组件“注入”到每一个子组件中（需调用 Vue.use(Vuex)）：
@@ -84,7 +96,7 @@ export default {
 ```
 
 ## 5.Vuex-Getters——获取数据
-```
+```js
 //store.js-处理state中的数据
 import Vue from 'vue'
 import Vuex from 'vuex'
@@ -141,7 +153,7 @@ computed: {
 谷歌安装有插件：vue.js devtools
 - 一条重要的原则就是要记住 mutation 必须是同步函数。
 - 现在想象，我们正在 debug 一个 app 并且观察 devtool 中的 mutation 日志。每一条 mutation 被记录，devtools 都需要捕捉到前一状态和后一状态的快照。然而，在上面的例子中 mutation 中的异步函数中的回调让这不可能完成：因为当 mutation 触发的时候，回调函数还没有被调用，devtools 不知道什么时候回调函数实际上被调用——实质上任何在回调函数中进行的状态的改变都是不可追踪的。
-```
+```js
 //store.js——mutation
 import Vue from 'vue'
 import Vuex from 'vuex'
@@ -199,9 +211,10 @@ methods: {
 ```
 ## 7.Vuex-action——触发事件去改变数据
 **Action 类似于 mutation，不同在于：**
+
 - Action 提交的是 mutation，而不是直接变更状态。
 - Action 可以包含任意异步操作。
-```
+```js
 import Vue from 'vue'
 import Vuex from 'vuex'
 
@@ -252,7 +265,7 @@ export default new Vuex.Store({
 Action 通过 store.dispatch 方法触发：
 
 乍一眼看上去感觉多此一举，我们直接分发 mutation 岂不更方便？实际上并非如此，还记得 mutation 必须同步执行这个限制么？Action 就不受约束！我们可以在 action 内部执行异步操作：
-```
+```js
 //组件中分发
 import {mapActions} from 'vuex';
 methods: {
@@ -278,7 +291,7 @@ methods: {
 cnpm i babel-preset-stage-2 --save-dev
 ```
 你在组件中使用 this.$store.dispatch('xxx') 分发 action，或者使用 mapActions 辅助函数将组件的 methods 映射为 store.dispatch 调用（需要先在根节点注入 store）：
-```
+```js
 import { mapActions } from 'vuex'
 
 export default {
