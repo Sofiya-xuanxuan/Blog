@@ -14,7 +14,7 @@
 
 ### 【Vue系列】
 
-​	1. [Vue 系列之组件化]()
+​	1. [Vue 系列之组件化](https://github.com/Sofiya-xuanxuan/Blog)
 
 ### 【React 系列】
 
