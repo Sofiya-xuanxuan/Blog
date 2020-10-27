@@ -1,35 +1,65 @@
-# sofiya前端进阶之路
+# Tech轩_
 
 记录前端的点点滴滴，持续学习，在进阶的路上，共勉！
 
-> 乾坤未定，诸事可为
+> 砥砺前行，未来可期~
 
-- [前端知识分类整理](https://github.com/Sofiya-xuanxuan/blog/tree/master/1-Gather)
+# 专栏
 
-- [前端学习资料分类整理](https://github.com/Sofiya-xuanxuan/blog/tree/master/6-LearningMaterials)
+- [掘金主页](https://juejin.im/user/166781500005421/posts)
+- [GitHub主页]()
+- 微信公众号「Tech轩」
 
-- [前端优秀插件汇总及好的软件汇总](https://github.com/Sofiya-xuanxuan/blog/tree/master/9-ExcellentPlugins)
+# 专题系列
 
-- [面试题分类汇总](https://github.com/Sofiya-xuanxuan/blog/tree/master/2-InterviewQuestion)
+#### 【Vue系列】
 
-- [每日阅读Summary](https://github.com/Sofiya-xuanxuan/blog/tree/master/3-Dailyreading)
+​	1. [Vue 系列之组件化]()
 
-- [每周技术文章产出](https://github.com/Sofiya-xuanxuan/blog/tree/master/4-WeeklyOutputArticles)
+#### 【React 系列】
 
-- [每月读书笔记产出](https://github.com/Sofiya-xuanxuan/blog/tree/master/5-MonthReadNotes)
+#### 【Nodejs 系列】
 
-- [大神的鸡汤](https://github.com/Sofiya-xuanxuan/blog/tree/master/7-EfficientLearning)
+####【ES6 系列】
 
-- [优秀者Blog](https://github.com/Sofiya-xuanxuan/blog/tree/master/8-ExcellentBlog)
+#### 【TS系列】
 
-  
-  
-  ​					
+#### 【Webpack系列】
+
+#### 【浏览器系列】
+
+#### 【小程序系列】
+
+#### 【工具系列】
+
+# 面试相关
+
+1. [JavaScript基础]()
+2. [HTML和CSS]()
+3. [计算机基础]()
+4. [数据结构和算法]()
+5. [运行环境]()
+6. [框架和类库]()
+7. [前端工程]()
+8. [项目和业务]()
 
 
+
+​					
+
+sofiya前端进阶之路
+
+
+
+- 工具
+- 插件
+- Vue系列
+- React系列
+- 
 
 
 
 
 
 ​																
+
