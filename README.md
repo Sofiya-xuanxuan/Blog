@@ -37,7 +37,7 @@
 # 面试相关
 
 1. [JavaScript基础](https://github.com/Sofiya-xuanxuan/Blog/tree/master/interview_related/JavaScript%E5%9F%BA%E7%A1%80)
-2. [HTML和CSS]()
+2. [HTML和CSS](https://github.com/Sofiya-xuanxuan/Blog/tree/master/interview_related/HTML%E5%92%8CCSS)
 3. [计算机基础]()
 4. [数据结构和算法]()
 5. [运行环境]()
