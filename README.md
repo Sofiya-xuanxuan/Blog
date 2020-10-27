@@ -14,7 +14,7 @@
 
 ### 【Vue系列】
 
-1. [Vue 系列之组件化](https://github.com/Sofiya-xuanxuan/Blog/blob/master/thematic_series/Vue%E7%B3%BB%E5%88%97/1_Vue%20%E7%B3%BB%E5%88%97%E4%B9%8B%E7%BB%84%E4%BB%B6%E5%8C%96.md)
+1. [Vue 系列之组件化](https://github.com/Sofiya-xuanxuan/Blog/issues/1)
 
 ### 【React 系列】
 
