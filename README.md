@@ -34,6 +34,12 @@
 
 ### 【工具系列】
 
+### 【书籍系列】
+
+# 刻意练习
+
+1. [Vue 系列之刻意练习(一) 使用Vue.extend方式实现create方法]()
+
 # 面试相关
 
 1. [JavaScript基础](https://github.com/Sofiya-xuanxuan/Blog/tree/master/interview_related/JavaScript%E5%9F%BA%E7%A1%80)
@@ -44,6 +50,38 @@
 6. [框架和类库](https://github.com/Sofiya-xuanxuan/Blog/tree/master/interview_related/%E6%A1%86%E6%9E%B6%E5%92%8C%E7%B1%BB%E5%BA%93)
 7. [前端工程](https://github.com/Sofiya-xuanxuan/Blog/tree/master/interview_related/%E5%89%8D%E7%AB%AF%E5%B7%A5%E7%A8%8B)
 8. [项目和业务](https://github.com/Sofiya-xuanxuan/Blog/tree/master/interview_related/%E9%A1%B9%E7%9B%AE%E5%92%8C%E4%B8%9A%E5%8A%A1)
+
+# 生活自白
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
