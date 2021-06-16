@@ -1,99 +1,26 @@
 # 1.JavaScript基础
 
-### 1.1 执行上下文/作用域链/闭包
+[1.执行上下文/作用域链/闭包]()
 
-[1.JavaScript执行上下文的理解]()
+[1.2this/call/apply/bind](https://www.jianshu.com/p/d647aa6d1ae6)
 
-[2.作用域链]()
+[1.3 原型/继承](http://www.goyth.com/2018/04/23/prototypeAndExtend/)
 
-[3.闭包]()
+[1.4 Promise](https://juejin.cn/post/6844903607968481287#heading-7)
 
-### 1.2 this/call/apply/bind
+[1.5 深浅拷贝](https://github.com/axuebin/articles/issues/20)
 
+ES6之后还要考虑set, map, weakset, weakmap
 
+[1.6 事件机制/Event Loop](https://juejin.cn/post/6844904191664603143)
 
+[1.7 函数式编程]()
 
+[1.8 Service Worker / PWA]()
 
-### 1.3 原型/继承
+[1.9 Web Worker](https://juejin.cn/post/6844903736238669837#heading-2)
 
+[1.10 常用方法](https://juejin.cn/post/6844903775329583112)
 
-
-
-
-
-
-### 1.4 Promise
-
-
-
-
-
-### 1.5 深浅拷贝
-
-
-
-
-
-
-
-### 1.6 事件机制/Event Loop
-
-
-
-
-
-
-
-
-
-### 1.7 函数式编程
-
-
-
-
-
-### 1.8 Service Worker / PWA
-
-
-
-
-
-### 1.9 Web Worker
-
-
-
-### 1.10 常用方法
-
-
-
-
-
-
-
-### 变量和类型
-
-1. [JavaScript规定了几种语言类型]()
-2. [JavaScript对象的底层数据结构是什么]()
-3. [Symbol类型在实际开发中的应用、可手动实现一个简单的Symbol]()
-4. [JavaScript中的变量在内存中的具体存储形式]()
-5. [基本类型对应的内置对象，以及他们之间的装箱拆箱操作]()
-6. [理解值类型和引用类型]()
-7. [null和undefined的区别]()
-8. [至少可以说出三种判断JavaScript数据类型的方式，以及他们的优缺点，如何准确的判断数组类型]()
-9. [可能发生隐式类型转换的场景以及转换原则，应如何避免或巧妙应用]()
-10. [出现小数精度丢失的原因，JavaScript可以存储的最大数字、最大安全数字，JavaScript处理大数字的方法、避免精度丢失的方法]()
-
-### 原型和原型链
-
-
-
-### 作用域和闭包
-
-
-
-### 执行机制
-
-
-
-### 语法和API
+https://juejin.cn/post/6844903856489365518
 
