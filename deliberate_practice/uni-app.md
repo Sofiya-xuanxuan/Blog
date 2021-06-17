@@ -137,5 +137,129 @@ onReachBottom () {
 
 
 
+### 13.存储数据
 
+- **同步**
 
+  - uni.setStorage
+
+  - uni.getStorage
+  - uni.removeStorage
+  - uni.getStorageInfo——获取所有
+
+- **异步**
+
+  - uni.setStorageSync
+  - uni.getStorageSync
+  - uni.removeStorageSync
+  - uni.getStorageInfoSync——获取所有
+
+### 14.上传图片与预览图片
+
+- **上传图片**
+
+  ```js
+  uni.chooseImage({
+      count: 6, //默认9
+      sizeType: ['original', 'compressed'], //可以指定是原图还是压缩图，默认二者都有
+      sourceType: ['album'], //从相册选择
+      success: function (res) {
+          console.log(JSON.stringify(res.tempFilePaths));
+      }
+  });
+  ```
+
+- **预览图片**
+
+  ```js
+  uni.previewImage({
+    current:current,
+    urls: res.tempFilePaths,
+    longPressActions: {
+      itemList: ['发送给朋友', '保存图片', '收藏'],
+      success: function(data) {
+        console.log('选中了第' + (data.tapIndex + 1) + '个按钮,第' + (data.index + 1) + '张图片');
+      },
+      fail: function(err) {
+        console.log(err.errMsg);
+      }
+    }
+  });
+  ```
+
+### 15.跨端编译
+
+- **条件编译**
+
+  ```js
+  // html注释
+  <!-- #ifdef H5 -->
+  <button @click="pullDown">下拉刷新</button>
+  <!-- #endif -->
+  
+  // js注释
+  // #ifdef H5
+  console.log('h5')
+  // #endif
+  
+  // css注释
+  /* #ifdef H5 */
+  .item {
+    height: 100px;
+  }
+  /* #endif */
+  
+  ```
+
+### 16.导航跳转
+
+- **声明式导航**
+
+```js
+<view class="btn-area">
+  <navigator url="navigate/navigate?title=navigate" hover-class="navigator-hover">
+    <button type="default">跳转到新页面</button>
+  </navigator>
+  <navigator url="redirect/redirect?title=redirect" open-type="redirect" hover-class="other-navigator-hover">
+    <button type="default">在当前页打开</button>
+  </navigator>
+  <navigator url="/pages/tabBar/extUI/extUI" open-type="switchTab" hover-class="other-navigator-hover">
+    <button type="default">跳转tab页面</button>
+  </navigator>
+</view>
+```
+
+> redirect：设置redirect后，会将当前页面关闭，跳转到新的页面，没有返回按钮
+
+- **编程式导航**
+
+```js
+// 保留当前页面，跳转到应用内的某个页面，使用uni.navigateBack可以返回到原页面。
+uni.navigateTo({
+    url: 'test?id=1&name=uniapp'
+})
+// 关闭当前页面，跳转到应用内的某个页面。——无法返回上一页
+uni.redirectTo({
+    url: 'test?id=1'
+});
+// 跳转到 tabBar 页面，并关闭其他所有非 tabBar 页面。
+uni.switchTab({
+    url: '/pages/index/index'
+});
+```
+
+### 17.组件生命周期
+
+- beforeCreate
+- created
+- beforeMount
+- mounted
+- beforeUpdate——仅h5支持
+- updated——仅h5支持
+- beforeDestory
+- Destoryed——组件销毁时，记得将定时器清除掉
+
+### 18.组件之间的通讯方式
+
+- 父子组件传参：props  $emit
+- 兄弟组件传参：uni.$emit()   uni.$on()
