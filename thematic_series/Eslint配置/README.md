@@ -1,3 +1,5 @@
+
+
 `eslint --init`
 
 命令即可快速生成默认的`.eslintrc.js`文件
