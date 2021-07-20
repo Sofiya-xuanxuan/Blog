@@ -67,6 +67,52 @@ https://www.jianshu.com/p/622ad36ee020
 
 
 
+## cp-cli
+
+- **安装**
+
+  ```js
+  npm install -g cp-cli
+  ```
+
+- **作用**
+
+  复制文件
+
+  ```js
+  # 命令
+  cp-cli source target
+  
+  # 实际使用
+  cp-cli src/theme-chalk/lib lib/theme-chalk
+  ```
+
+  
+
+## umd打包
+
+```js
+"build-component": "vue-cli-service build --target lib --name lepu-button lib/index.js"
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

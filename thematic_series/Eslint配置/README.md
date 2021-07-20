@@ -1,16 +1,150 @@
+## eslint
 
+1. **安装**
 
-`eslint --init`
+   ```js
+   npm i eslint babel-eslint eslint-plugin-vue @vue/eslint-config-prettier eslint-plugin-prettier eslint-plugin-html -D
+   // or
+   yarn add eslint babel-eslint eslint-plugin-vue @vue/eslint-config-prettier eslint-plugin-prettier eslint-plugin-html -D
+   ```
 
-命令即可快速生成默认的`.eslintrc.js`文件
+2. **.eslintrc.js**
 
-npm i eslint -g
+   ```js
+   module.exports = {
+     root: true,
+     parserOptions: {
+       parser: "babel-eslint",
+       sourceType: "module"
+     },
+     env: {
+       browser: true,
+       node: true,
+       es6: true
+     },
+     extends: ["plugin:vue/recommended", "eslint:recommended"],
+   
+     // add your custom rules here
+     //it is base on https://github.com/vuejs/eslint-config-vue
+     rules: {
+       "no-console": "off",
+       "no-debugger": "off",
+       semi: ["error", "never"], // 强制分号
+       indent: ["error", 2], // 2个空格
+       camelcase: 0, // 不强制_形式，或者驼峰
+       "vue/html-indent": ["error", 2], // vue中2个空格
+       "vue/require-default-prop": "off", // prop的值设置默认值（后期关闭该规则）
+       "vue/require-prop-type-constructor": "off", // 关闭prop强制类型设置（后期关闭该规则）
+       "vue/require-prop-types": "off", // 关闭prop强制类型设置（后期关闭该规则）
+       "vue/prop-name-casing": "off", // prop的属性名可以为驼峰，也可以_表示
+       "vue/max-attributes-per-line": "off"
+     }
+   };
+   ```
 
+3. **.eslintignore**
 
+   ```js
+   build/*.js
+   src/assets
+   public
+   dist
+   ```
 
+4. **editorconfig**
 
+   ```js
+   {
+   	// 保存后自动修复格式
+   	"editor.codeActionsOnSave": {
+   		"source.fixAll.eslint": true
+   	},
+   	//eslint
+   	"editor.formatOnType": true,
+   	"eslint.options": {
+   		//指定eslint配置文件位置
+   		"extensions": [".js", ".vue"],
+   		"configFile": ".eslintrc.js" //指定项目根目录中的eslint配置文件
+   	},
+   	// vscode默认启用了根据文件类型自动设置tabsize的选项
+   	"editor.detectIndentation": false,
+   	// 重新设定tabsize
+   	"editor.tabSize": 2,
+   	// #值设置为true时，每次保存的时候自动格式化；值设置为false时，代码格式化请按shift+alt+F
+   	"editor.formatOnSave": true,
+   	// 添加 vue 支持
+   	"eslint.validate": [
+   		//开启对.vue文件中错误的检查
+   		"javascript",
+   		"javascriptreact",
+   		"vue",
+   		"html"
+   	],
+   	"prettier.semi": false, //去掉代码结尾的分号
+   	"prettier.singleQuote": true, //使用带引号替代双引号
+   	//  #让prettier使用eslint的代码格式进行校验
+   	"prettier.eslintIntegration": true,
+   	"prettier.tabWidth": 2,
+   	//  #让函数(名)和后面的括号之间加个空格
+   	"javascript.format.insertSpaceBeforeFunctionParenthesis": true,
+   	// #这个按用户自身习惯选择
+   	// 选择 vue 文件中 template 的格式化工具
+   	"vetur.format.defaultFormatter.html": "js-beautify-html",
+   	// vetur 的自定义设置
+   	"vetur.format.defaultFormatterOptions": {
+   		"js-beautify-html": {
+   			// #vue组件中html代码格式化样式
+   			"wrap_attributes": "auto", //也可以设置为“force-aligned”，效果会不一样
+   			"wrap_line_length": 160,
+   			"end_with_newline": false,
+   			"semi": false,
+   			"singleQuote": true
+   		},
+   		"prettier": {
+   			"semi": false, // 格式化不加分号
+   			"singleQuote": true // 格式化以单引号为主
+   		}
+   	},
+   	"vetur.format.defaultFormatter.js": "vscode-typescript",
+   	"[jsonc]": {
+   		"editor.defaultFormatter": "esbenp.prettier-vscode"
+   	},
+   	"prettier.useTabs": true,
+   	"files.autoSave": "off",
+   	"explorer.confirmDelete": false,
+   	"[json]": {
+   		"editor.defaultFormatter": "esbenp.prettier-vscode"
+   	},
+   	"diffEditor.ignoreTrimWhitespace": false,
+   	"[vue]": {
+   		"editor.defaultFormatter": "octref.vetur"
+     },
+     "[javascript]": {
+       "editor.defaultFormatter": "rvest.vs-code-prettier-eslint"
+     },
+     "[scss]": {
+       "editor.defaultFormatter": "rvest.vs-code-prettier-eslint"
+     },
+     "liveServer.settings.donotShowInfoMsg": true,
+     "[html]": {
+       "editor.defaultFormatter": "esbenp.prettier-vscode"
+     },
+     "security.workspace.trust.untrustedFiles": "newWindow",
+     "[css]": {
+       "editor.defaultFormatter": "esbenp.prettier-vscode"
+     },
+     "eslint.codeAction.showDocumentation": {
+     
+       "enable": true
+     } // 两个选择器中是否换行
+   }
+   ```
+
+   > `eslint --init`命令即可快速生成默认的`.eslintrc.js`文件
 
 ## husky
+
+当您提交或推送时，您可以使用它来**lint 提交消息**、**运行测试**、**lint 代码**等。Husky 支持[所有](https://git-scm.com/docs/githooks)Git 钩子。
 
 本地进行`git commit`的时候，如果能在本地执行`git commit`操作时能够触发对代码检查就是最好的一种方式。这里就需要使用的`git hook`。
 
@@ -45,6 +179,8 @@ git的hook可以理解成当执行如git add、git commit等git操作时的回�
 > [为什么 husky 放弃了传统的 JS 配置](https://blog.typicode.com/husky-git-hooks-javascript-config/)
 >
 > [新旧版本配置的不同方式](https://zhuanlan.zhihu.com/p/366786798)
+>
+> [husky文档](https://typicode.github.io/husky/#/)
 
 
 
