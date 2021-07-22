@@ -97,6 +97,10 @@ https://www.jianshu.com/p/622ad36ee020
 
 
 
+## package.json配置
+
+https://blog.csdn.net/qq_26927285/article/details/117569189
+
 
 
 
